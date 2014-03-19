@@ -1,3 +1,15 @@
 Everything in the CUSFS Library is an Item. The Type column corresponds to whether it's a Book, Film, Game, Magazine, or Other. More categories can obviously be added.
 
 The number of films or magazines in the library (~20) is somewhat dwarfed by the number of books in the library (~6000) so the default type is Book.
+
+The status column for Items is for e.g. Available [at least one copy is in the library collection ready to be taken out], All copies taken out, Lost, Damaged, etc
+
+TODO LIST
+
+Add genre info to books (by default there's no genre, and this can be done whenever people want to procrastinate). Then get art for each genre so you can browse by type (eg steampunk, space opera, whatever - like the tags on Link Up)
+
+Add review options
+
+Add a "Official Recommendations List" option with according links to the books and highlights which of CUSFS' Top 100 aren't in the library (so they can be bought....?)
+
+Request specific books and send an email to the Librarian/add it to a public list of requested books for others to +1 ?
