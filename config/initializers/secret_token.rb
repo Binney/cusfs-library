@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-CusfsLibrary::Application.config.secret_key_base = '19db2e29b4f15190e24130d6240459d4d7f4dafedffd635b864436c5cab3e9f877fe10cfafa734bed6699805db1d69a7c0758776a24cfb691e4e24463065a2b4'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+CusfsLibrary::Application.config.secret_key_base = secure_token

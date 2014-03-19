@@ -1,0 +1,3 @@
+Everything in the CUSFS Library is an Item. The Type column corresponds to whether it's a Book, Film, Game, Magazine, or Other. More categories can obviously be added.
+
+The number of films or magazines in the library (~20) is somewhat dwarfed by the number of books in the library (~6000) so the default type is Book.
