@@ -2,55 +2,37 @@ require 'spec_helper'
 
 describe "Static pages" do
 
-  describe "Home page" do
-  	
-    it "should have the content 'CUSFS Library'" do
-      visit '/static_pages/home'
-      expect(page).to have_content('CUSFS Library')
-    end
+  subject { page }
 
-    it "should have the title 'Home'" do
-      visit '/static_pages/home'
-      expect(page).to have_title("CUSFS Library | Home")
-    end
+  describe "Home page" do
+	before { visit root_path }  	
+
+    it { should have_content('CUSFS Library') }
+    it { should have_title(full_title('Home')) }
+
   end
 
   describe "Committee page" do
+  	before { visit committee_path }
 
-    it "should have the content 'Committee'" do
-      visit '/static_pages/committee'
-      expect(page).to have_content('Committee')
-    end
+    it { should have_content('Committee') }
+    it { should have_title(full_title('Committee')) }
 
-    it "should have the title 'Committee'" do
-      visit '/static_pages/committee'
-      expect(page).to have_title("CUSFS Library | Committee")
-    end
   end
 
   describe "Help page" do
+  	before {visit help_path }
 
-    it "should have the content 'Help'" do
-      visit '/static_pages/help'
-      expect(page).to have_content('Help')
-    end
+    it { should have_content('Help') }
+    it { should have_title(full_title('Help')) }
 
-    it "should have the title 'Help'" do
-      visit '/static_pages/help'
-      expect(page).to have_title("CUSFS Library | Help")
-    end
   end
 
   describe "Contact page" do
+  	before { visit contact_path }
 
-    it "should have the content 'Contact'" do
-      visit '/static_pages/contact'
-      expect(page).to have_content('Contact')
-    end
+    it { should have_content('Contact') }
+    it { should have_title(full_title('Contact')) }
 
-    it "should have the title 'Contact'" do
-      visit '/static_pages/contact'
-      expect(page).to have_title("CUSFS Library | Contact")
-    end
   end
 end
