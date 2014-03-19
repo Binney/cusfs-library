@@ -1,0 +1,3 @@
+== README
+
+This is the CUSFS library catalogue website, still in alpha. Contact Binney for more info.
