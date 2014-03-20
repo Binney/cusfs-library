@@ -6,6 +6,10 @@ The status column for Items is for e.g. Available [at least one copy is in the l
 
 TODO LIST
 
+Users obviously
+
+TakeOut as a model (needs a snappier name though). Each book has a column for how many copies the library has of them. A TakeOut has a UserId, ItemId, CheckoutDate, and (most importantly) ItemVersion so e.g. A by default but if there's multiple copies you might get B (a hardback) instead of A (a paperback).
+
 Add genre info to books (by default there's no genre, and this can be done whenever people want to procrastinate). Then get art for each genre so you can browse by type (eg steampunk, space opera, whatever - like the tags on Link Up)
 
 Add review options
