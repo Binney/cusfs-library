@@ -1,3 +1,27 @@
 <% provide :title, "New entry" %>
 <h1>New entry</h1>
-<p>Form goes here!</p>
+
+<div class="row">
+	<div class="span6 offset3">
+		<%= form_for(@item) do |f| %>
+			<%= render 'shared/error_messages' %>
+
+			<%= f.label :title %>
+			<%= f.text_field :title %>
+
+			<%= f.label :author %>
+			<%= f.text_field :author %>
+
+			<%= f.label :medium, "Type" %>
+			<%= f.select :medium, Item::TYPES %>
+
+			<%= f.label :date %>
+			<%= f.text_field :date, default: Time.now.year  %>
+
+			<%= f.label :notes %>
+			<%= f.text_area :notes %>
+
+			<%= f.submit "Add to Library", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>

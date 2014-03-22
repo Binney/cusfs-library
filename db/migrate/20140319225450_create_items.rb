@@ -2,7 +2,7 @@ class CreateItems < ActiveRecord::Migration
   def change
     create_table :items do |t|
       t.string :title
-      t.string :medium, default: "book"
+      t.string :medium, default: "Book"
       t.string :author
       t.integer :date
       t.string :isbn

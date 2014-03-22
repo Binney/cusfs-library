@@ -15,7 +15,25 @@ describe "Item pages" do
   describe "create item page" do
     before { visit new_item_path }
 
-    it { should have_content('New entry') }
-    it { should have_title(full_title('New entry')) }
+    let(:submit) { "Add to Library" }
+
+    describe "with invalid information" do
+      it "should not create an entry in the database" do
+        expect { click_button submit }.not_to change(Item, :count)
+      end
+    end
+
+    describe "with valid information" do
+      before do
+        fill_in "Title",         with: "The Seventh Black Book"
+        fill_in "Author",        with: "Nekron"
+        fill_in "Date", with: "2006"
+      end
+
+      it "should create an entry in the database" do
+        expect { click_button submit }.to change(Item, :count).by(1)
+      end
+    end
+
   end
 end

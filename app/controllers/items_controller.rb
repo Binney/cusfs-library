@@ -4,16 +4,22 @@ class ItemsController < ApplicationController
   end
 
   def create
-  	@item = Item.new(params[:user])
+  	@item = Item.new(item_params)
   	if @item.save 
-  		# It worked!
+      flash[:success] = "Successfully added " + @item.title + " to the CUSFS Library!"
+      redirect_to @item
   	else
   	  render 'new'
-      # Something went wrong!
   	end
   end 
 
   def show
   	@item = Item.find(params[:id])
   end
+
+  private
+
+    def item_params
+      params.require(:item).permit(:title, :author, :notes, :date, :medium, :isbn, :location, :status)
+    end
 end

@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :item do
-    title "The Nife and Accurate Prophefies of Agnes Nutter"
+    title "The Nice and Accurate Prophecies of Agnes Nutter"
     author "Agnes Nutter"
     medium "book"
     date 1642
