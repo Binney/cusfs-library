@@ -1,0 +1,14 @@
+<% provide(:title, 'Browse titles') %>
+<h1>Browse titles</h1>
+
+<%= will_paginate %>
+
+<ul class="items">
+  <% @items.each do |item| %>
+    <li>
+      <%= link_to item.title, item %>, <%= item.author %>
+    </li>
+  <% end %>
+</ul>
+
+<%= will_paginate %>

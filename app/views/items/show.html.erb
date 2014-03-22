@@ -1,3 +1,8 @@
 <% provide :title, @item.title %>
 <h1><%= @item.title %></h1>
-<p>by <%= @item.author %>. Info about this entry here!</p>
+<p>by <%= @item.author %></p>
+<div>
+  <p><%= @item.date %><br>
+  	<%= @item.notes %><br>
+  	<%= @item.isbn %></p>
+</div>

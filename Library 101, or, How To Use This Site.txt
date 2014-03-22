@@ -16,4 +16,12 @@ Add review options
 
 Add a "Official Recommendations List" option with according links to the books and highlights which of CUSFS' Top 100 aren't in the library (so they can be bought....?)
 
+Comments section at the bottom of each book?
+
 Request specific books and send an email to the Librarian/add it to a public list of requested books for others to +1 ?
+
+Capacity to upload, parse, and add a correctly formatted CSV of books? http://www.tutorialspoint.com/ruby-on-rails/rails-file-uploading.htm
+
+Use https://github.com/visionmedia/google-search to google book to retrieve cover and blurb?
+
+Item show page: What you want here is a collapsible pane of boring stuff like ISBN, date published, where in the collection it is, etc. The information visible by default is the obvious stuff, plus genre tags, and comments. Ideally you want to be able to spider Google Images for a picture of the cover as an image, or maybe Amazon, but that might not be possible.

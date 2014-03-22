@@ -3,7 +3,24 @@ require 'spec_helper'
 describe "Item pages" do
 
   subject { page }
+  
+  describe "index" do
 
+    describe "pagination" do
+
+      before(:all) { 30.times { FactoryGirl.create(:item) } }
+      after(:all)  { Item.delete_all }
+
+      it { should have_selector('div.pagination') }
+
+      it "should list each item" do
+        Item.paginate(page: 1).each do |item|
+          expect(page).to have_selector('li', text: item.title)
+        end
+      end
+    end
+  end
+  
   describe "show page" do
     let(:item) { FactoryGirl.create(:item) }
     before { visit item_path(item) }
