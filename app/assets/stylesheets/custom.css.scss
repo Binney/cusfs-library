@@ -70,6 +70,7 @@ p {
   font-weight: bold;
   line-height: 1;
   &:hover {
+    cursor: url('images/spock.cur'), e-resize;
     color: white;
     text-decoration: none;
   }
