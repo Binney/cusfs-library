@@ -1,0 +1,10 @@
+<% if signed_in? && current_user.has_withdrawn?(@item) %>
+  You've currently got this book on loan.
+  <%= render 'unwithdraw' %>
+<% end %>
+
+<% if @item.is_available? %>
+  <%= render 'withdraw_opts' %>
+<% else %>
+  This item's currently on loan.
+<% end %>

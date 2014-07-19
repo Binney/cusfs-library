@@ -8,7 +8,16 @@ CusfsLibrary::Application.routes.draw do
   match '/signin', to: 'sessions#new', 		via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'
 
-  resources :items
-  resources :users
+  resources :users do
+    member do
+      get :withdrawals
+    end
+  end
+  resources :items do
+    member do
+      get :withdrawals
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy]
+  resources :withdrawals, only: [:create, :destroy]
 end

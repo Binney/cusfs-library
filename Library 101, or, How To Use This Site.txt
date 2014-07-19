@@ -1,27 +1,62 @@
-Everything in the CUSFS Library is an Item. The Type column corresponds to whether it's a Book, Film, Game, Magazine, or Other. More categories can obviously be added.
+Everything in the CUSFS Library is an Item. The Type column corresponds to whether it's a Book, Film, Game, Magazine, or Other. More categories can obviously be hard coded in if need be.
 
 The number of films or magazines in the library (~20) is somewhat dwarfed by the number of books in the library (~6000) so the default type is Book.
 
 The status column for Items is for e.g. Available [at least one copy is in the library collection ready to be taken out], All copies taken out, Lost, Damaged, etc
 
+The Librarian's account works like this. There is ONE librarian account; it's the first account in the list. This is because the Librarian is sovereign. There are also accounts for the Chairbeing, the Secretary, and the other committee members. These are *hard coded into the site*. Each time the committee changes, these accounts are passed on to the next bearer of that position. Committee positions have admin privileges.
+
+Each committee member ALSO has their own personal account which is theirs alone and which they keep after their tenure is up. The idea is that committee members check books out with their personal account, not their committee one; the latter is only used for admin-y purposes, like moderation and editing library entries.
+
+It'd nice if all accounts had a Title, too, as a gimmick. As in, Chairbeing's is "Almighty", Reeve is "Omnipotent", and if you're some random user you can make something up, like in the Jomsbook. (Though they're moderated to a certain extent.)
+
+The string Editions column in Items is a bit weird but here goes. Some items have multiple editions, eg we have 3 copies of The State Of The Art by Iain M Banks; their codes are BANK2/1-4 followed by b,c,d respectively. How do we tell how many copies of the same Item are in the library, which codes they each have, and which one has just been withdrawn? Answer: The Item entry for The State Of The Art has an Editions entry which is "bcd". This means you can count the number of characters in the string to tell you how many copies are in the library; you can look inside the string to ask which of the three has been withdrawn (even if they don't go alphabetically; in the Banks example "a" has clearly been lost at some point). And if we want to add a new one or remove one, we can just delete that character of the string and it doesn't affect withdrawals of the other copies.
+
 TODO LIST
 
-Users obviously
+Feels like cheating somehow, but. Go on Weebly, pick a reasonable template, create dummy site, and nab CSS ideas. Esp wrt container locations, menu at top and side, and Big Circular Thing That You Thought Was A Good Idea.
 
-TakeOut as a model (needs a snappier name though). Each book has a column for how many copies the library has of them. A TakeOut has a UserId, ItemId, CheckoutDate, and (most importantly) ItemVersion so e.g. A by default but if there's multiple copies you might get B (a hardback) instead of A (a paperback).
+Withdrawal model. Each book has a column for how many copies the library has of them. A Withdrawal has a UserId, ItemId, and (most importantly) ItemVersion so e.g. A by default but if there's multiple copies you might get B (a hardback) instead of A (a paperback).
+
+Would be nice to get the Withdraw and Return buttons working via Ajax. Need to refresh the entire _availability partial though.
+
+You want to be able to look at all books in a particular series, which would be search by Series column rather than a separate table.
 
 Add genre info to books (by default there's no genre, and this can be done whenever people want to procrastinate). Then get art for each genre so you can browse by type (eg steampunk, space opera, whatever - like the tags on Link Up)
 
-Add review options
+Add review options with stars and things
 
-Add a "Official Recommendations List" option with according links to the books and highlights which of CUSFS' Top 100 aren't in the library (so they can be bought....?)
-
-Comments section at the bottom of each book?
+Comments section at the bottom of each book? ^ Possibly same as reviews of books but you don't need to star it
 
 Request specific books and send an email to the Librarian/add it to a public list of requested books for others to +1 ?
 
+Add a "Official Recommendations List" option with according links to the books and highlights which of CUSFS' Top 100 aren't in the library (so they can be bought....?)
+
+RECOMMENDATIONS LISTS
+Would be nice if there was a pretty flexible system for variable-length lists of books which can be created, destroyed, and edited frequently. There are obviously official ones like "Top 10 Space Operas" which are managed by the Librarian, but also individual users can create their own lists like "My Favourite Stories Involving Dragons".
+
+To do this, you need a Collection model. So;
+
+class User
+	has_many :collections
+end
+
+class Collection
+	belongs_to :user
+	has_many :items, through: :exhibits
+end
+
+class Exhibit
+	belongs_to :collection
+	belongs_to :item
+end
+
+class Item
+	has_many :collections, through: :exhibits
+end
+
 Capacity to upload, parse, and add a correctly formatted CSV of books? http://www.tutorialspoint.com/ruby-on-rails/rails-file-uploading.htm
 
-Use https://github.com/visionmedia/google-search to google book to retrieve cover and blurb?
-
 Item show page: What you want here is a collapsible pane of boring stuff like ISBN, date published, where in the collection it is, etc. The information visible by default is the obvious stuff, plus genre tags, and comments. Ideally you want to be able to spider Google Images for a picture of the cover as an image, or maybe Amazon, but that might not be possible.
+
+^ Use https://github.com/visionmedia/google-search to google book to retrieve cover and blurb?

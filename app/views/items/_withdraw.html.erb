@@ -1,0 +1,9 @@
+<%= form_for(current_user.withdrawals.build(item_id: @item.id)) do |f| %>
+  <div><%= f.hidden_field :item_id %></div>
+  <% if @item.editions.length>1 %>
+    <%= f.select :edition, @item.editions.split(//) %>
+  <% else %>
+    <div><%= f.hidden_field :edition, value: @item.editions[0] %></div>
+  <% end %>
+  <%= f.submit "Withdraw", class: "btn btn-large btn-success item-withdraw" %>
+<% end %>
