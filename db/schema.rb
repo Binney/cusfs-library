@@ -15,13 +15,13 @@ ActiveRecord::Schema.define(version: 20140720103706) do
 
   create_table "items", force: true do |t|
     t.string   "title"
-    t.string   "medium"
+    t.string   "medium",        default: "Book"
     t.string   "author"
     t.integer  "date"
     t.string   "isbn"
     t.string   "location"
     t.string   "notes"
-    t.string   "status"
+    t.string   "status",        default: "Available"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "editions"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20140720103706) do
     t.integer  "item_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "edition"
+    t.string   "edition",    limit: nil
   end
 
 end
