@@ -9,14 +9,16 @@
   <%= render 'layouts/shim' %>
 </head>
 <body>
+  <%= content_tag :div, class: "metacontainer container-#{yield(:site_section)}" do %>
   <%= render 'layouts/header' %>
-  <div class="container">
-      <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
-      <% end %>
-      <%= yield %>
-    <%= render 'layouts/footer' %>
-  </div>
+    <div class="container cusfs-body">
+        <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>"><%= value %></div>
+        <% end %>
+        <%= yield %>
+      <%= render 'layouts/footer' %>
+    </div>
+  <% end %>
 
 </body>
 </html>

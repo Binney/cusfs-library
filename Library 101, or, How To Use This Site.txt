@@ -14,13 +14,17 @@ The string Editions column in Items is a bit weird but here goes. Some items hav
 
 TODO LIST
 
-Feels like cheating somehow, but. Go on Weebly, pick a reasonable template, create dummy site, and nab CSS ideas. Esp wrt container locations, menu at top and side, and Big Circular Thing That You Thought Was A Good Idea.
-
-Withdrawal model. Each book has a column for how many copies the library has of them. A Withdrawal has a UserId, ItemId, and (most importantly) ItemVersion so e.g. A by default but if there's multiple copies you might get B (a hardback) instead of A (a paperback).
+The styling for flashes doesn't go with the theme; redo colours? certainly the green :success looks horrible
 
 Would be nice to get the Withdraw and Return buttons working via Ajax. Need to refresh the entire _availability partial though.
 
-You want to be able to look at all books in a particular series, which would be search by Series column rather than a separate table.
+BUG: If you're importing a CSV the bit which detects the series is flawed. It just seizes the last character for the number and all but the last two characters for the name. This means it doesn't work if the book you're importing is more than 10th in the series (dammit, Robert Jordan) because by extracting only the last digit it wil think the series title is "Wheel of Time " rather than "Wheel of Time" and create a new series. Solution: in the short term, get Ruby to knock off all trailing whitespace from the name to get series name right, and use the bookcode column to get number rather than string. But in this just passes the buck to series with more than 99 books in (which I'm sure exist somewhere...) so in the long run should use regex to check intelligently.
+
+Authors model, for easier view and index stuff?
+
+How should it deal with 2in1 books, like Shadow and Betrayal by Daniel Abraham?!
+
+Gems for searching. Obviously use Ransack for the book search, but there's also Sphinx which appears to let you do searches of everything. So, that's nice. Means we can search Schedule and TTBAs and so on. Investigate!
 
 Add genre info to books (by default there's no genre, and this can be done whenever people want to procrastinate). Then get art for each genre so you can browse by type (eg steampunk, space opera, whatever - like the tags on Link Up)
 
@@ -59,4 +63,4 @@ Capacity to upload, parse, and add a correctly formatted CSV of books? http://ww
 
 Item show page: What you want here is a collapsible pane of boring stuff like ISBN, date published, where in the collection it is, etc. The information visible by default is the obvious stuff, plus genre tags, and comments. Ideally you want to be able to spider Google Images for a picture of the cover as an image, or maybe Amazon, but that might not be possible.
 
-^ Use https://github.com/visionmedia/google-search to google book to retrieve cover and blurb?
+^ Use https://github.com/visionmedia/google-search to google book to retrieve cover? And spider Goodreads.com for the blurb?

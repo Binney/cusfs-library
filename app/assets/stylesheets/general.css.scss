@@ -1,0 +1,91 @@
+@import "bootstrap";
+
+/* universal */
+
+html {
+  overflow-y: scroll;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-color: black;
+}
+
+.metacontainer {
+  background-image: url("starburst.jpg"); /* Default is same as library in case site-section is unset */
+  background-size: 100%;
+  background-position: center bottom;  
+  background-repeat: no-repeat;
+  min-height: 100%;
+  width: 100%;  
+}
+
+.container-library {
+  background-image: url("starburst.jpg");
+  background-color: black;
+}
+
+.container-creative {
+  background-image: url("map.jpg"); /* TODO um this looks horrendous */
+  background-color: #ae9066;
+}
+
+.container-schedule {
+  /* TODO steampunk machinery background */
+}
+
+.cusfs-body {
+  height: 100%;
+  width: 800px;
+  min-height: 100%;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top:50px;
+  position: relative;
+  background-color: $baseBlue;
+  font-family: $sansFont;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
+}
+
+/* Index */
+
+.items {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:last-child {
+      border-bottom: 1px solid $grayLighter;
+    }
+  }
+}

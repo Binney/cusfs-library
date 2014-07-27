@@ -1,0 +1,8 @@
+<% provide :title, "#{@series.name} series" %>
+
+<h1><%= @series.name %> series</h1>
+<%= render 'is_complete', series: @series %>
+<h2>Titles in this series</h2>
+  <%= will_paginate @items %>
+  <%= render @items %>
+  <%= will_paginate @items %>

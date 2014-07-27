@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140714230907) do
+ActiveRecord::Schema.define(version: 20140720103706) do
 
   create_table "items", force: true do |t|
     t.string   "title"
@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 20140714230907) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "quantity"
     t.string   "editions"
-    t.string   "series"
     t.string   "tag"
+    t.integer  "series_id"
+    t.integer  "series_number"
   end
 
   add_index "items", ["author"], name: "index_items_on_author"
@@ -37,6 +37,12 @@ ActiveRecord::Schema.define(version: 20140714230907) do
   add_index "items", ["status"], name: "index_items_on_status"
   add_index "items", ["title"], name: "index_items_on_title"
 
+  create_table "series", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "email"
@@ -44,6 +50,7 @@ ActiveRecord::Schema.define(version: 20140714230907) do
     t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "remember_token"
+    t.boolean  "admin",           default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

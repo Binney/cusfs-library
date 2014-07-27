@@ -1,15 +1,17 @@
 <li>
   <div id="recommended<%= item.is_recommended? %>"></div>
   <span class="title">
-  	<b><%= link_to item.title, item %></b>
-  	<%= item.author %>, <%= item.date %>
+  	<b><%= link_to item.title, item %></b> ¤ 	<%= link_to item.author, '#' %>, <%= item.date %>
   	<br>
-  	<p>This book is of the SFF genre!</p>
-  	<p>This book has three reviews putting it at 4 stars!</p>
+    <% unless item.series.blank? %>
+      Book <%= item.series_number %> of the <%= link_to item.series.name, item.series %> series
+    <% end %>
+  	<p>This book has a truly marvellous blurb, which this summary is too narrow to contain.</p>
   	<% if item.is_available? %>
-  	  <%= render 'available', item: item %>
+  	  <%= render 'items/available', item: item %>
   	<% else %>
-  	  <%= render 'unavailable', item: item %>
+  	  <%= render 'items/unavailable', item: item %>
   	<% end %>
+    This book has 94 reviews and they all slate it. ¤ Average stars: -4.3
   </span>
 </li>

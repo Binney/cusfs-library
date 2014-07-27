@@ -1,0 +1,99 @@
+/* Header */
+
+.cusfs-logo-main {
+  z-index: 999;
+  position: absolute;
+  float: right;
+  width: 100%;
+  pointer-events: none;
+}
+
+.cusfs-logo {
+  pointer-events: auto;
+}
+
+.cusfs-uppermost-navbar {
+	padding-bottom: 0;
+}
+
+.cusfs-main-menu {
+  border-top: solid 1px #fff;
+	text-transform: uppercase;
+	font-family: $serifFont;
+	font-size: 32px;
+	letter-spacing: 4px;
+	color: #fff;
+  background-color: black;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin-bottom: 0px;
+	a {
+	  color: #fff;
+	  &:hover {
+	  	text-decoration:none;
+	  }
+	}
+
+}
+
+.great-orange-site-section {
+	font-size: 64px;
+	color: $lightOrange;
+  a {
+    color: $lightOrange;
+    &:hover {
+      color: $paleOrange;
+    }
+  }
+}
+
+.cusfs-library-navbar {
+  margin-bottom: 50px;
+	background-color: $lightOrange;
+  font-family: $sansBoldFont;
+  color: black;
+  a {
+    color: #f00;
+  }
+  li {
+    color: #0f0;
+  }
+  ul a, ul li a {
+    color: $darkBlue;
+    &:hover {
+      color: $lighterBlue;
+    }
+  }
+}
+
+/* footer */
+
+footer {
+  float: bottom;
+  margin-top: 45px;
+  text-transform: uppercase;
+  font-family: $serifFont;
+  letter-spacing: 3px;
+  padding-top: 5px;
+  border-top: 1px solid $darkBlue;
+  color: $darkBlue;
+  a {
+    color: $darkBlue;
+    &:hover {
+      color: $lighterBlue;
+      text-decoration: none;
+    }
+  }
+  .footer-title {
+    float: left;
+    font-family: $serifFont;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 10px;
+    }
+  }
+}

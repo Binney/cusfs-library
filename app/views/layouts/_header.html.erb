@@ -1,14 +1,13 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="navbar-inner">
-    <div class="container">
-      <%= link_to "CUSFS", root_path, id: "logo" %>
-      <nav>
-        <ul class="nav pull-right">
-          <li><%= link_to "Home",    root_path %></li>
-          <li><%= link_to "Help",    help_path %></li>
-          <li><%= link_to "Sign in", signin_path %></li>
-        </ul>
-      </nav>
-    </div>
+<%= render 'layouts/cusfs_logo' %>
+
+<header class="navbar navbar-inverse">
+  <div class="navbar-inner cusfs-uppermost-navbar">
+    <%= render 'layouts/upperright_menu' %>
+  </div>
+  <div class="cusfs-main-menu">
+    <%= render 'layouts/main_menu' %>
+  </div>
+  <div class="cusfs-library-navbar">
+    <%= render 'layouts/library_navbar'%>
   </div>
 </header>

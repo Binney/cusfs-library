@@ -8,6 +8,6 @@ class StaticPagesController < ApplicationController
   def contact
   end
 
-  def committee
+  def about
   end
 end
