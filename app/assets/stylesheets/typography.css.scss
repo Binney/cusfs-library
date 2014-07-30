@@ -12,6 +12,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
+  font-family: $sansBoldFont;
   font-size: 3em;
   letter-spacing: -2px;
   margin-bottom: 30px;
@@ -31,4 +32,9 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
   font-family: $sansFont;
+}
+
+a {
+  font-family: $sansBoldFont;
+  color: $darkOrange;
 }

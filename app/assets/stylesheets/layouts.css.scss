@@ -8,6 +8,11 @@
   float: right;
   width: 100%;
   pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 
 .cusfs-logo {
@@ -16,6 +21,11 @@
 
 .cusfs-uppermost-navbar {
 	padding-bottom: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 
 .cusfs-main-menu {
@@ -24,29 +34,33 @@
 	font-family: $serifFont;
 	font-size: 32px;
 	letter-spacing: 4px;
-	color: #fff;
   background-color: black;
   padding-top: 40px;
   padding-bottom: 40px;
   margin-bottom: 0px;
-	a {
-	  color: #fff;
-	  &:hover {
-	  	text-decoration:none;
-	  }
-	}
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  .nav > li > a {
+    font-family: $serifFont;
+    &:hover {
+      text-decoration:none;
+    }
+  }
 
-}
-
-.great-orange-site-section {
-	font-size: 64px;
-	color: $lightOrange;
-  a {
+  .nav > li > .great-orange-site-section {
     color: $lightOrange;
     &:hover {
       color: $paleOrange;
     }
   }
+
+}
+
+.great-orange-site-section {
+	font-size: 64px;
 }
 
 .cusfs-library-navbar {
@@ -54,21 +68,15 @@
 	background-color: $lightOrange;
   font-family: $sansBoldFont;
   color: black;
-  a {
-    color: #f00;
-  }
-  li {
-    color: #0f0;
-  }
-  ul a, ul li a {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none; 
+  .nav > li > a, .nav > li > a .caret {
     color: $darkBlue;
-    &:hover {
-      color: $lighterBlue;
-    }
   }
 }
-
-/* footer */
 
 footer {
   float: bottom;

@@ -36,6 +36,8 @@ Request specific books and send an email to the Librarian/add it to a public lis
 
 Add a "Official Recommendations List" option with according links to the books and highlights which of CUSFS' Top 100 aren't in the library (so they can be bought....?)
 
+Background image can afford to be higher quality. Certainly would look better on my screen. Dynamically select - or just one-size-fits-all assume HD? (Also, maybe re-export it as a PNG?)
+
 RECOMMENDATIONS LISTS
 Would be nice if there was a pretty flexible system for variable-length lists of books which can be created, destroyed, and edited frequently. There are obviously official ones like "Top 10 Space Operas" which are managed by the Librarian, but also individual users can create their own lists like "My Favourite Stories Involving Dragons".
 

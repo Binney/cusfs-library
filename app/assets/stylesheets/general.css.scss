@@ -14,7 +14,7 @@ body {
 }
 
 .metacontainer {
-  background-image: url("starburst.jpg"); /* Default is same as library in case site-section is unset */
+  background-image: image-url("starburst.jpg"); /* Default is same as library in case site-section is unset */
   background-color: black;
   background-size: 100%;
   background-position: center bottom;  
@@ -24,12 +24,12 @@ body {
 }
 
 .container-library {
-  background-image: url("starburst.jpg");
+  background-image: image-url("starburst.jpg");
   background-color: black;
 }
 
 .container-creative {
-  background-image: url("map.jpg"); /* TODO um this looks horrendous */
+  background-image: image-url("map.jpg"); /* TODO um this looks horrendous */
   background-color: #ae9066;
 }
 
