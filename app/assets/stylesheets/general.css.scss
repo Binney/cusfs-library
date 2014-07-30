@@ -15,6 +15,7 @@ body {
 
 .metacontainer {
   background-image: url("starburst.jpg"); /* Default is same as library in case site-section is unset */
+  background-color: black;
   background-size: 100%;
   background-position: center bottom;  
   background-repeat: no-repeat;
@@ -37,9 +38,7 @@ body {
 }
 
 .cusfs-body {
-  height: 100%;
   width: 800px;
-  min-height: 100%;
   padding-left: 50px;
   padding-right: 50px;
   padding-top:50px;

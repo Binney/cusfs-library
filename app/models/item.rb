@@ -10,7 +10,7 @@ class Item < ActiveRecord::Base
   end
 
   def is_available?
-  	self.withdrawals.length<1
+  	self.withdrawals.length<self.editions.length
   end
 
 end

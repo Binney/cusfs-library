@@ -1,7 +1,8 @@
 <%= form_for(current_user.withdrawals.build(item_id: @item.id)) do |f| %>
   <div><%= f.hidden_field :item_id %></div>
   <% if @item.editions.length>1 %>
-    <%= f.select :edition, @item.editions.split(//) %>
+  	<% editions = @item.editions.split(//)-@item.withdrawals.pluck(:edition) %>
+    <%= f.select :edition, editions %>
   <% else %>
     <div><%= f.hidden_field :edition, value: @item.editions[0] %></div>
   <% end %>
