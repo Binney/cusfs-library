@@ -1,8 +1,8 @@
 @import "colours.css.scss";
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,600|Cinzel);
 
-$serifFont: "Centaur";
-$sansFont: "Segoe UI Light";
-$sansBoldFont: "Segoe UI Semibold";
+$serifFont: "Cinzel";
+$sansFont: Raleway, sans-serif;
 
 /* typography */
 
@@ -12,7 +12,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-	font-family: $sansBoldFont;
+	font-family: $sansFont;
+	font-weight: 600;
 	font-size: 3em;
 	letter-spacing: -2px;
 	margin-bottom: 30px;
@@ -21,21 +22,22 @@ h1 {
 
 h2 {
 	font-size: 1.2em;
-	letter-spacing: -1px;
 	margin-bottom: 30px;
-	text-align: center;
 	font-weight: normal;
-	color: $grayLight;
+	color: black;
 }
 
 p {
 	font-size: 1.1em;
 	line-height: 1.7em;
 	font-family: $sansFont;
+	a {
+		font-weight: 600;
+	}
 }
 
 a {
-	font-family: $sansBoldFont;
+	font-family: $sansFont;
 	color: $darkOrange;
 	&:hover {
 		text-decoration: none;

@@ -52,6 +52,7 @@
 
   .nav > li > .great-orange-site-section {
     color: $lightOrange;
+    letter-spacing: 9px;
     &:hover {
       color: $paleOrange;
     }
@@ -66,7 +67,8 @@
 .cusfs-library-navbar {
   margin-bottom: 50px;
 	background-color: $lightOrange;
-  font-family: $sansBoldFont;
+  font-family: $sansFont;
+  font-weight: 600;
   color: black;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -74,6 +76,7 @@
   -o-user-select: none;
   user-select: none; 
   .nav > li > a, .nav > li > a .caret {
+    font-weight: 600;
     color: $darkBlue;
   }
 }
@@ -83,7 +86,7 @@ footer {
   margin-top: 45px;
   font-family: $serifFont;
   text-transform: uppercase;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   padding-top: 5px;
   border-top: 1px solid $darkBlue;
   color: $darkBlue;
@@ -100,11 +103,12 @@ footer {
     font-family: $serifFont;
   }
   ul {
+    padding-top: 2px;
     float: right;
     list-style: none;
     li {
       float: left;
-      margin-left: 10px;
+      margin-left: 15px;
     }
   }
 }

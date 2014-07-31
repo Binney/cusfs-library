@@ -38,6 +38,10 @@ Add a "Official Recommendations List" option with according links to the books a
 
 Background image can afford to be higher quality. Certainly would look better on my screen. Dynamically select - or just one-size-fits-all assume HD? (Also, maybe re-export it as a PNG?)
 
+Height of screen no object, but width is a problem. Currently the site looks fine with windows as narrow as 1200px (in fact, it looks lovely at 1200px) but I anticipate some screens might be 1024px wide. Probably need a "compact" version where the navbars are formatted differently, but that can wait. (It should be viewable on a low-res mobile without having to scroll sideways.)
+
+Could be that you want to use a custom build of Bootstrap including only certain components; certainly it's the slowest loading asset locally.
+
 RECOMMENDATIONS LISTS
 Would be nice if there was a pretty flexible system for variable-length lists of books which can be created, destroyed, and edited frequently. There are obviously official ones like "Top 10 Space Operas" which are managed by the Librarian, but also individual users can create their own lists like "My Favourite Stories Involving Dragons".
 
