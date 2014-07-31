@@ -81,13 +81,14 @@
 footer {
   float: bottom;
   margin-top: 45px;
-  text-transform: uppercase;
   font-family: $serifFont;
+  text-transform: uppercase;
   letter-spacing: 3px;
   padding-top: 5px;
   border-top: 1px solid $darkBlue;
   color: $darkBlue;
   a {
+    font-family: $serifFont;
     color: $darkBlue;
     &:hover {
       color: $lighterBlue;

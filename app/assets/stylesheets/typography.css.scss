@@ -7,34 +7,38 @@ $sansBoldFont: "Segoe UI Semibold";
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
-  font-family: $sansFont;
+	line-height: 1;
+	font-family: $sansFont;
 }
 
 h1 {
-  font-family: $sansBoldFont;
-  font-size: 3em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
-  color: $darkBlue;
+	font-family: $sansBoldFont;
+	font-size: 3em;
+	letter-spacing: -2px;
+	margin-bottom: 30px;
+	color: $darkBlue;
 }
 
 h2 {
-  font-size: 1.2em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: normal;
-  color: $grayLight;
+	font-size: 1.2em;
+	letter-spacing: -1px;
+	margin-bottom: 30px;
+	text-align: center;
+	font-weight: normal;
+	color: $grayLight;
 }
 
 p {
-  font-size: 1.1em;
-  line-height: 1.7em;
-  font-family: $sansFont;
+	font-size: 1.1em;
+	line-height: 1.7em;
+	font-family: $sansFont;
 }
 
 a {
-  font-family: $sansBoldFont;
-  color: $darkOrange;
+	font-family: $sansBoldFont;
+	color: $darkOrange;
+	&:hover {
+		text-decoration: none;
+		color: $lightOrange;
+	}
 }
