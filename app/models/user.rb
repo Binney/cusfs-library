@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
+  def admin?
+    self.admin
+  end
+
   def has_withdrawn?(item)
     withdrawals.find_by(item_id: item.id)
   end

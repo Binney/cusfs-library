@@ -2,7 +2,7 @@ class Item < ActiveRecord::Base
   validates :title, presence: true
   validates :author, presence: true
   belongs_to :series # Each item can (but doesn't have to) be part of at most one Series.
-  TYPES = %w[ Book DVD Game Other ]
+  MEDIA = %w[ Book Film Game Interpretative_Dance Other ]
   has_many :withdrawals
 
   def is_recommended?

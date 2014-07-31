@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :admin_or_signin, only: [:new, :create, :edit]
+
   def new
   	@item = Item.new
   end

@@ -7,3 +7,6 @@
   	<%= @item.isbn %></p>
 </div>
 <%= render 'availability' %>
+<% if signed_in? && current_user.admin? %>
+	<%= link_to "Edit", edit_item_path(@item) %>
+<% end %>

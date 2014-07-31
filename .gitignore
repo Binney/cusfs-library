@@ -1,3 +1,6 @@
+# Ignore locally precompiled asset files, Heroku compiles them for us so no need to store on git
+/public/assets/*
+
 # Ignore bundler config.
 /.bundle
 
