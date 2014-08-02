@@ -1,6 +1,6 @@
 <% provide :title, @item.title %>
 <h1><%= @item.title %></h1>
-<p>by <%= @item.author %></p>
+<p>by <%= link_to @item.author.pretty_name, @item.author %></p>
 <div>
   <p><%= @item.date %><br>
   	<%= @item.notes %><br>

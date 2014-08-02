@@ -1,7 +1,7 @@
 <li>
   <div id="recommended<%= item.is_recommended? %>"></div>
   <span class="title">
-  	<b><%= link_to item.title, item %></b> ¤ 	<%= link_to item.author, '#' %>, <%= item.date %>
+  	<b><%= link_to item.title, item %></b> ¤ 	<%= link_to item.author.pretty_name, item.author %>, <%= item.date %>
   	<br>
     <% unless item.series.blank? %>
       Book <%= item.series_number %> of the <%= link_to item.series.name, item.series %> series

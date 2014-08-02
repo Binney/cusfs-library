@@ -20,8 +20,6 @@ Would be nice to get the Withdraw and Return buttons working via Ajax. Need to r
 
 BUG: If you're importing a CSV the bit which detects the series is flawed. It just seizes the last character for the number and all but the last two characters for the name. This means it doesn't work if the book you're importing is more than 10th in the series (dammit, Robert Jordan) because by extracting only the last digit it wil think the series title is "Wheel of Time " rather than "Wheel of Time" and create a new series. Solution: in the short term, get Ruby to knock off all trailing whitespace from the name to get series name right, and use the bookcode column to get number rather than string. But in this just passes the buck to series with more than 99 books in (which I'm sure exist somewhere...) so in the long run should use regex to check intelligently.
 
-Authors model, for easier view and index stuff?
-
 How should it deal with 2in1 books, like Shadow and Betrayal by Daniel Abraham?!
 
 Gems for searching. Obviously use Ransack for the book search, but there's also Sphinx which appears to let you do searches of everything. So, that's nice. Means we can search Schedule and TTBAs and so on. Investigate!
@@ -41,6 +39,8 @@ Background image can afford to be higher quality. Certainly would look better on
 Height of screen no object, but width is a problem. Currently the site looks fine with windows as narrow as 1200px (in fact, it looks lovely at 1200px) but I anticipate some screens might be 1024px wide. Probably need a "compact" version where the navbars are formatted differently, but that can wait. (It should be viewable on a low-res mobile without having to scroll sideways.)
 
 Could be that you want to use a custom build of Bootstrap including only certain components; certainly it's the slowest loading asset locally.
+
+Need to add a bunch of indices on database tables, for example Items on Title or author id, for speed of searching.
 
 RECOMMENDATIONS LISTS
 Would be nice if there was a pretty flexible system for variable-length lists of books which can be created, destroyed, and edited frequently. There are obviously official ones like "Top 10 Space Operas" which are managed by the Librarian, but also individual users can create their own lists like "My Favourite Stories Involving Dragons".

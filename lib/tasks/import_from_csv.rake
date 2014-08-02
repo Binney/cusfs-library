@@ -7,9 +7,9 @@ namespace :import do
       CSV.parse(line) do |line|
         title, author, date, isbn, location, x, notes, status, xx, tag, seriesinfo, xxx, authcode, seriescode, bookcode, editioncode, xxxx, alphabet, xxxxx, T, A, D, L, I, tagged, marked = line
 
-        if Item.exists?(title: title.to_s, author: author.to_s)
+        if Item.exists?(title: title.to_s) && Item.find_by(title: title.to_s).author.name==author
           # There already exists a record for this item; we're looking at a duplicate.
-          existing_book = Item.find_by(title: title.to_s, author: author.to_s)
+          existing_book = Item.find_by(title: title.to_s, author_id: Author.find_by(name: author.to_s))
           if existing_book.editions.include?(String(editioncode))
             # The row you're trying to read is identical to an existing record - down to the code. Maybe you're trying to upload the same file twice? At any rate, don't add another entry.
             puts "Duplicate entry detected. Are you trying to upload the same file twice?"
@@ -25,7 +25,7 @@ namespace :import do
           editioncode ||= "a"
           medium ||= "Book"
 
-          new_item = Item.new(title: title, author: author, date: date, isbn: isbn, location: location,
+          new_item = Item.new(title: title, date: date, isbn: isbn, location: location,
                               notes: notes, status: status, tag: tag, editions: editioncode)
 
           unless bookcode.blank? || seriesinfo[seriesinfo.length-1]==String(bookcode)
@@ -42,6 +42,17 @@ namespace :import do
             end
             new_item.series_id = series.id
             new_item.series_number = bookcode
+          end
+
+          unless author.blank?
+            if Author.exists?(name: author)
+              # Add book to existing series.
+              writer = Author.find_by(name: author)
+            else
+              # First book of a new series; create series too.
+              writer = Author.create(name: author)
+            end
+            new_item.author_id = writer.id
           end
 
           if new_item.save

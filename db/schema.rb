@@ -11,26 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140720103706) do
+ActiveRecord::Schema.define(version: 20140802210305) do
+
+  create_table "authors", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "authors", ["name"], name: "index_authors_on_name"
 
   create_table "items", force: true do |t|
     t.string   "title"
-    t.string   "medium",        default: "Book"
-    t.string   "author"
+    t.string   "medium"
     t.integer  "date"
     t.string   "isbn"
     t.string   "location"
     t.string   "notes"
-    t.string   "status",        default: "Available"
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "editions"
     t.string   "tag"
     t.integer  "series_id"
     t.integer  "series_number"
+    t.integer  "author_id"
   end
 
-  add_index "items", ["author"], name: "index_items_on_author"
+  add_index "items", ["author_id"], name: "index_items_on_author_id"
   add_index "items", ["date"], name: "index_items_on_date"
   add_index "items", ["isbn"], name: "index_items_on_isbn"
   add_index "items", ["medium"], name: "index_items_on_medium"
@@ -43,6 +51,8 @@ ActiveRecord::Schema.define(version: 20140720103706) do
     t.datetime "updated_at"
   end
 
+  add_index "series", ["name"], name: "index_series_on_name"
+
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "email"
@@ -54,6 +64,7 @@ ActiveRecord::Schema.define(version: 20140720103706) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["name"], name: "index_users_on_name"
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
   create_table "withdrawals", force: true do |t|
@@ -61,7 +72,7 @@ ActiveRecord::Schema.define(version: 20140720103706) do
     t.integer  "item_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "edition",    limit: nil
+    t.string   "edition"
   end
 
 end

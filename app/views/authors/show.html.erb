@@ -1,0 +1,7 @@
+<% provide :title, @author.pretty_name %>
+
+<h1><%= @author.pretty_name %></h1>
+<h2>Author of</h2>
+  <%= will_paginate @items %>
+  <%= render @items %>
+  <%= will_paginate @items %>

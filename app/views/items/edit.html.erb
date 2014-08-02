@@ -8,8 +8,9 @@
       <%= f.label :title %>
       <%= f.text_field :title %>
 
-      <%= f.label :author %>
-      <%= f.text_field :author %>
+      <%= f.label :author_id, "Author" %>
+      <%= f.collection_select :author_id, Author.all, :id, :name %>
+      <!-- TODO replace with an autocompleting text box. Need to send changes to controller too, which can then tell whether said author exists already and create a record if they do. -->
 
       <%= f.label :isbn %>
       <%= f.text_field :isbn %>

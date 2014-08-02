@@ -30,6 +30,10 @@ class ItemsController < ApplicationController
   private
 
     def item_params
-      params.require(:item).permit(:title, :author, :notes, :date, :medium, :isbn, :location, :status)
+      params.require(:item).permit(:title, :author, :author_id, :notes, :date, :medium, :isbn, :location, :status)
     end
 end
+
+# TODO: 
+# 1) When an Item record is saved (new or old) need to find author_id or create a new one, depending.
+# 2) When an Item is deleted, need to check whether that was the last book by a certain author so we don't get left with orphans.

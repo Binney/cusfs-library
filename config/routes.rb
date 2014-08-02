@@ -1,7 +1,5 @@
 CusfsLibrary::Application.routes.draw do
 
-  get "series/index"
-  get "series/view"
   root 'static_pages#home'
   match '/help', to: 'static_pages#help', 	via: 'get'
   match '/about', to: 'static_pages#about', via: 'get'
@@ -22,5 +20,5 @@ CusfsLibrary::Application.routes.draw do
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :withdrawals, only: [:create, :destroy]
-  resources :series
+  resources :series, :authors
 end

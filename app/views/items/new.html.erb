@@ -11,9 +11,10 @@
 
 			<%= f.label :author %>
 			<%= f.text_field :author %>
+			<!-- TODO HERE: this clearly does not work; Author isn't a text field! Instead, replace with jquery's autocomplete function; you start typing the name and it searches the authors database for input. That way we can avoid typos. -->
 
 			<%= f.label :medium, "Medium" %>
-			<%= f.select :medium, Item::MEDIA, :to_s, :humanize %>
+	        <%= f.collection_select :medium, Item::MEDIA, :to_s, :humanize %>
 
 			<%= f.label :date %>
 			<%= f.text_field :date, default: Time.now.year  %>
