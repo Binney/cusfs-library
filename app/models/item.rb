@@ -5,6 +5,7 @@ class Item < ActiveRecord::Base
   belongs_to :author # Each book is written by one author; "Robert Jordan" is an author, as is "Robert Jordan and Brandon Sanderson".
   MEDIA = %w[ Book Film Game Interpretative_Dance Other ]
   has_many :withdrawals
+  has_many :reviews
   default_scope order("title ASC")
 
   def is_recommended?

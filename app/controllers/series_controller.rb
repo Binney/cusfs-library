@@ -5,6 +5,6 @@ class SeriesController < ApplicationController
 
   def show
   	@series = Series.find(params[:id])
-  	@items = @series.items.paginate(page: params[:page])
+  	@items = @series.items.reorder(:series_number).paginate(page: params[:page])
   end
 end

@@ -1,0 +1,19 @@
+<%= form_for(@review) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <% if defined? item_id %>
+	    <%= f.hidden_field :item_id, value: item_id %>
+	<% end %>
+    <% if defined? author_id %>
+	    <%= f.hidden_field :author_id, value: author_id %>
+	<% end %>
+    <% if defined? series_id %>
+	    <%= f.hidden_field :series_id, value: series_id %>
+	<% end %>
+  	<%= f.text_field :title, placeholder: "Title" %>
+    <%= f.text_area :content, placeholder: "Write a review..." %>
+	Score: <%= f.select :stars, [['★', 1], ['★★', 2], ['★★★', 3], ['★★★★', 4], ['★★★★★', 5]], selected: 5 %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+<% end %>

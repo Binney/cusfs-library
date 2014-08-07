@@ -1,0 +1,5 @@
+<% provide :title, @review.title %>
+
+<h1><%= link_to @review.title, @review %></h1>
+<p><%= @review.content[0..140] %></p>
+<%= "★"*@review.rating %><%= "☆"*(5-@review.rating) %>

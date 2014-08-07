@@ -1,1 +1,4 @@
-<li><%= author.pretty_name %> is pretty awesome.</li>
+<li><%= link_to author.pretty_name, author %>
+Wrote <%= author.items.length %> titles including <%= author.items.first.title %>
+
+</li>

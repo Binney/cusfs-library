@@ -5,7 +5,7 @@ class AuthorsController < ApplicationController
 
   def show
   	@author = Author.find(params[:id])
-  	@items = @author.items.paginate(page: params[:page])
+  	@items = @author.items.reorder(:series_id, :series_number).paginate(page: params[:page])
   end
 end
 

@@ -36,11 +36,41 @@ Add a "Official Recommendations List" option with according links to the books a
 
 Background image can afford to be higher quality. Certainly would look better on my screen. Dynamically select - or just one-size-fits-all assume HD? (Also, maybe re-export it as a PNG?)
 
-Height of screen no object, but width is a problem. Currently the site looks fine with windows as narrow as 1200px (in fact, it looks lovely at 1200px) but I anticipate some screens might be 1024px wide. Probably need a "compact" version where the navbars are formatted differently, but that can wait. (It should be viewable on a low-res mobile without having to scroll sideways.)
+Height of screen no object, but width is a problem. Currently the site looks fine with windows as narrow as 1200px (in fact, it looks lovely at 1200px) but I anticipate some screens might be 1024px wide. Probably need a "compact" version where the navbars are formatted differently, but that can wait. (It should be viewable on a low-res mobiles without having to scroll sideways.)
 
 Could be that you want to use a custom build of Bootstrap including only certain components; certainly it's the slowest loading asset locally.
 
-Need to add a bunch of indices on database tables, for example Items on Title or author id, for speed of searching.
+Re sorting: It lists "A Romance of the Equator" as being under "A" not "R". Does the same for titles starting in "The". Manually fix? possibly there's a plugin for that?
+
+Ajax reordering button for series and author views
+
+Librarian (+other admins) can create Withdrawals with user_ids for other users. Implement "create withdrawal record" screen
+
+Book reservations! (as well as book requests)
+
+Rethinking Withdraw buttons: Random users cannot withdraw books, only admins. Obviously users can view their own withdrawals though. Assuming whoever opens the library on a regular basis will have a laptop logged in on an admin account to withdraw books with
+
+Automated emails to say "You've had this book out for 1 month, remember to give it back!" to email to user's Hermes
+
+Maximum books to take out: 10 book limit
+
+A Generic Library Minion account: can issue and return
+
+BOOK TAGS: make a long list of standard tags and then prompt users with a certain book on their reading history to tag it. Only Librarian can make new tags, though (?)
+
+Nobody other than the Librarian / other admins can create accounts. The Memsec can tick a box which says "this person bought 1 year membership on the 6th October" which allows that user to withdraw books.
+
+Each time a withdrawal is created the item it's from makes a note, so we can keep records of frequently taken-out books. Then the Librarian can review that properly, and random users can note "this is a popular book" etc.
+
+h2 has too much padding underneath, you can see that on the series index
+
+I'm assuming the amazon search gem will let us get all info on books when requested, rather than store it. ditto book covers. means there's no need for a humungeous database of jpgs for every book cover!
+
+Oh, and each book show page should have a thing saying "Where can I find this book?" followed by its actual location: i.e. "In the CSL, CUSFS section, turn right at the door and it's in the Graphic Novels bit which should be organised alphabetically." Or, maybe, "In the possession of {user}. Message them here to get them to give it back!"
+
+For some reason there's a shadow (sort of paler-blue copy of the letters just above the real ones) on the navbar text, is that bootstrap or what? anyway, it looks ridiculous.
+
+omg http://railscasts.com/episodes/296-mercury-editor we need this! so future librarians can code EVEN less! (Though it *does* mean all editable pages have to be stored in the database rather than hard-coded. e.g. Page model with @page.content stuff, like in the Railscast)
 
 RECOMMENDATIONS LISTS
 Would be nice if there was a pretty flexible system for variable-length lists of books which can be created, destroyed, and edited frequently. There are obviously official ones like "Top 10 Space Operas" which are managed by the Librarian, but also individual users can create their own lists like "My Favourite Stories Involving Dragons".
@@ -70,3 +100,17 @@ Capacity to upload, parse, and add a correctly formatted CSV of books? http://ww
 Item show page: What you want here is a collapsible pane of boring stuff like ISBN, date published, where in the collection it is, etc. The information visible by default is the obvious stuff, plus genre tags, and comments. Ideally you want to be able to spider Google Images for a picture of the cover as an image, or maybe Amazon, but that might not be possible.
 
 ^ Use https://github.com/visionmedia/google-search to google book to retrieve cover? And spider Goodreads.com for the blurb?
+
+EASTER EGGS
+some sort of mini game where you play as the Cuddly Alien?? accessible through clicking the Cuddly Alien when you see it on random pages?
+
+ie all pages have an invisible pointer-events: none "glass" div over the top, like the logo div; occasionally the cuddly alien will appear and scoot around and you can click it to load the game in that div, over the top of whatever page you were viewing (maybe the container-cusfs-main fades out?). Possibly a javascript based randomiser which determines alien location (and usually places it offscreen) and has it tumbling around in spaaaaace (on either side of the container), crawling around the machinery, etc. (Probably best to keep it to the space/... picture background because unobtrusive). Make triply sure that it doesn't slow the page load time at all. Maybe it only shows up at all every so often, so if your page takes sliiiiightly longer to load you know why.
+
+you are the alien, you have to collect books from the clutches of the evil lizardmen illuminati from antares iv? AND THE BOOKS YOU HAVE TO COLLECT ARE RANDOMLY SELECTED FROM THE CATALOGUE? also orange scarves.
+
+definitely there ought to be a prize for the first person to beat this game. as in, chocolate
+
+http://threejs.org/
+also http://hellorun.helloenjoy.com/ .......wow
+
+http://buildnewgames.com/introduction-to-crafty/ this. obviously.

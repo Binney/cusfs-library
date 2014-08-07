@@ -45,9 +45,14 @@
   user-select: none;
   .nav > li > a {
     font-family: $serifFont;
+
+  }
+
+  .nav > li > .minor-white-site-section {
     &:hover {
       text-decoration:none;
-    }
+      text-shadow: 0px 0px 10px #0ff;
+    }    
   }
 
   .nav > li > .great-orange-site-section {
@@ -55,6 +60,7 @@
     letter-spacing: 9px;
     &:hover {
       color: $paleOrange;
+      text-shadow: 0px 0px 20px #f00;
     }
   }
 
@@ -62,6 +68,10 @@
 
 .great-orange-site-section {
 	font-size: 64px;
+}
+
+.blue-caret {
+  border-top-color: $darkBlue !important;
 }
 
 .cusfs-library-navbar {
@@ -75,9 +85,17 @@
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none; 
-  .nav > li > a, .nav > li > a .caret {
+  .nav > li > a {
+    text-shadow: none;
     font-weight: 600;
     color: $darkBlue;
+
+    &:hover .blue-caret {
+      border-top-color: white !important;
+    }
+    &:focus .blue-caret {
+      border-top-color: white !important;
+    }
   }
 }
 

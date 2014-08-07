@@ -17,6 +17,10 @@ class ItemsController < ApplicationController
 
   def show
   	@item = Item.find(params[:id])
+    @reviews = @item.reviews#.paginate todo
+    if signed_in?
+      @review = @item.reviews.build
+    end
   end
 
   def edit
@@ -37,3 +41,4 @@ end
 # TODO: 
 # 1) When an Item record is saved (new or old) need to find author_id or create a new one, depending.
 # 2) When an Item is deleted, need to check whether that was the last book by a certain author so we don't get left with orphans.
+# https://github.com/crowdint/rails3-jquery-autocomplete for edit and new forms
