@@ -72,28 +72,10 @@ For some reason there's a shadow (sort of paler-blue copy of the letters just ab
 
 omg http://railscasts.com/episodes/296-mercury-editor we need this! so future librarians can code EVEN less! (Though it *does* mean all editable pages have to be stored in the database rather than hard-coded. e.g. Page model with @page.content stuff, like in the Railscast)
 
-RECOMMENDATIONS LISTS
-Would be nice if there was a pretty flexible system for variable-length lists of books which can be created, destroyed, and edited frequently. There are obviously official ones like "Top 10 Space Operas" which are managed by the Librarian, but also individual users can create their own lists like "My Favourite Stories Involving Dragons".
+https://github.com/thoughtbot/paperclip
+^ Model: CreativeOutput (or whatever) which holds both a title, maybe blog-post-style content, date obviously, and the actual file using Paperclip. the Creative section consists of this. So, the Creative page is basically the Index of the CreativeOutput controller.
 
-To do this, you need a Collection model. So;
-
-class User
-	has_many :collections
-end
-
-class Collection
-	belongs_to :user
-	has_many :items, through: :exhibits
-end
-
-class Exhibit
-	belongs_to :collection
-	belongs_to :item
-end
-
-class Item
-	has_many :collections, through: :exhibits
-end
+Need a migration which places unique indices on [collection_id, item_id] pairs within Exhibits. That way you can't add the same item to a list twice.
 
 Capacity to upload, parse, and add a correctly formatted CSV of books? http://www.tutorialspoint.com/ruby-on-rails/rails-file-uploading.htm
 

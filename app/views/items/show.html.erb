@@ -10,7 +10,7 @@
 <% if signed_in? && current_user.admin? %>
 	<%= link_to "Edit", edit_item_path(@item) %>
 <% end %>
-<% if signed_in? %>
-	<%= render partial: 'reviews/new', locals: {item_id: @item.id} %>
-<% end %>
-<%= render @reviews %>
+
+<%= render 'reviews' %>
+
+<%= render 'collections' %>

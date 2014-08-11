@@ -1,0 +1,12 @@
+<div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    Add to <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <% current_user.collections.each do |collection| %>
+      <% unless collection.contains?(@item) %>
+        <li><%= render partial: 'collections/add_item', locals: {item_id: @item.id, collection: collection} %></li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

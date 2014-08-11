@@ -1,0 +1,35 @@
+<% provide :title, "All reviews" %>
+
+<h1>All reviews</h1>
+
+<% unless @reviews.any? %>
+	No reviews! Tragic, really.
+<% else %>
+
+	<h2>Recent</h2>
+		<ul class="reviews recent-reviews">
+			<%= render @reviews %>
+		</ul>
+
+	<% if @item_reviews.any? %>
+	<h2>Item reviews</h2>
+		<ul class="reviews item-reviews">
+			<%= render @item_reviews %>
+		</ul>
+	<% end %>
+
+	<% if @author_reviews.any? %>
+	<h2>Author reviews</h2>
+		<ul class="reviews author-reviews">
+			<%= render @author_reviews %>
+		</ul>
+	<% end %>
+
+	<% if @series_reviews.any? %>
+	<h2>Series reviews</h2>
+		<ul class="reviews series-reviews">
+			<%= render @series_reviews %>
+		</ul>
+	<% end %>
+
+<% end %>

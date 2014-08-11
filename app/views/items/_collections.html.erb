@@ -1,0 +1,15 @@
+<div class="item-collections">
+	<h2>Lists featuring this <%= @item.medium.to_s.downcase %>
+	<% if signed_in? %>
+		 ¤ <%= render 'add_to_collection' %>
+	<% end %>
+	</h2>
+
+	<% if @collections.any? %>
+		<ul class="item-collections-list">
+			<%= render @collections %>
+		</ul>
+	<% else %>
+		This isn't on any lists.
+	<% end %>
+</div>

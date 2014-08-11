@@ -1,0 +1,11 @@
+<% if signed_in? %>
+	<%= render partial: 'reviews/new', locals: {item_id: @item.id} %>
+<% end %>
+<% if @reviews.any? %>
+	<ul class="reviews">
+		<%= render @reviews %>
+	</ul>
+	<%= will_paginate @reviews %>
+<% else %>
+	No reviews yet.
+<% end %>

@@ -24,6 +24,13 @@ class ReviewsController < ApplicationController
 
 	end
 
+	def index
+		@item_reviews = Review.where.not(item_id: nil)
+		@author_reviews = Review.where.not(author_id: nil)
+		@series_reviews = Review.where.not(series_id: nil)
+		@reviews = Review.all.order(:created_at)
+	end
+
 	private
 
 		def review_params

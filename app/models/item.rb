@@ -6,6 +6,8 @@ class Item < ActiveRecord::Base
   MEDIA = %w[ Book Film Game Interpretative_Dance Other ]
   has_many :withdrawals
   has_many :reviews
+  has_many :collections, through: :exhibits
+  has_many :exhibits
   default_scope order("title ASC")
 
   def is_recommended?

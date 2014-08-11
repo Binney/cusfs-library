@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   validates :password, length: {minimum: 6}
   has_many :withdrawals
   has_many :reviews
+  has_many :collections
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64

@@ -17,10 +17,11 @@ class ItemsController < ApplicationController
 
   def show
   	@item = Item.find(params[:id])
-    @reviews = @item.reviews#.paginate todo
+    @reviews = @item.reviews.paginate(page: params[:page])
     if signed_in?
       @review = @item.reviews.build
     end
+    @collections = @item.collections
   end
 
   def edit

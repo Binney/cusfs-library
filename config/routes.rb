@@ -16,11 +16,16 @@ CusfsLibrary::Application.routes.draw do
   end
   resources :items do
     member do
-      get :withdrawals
-      get :reviews
+      get :withdrawals, :reviews, :collections
     end
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :withdrawals, only: [:create, :destroy]
   resources :series, :authors, :reviews
+  resources :exhibits, only: [:create, :destroy]
+  resources :collections do
+    member do
+      get :items
+    end
+  end
 end
