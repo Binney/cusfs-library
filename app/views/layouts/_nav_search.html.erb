@@ -1,1 +1,6 @@
-<%= link_to "Search", '#' %>
+<%= search_form_for @search, class: "navbar-form navbar-right", role: "search" do |f| %>
+<div class="form-group">
+  <%= f.text_field :title_or_author_name_cont, class: "form-control" %>
+  <%= f.submit "Search", class: "btn btn-default" %>
+</div>
+<% end %>

@@ -10,6 +10,7 @@ gem 'bootstrap-will_paginate', '0.0.9'
 gem 'sprockets', '2.11.0'
 gem 'ransack'
 gem 'thin'
+gem 'nested_form'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

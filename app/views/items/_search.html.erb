@@ -1,0 +1,12 @@
+<%= search_form_for @search do |f| %>
+  <div class="field">
+    <%= f.label :title_or_author_name_cont, "Title/author" %>
+    <%= f.text_field :title_or_author_name_cont %>
+	  <h4 id="togglebtn">More</h4>
+	  <div class="togglediv">
+	    <%= f.label :series_name_cont, 'Series' %>
+	    <%= f.text_field :series_name_cont %>
+	  </div>
+  </div>
+  <div class="actions"><%= f.submit "Search", class: "btn btn-primary" %></div>
+<% end %>

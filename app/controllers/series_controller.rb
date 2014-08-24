@@ -7,4 +7,7 @@ class SeriesController < ApplicationController
   	@series = Series.find(params[:id])
   	@items = @series.items.reorder(:series_number).paginate(page: params[:page])
   end
+
+  # TODO add edit and update actions
+  
 end

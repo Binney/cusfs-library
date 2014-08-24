@@ -8,5 +8,7 @@
         <li><%= render partial: 'collections/add_item', locals: {item_id: @item.id, collection: collection} %></li>
       <% end %>
     <% end %>
+      <li class="divider"></id>
+      <li><%= link_to "New list", new_collection_path(item_id: @item.id) %></li>
   </ul>
 </div>

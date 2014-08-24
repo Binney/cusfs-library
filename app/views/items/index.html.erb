@@ -1,10 +1,16 @@
-<% provide(:title, 'Browse titles') %>
-<h1>Browse titles</h1>
+<% provide(:title, "Browse #{@title.downcase}") %>
+<h1>Browse <%= @title.downcase %></h1>
 
-<%= will_paginate %>
+<%= render 'search' %>
 
-<ul class="items">
-  <%= render @items %>
-</ul>
+<% if @items.any? %>
+	<%= will_paginate %>
 
-<%= will_paginate %>
+	<ul class="items">
+		<%= render @items %>
+	</ul>
+
+	<%= will_paginate %>
+<% else %>
+No items found.
+<% end %>

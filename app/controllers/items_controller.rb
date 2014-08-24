@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
   	else
   	  render 'new'
   	end
-  end 
+  end
 
   def show
   	@item = Item.find(params[:id])
@@ -28,8 +28,63 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def update
+    @item = Item.find(params[:id])
+    if @item.update_attributes(item_params) 
+      flash[:success] = "Updated entry."
+      redirect_to @item
+    else
+      render 'edit'
+    end
+  end
+
   def index
-    @items = Item.all.paginate(page: params[:page])
+    @search = Item.search(params[:q])
+    @items = @search.result.paginate(page: params[:page])
+    @title = "All items"
+  end
+
+  def fiction
+    @items = Item.all.where(medium: Item::MEDIA[0]).paginate(page: params[:page])
+    @title = "Fiction"
+    render 'index'
+  end
+
+  def graphic_novels
+    @items = Item.all.where(medium: Item::MEDIA[1]).paginate(page: params[:page])
+    @title = "Graphic novels"
+    render 'index'
+  end
+
+  def tie_ins
+    @items = Item.all.where(medium: Item::MEDIA[2]).paginate(page: params[:page])
+    @title = "Tie-ins"
+    render 'index'
+  end
+
+  def anthologies
+    @items = Item.all.where(medium: Item::MEDIA[3]).paginate(page: params[:page])
+    @title = "Anthologies"
+    render 'index'
+  end
+
+  def nonfiction
+    @items = Item.all.where(medium: Item::MEDIA[4]).paginate(page: params[:page])
+    @title = "Non-fiction"
+    render 'index'
+  end
+  def 
+
+  def films
+    @items = Item.all.where(medium: Item::MEDIA[5]).paginate(page: params[:page])
+    @title = "Films"
+    render 'index'
+  end
+
+  def games
+    @items = Item.all.where(medium: Item::MEDIA[6]).paginate(page: params[:page])
+    @title = "Games"
+    render 'index'
   end
 
   private

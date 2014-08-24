@@ -1,1 +1,2 @@
-<%= f.collection_select :item_id, Item.all, :id, :title %>
+<%= f.collection_select :item_id, Item.all, :id, :title, selected: params[:item_id] %>
+<%= f.link_to_remove "remove" %>

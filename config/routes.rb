@@ -8,6 +8,14 @@ CusfsLibrary::Application.routes.draw do
   match '/signin', to: 'sessions#new', 		via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'
 
+  match "fiction", to: 'items#fiction', via: 'get'
+  match "graphic_novels", to: 'items#graphic_novels', via: 'get'
+  match "tie_ins", to: 'items#tie_ins', via: 'get'
+  match "anthologies", to: 'items#anthologies', via: 'get'
+  match "nonfiction", to: 'items#nonfiction', via: 'get'
+  match "films", to: 'items#films', via: 'get'
+  match "games", to: 'items#games', via: 'get'
+
   resources :users do
     member do
       get :withdrawals

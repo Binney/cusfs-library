@@ -23,6 +23,21 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params) 
+      flash[:success] = "Updated successfully!"
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+
+  def withdrawals
+    @user = User.find(params[:id])
+    @withdrawals = @user.withdrawals
+  end
+
   def index
     @users = User.all.paginate(page: params[:page])
   end

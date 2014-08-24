@@ -1,0 +1,10 @@
+<% provide(:title, "#{@user.name}'s withdrawals") %>
+<h1><%= "#{@user.name}'s withdrawals" %> </h1>
+
+<% if @withdrawals.any? %>
+  <ul class="withdrawals">
+  <%= render @withdrawals %>
+  </ul>
+<% else %>
+  No items currently withdrawn.
+<% end %>

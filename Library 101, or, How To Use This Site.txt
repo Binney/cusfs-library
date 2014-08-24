@@ -83,6 +83,10 @@ Item show page: What you want here is a collapsible pane of boring stuff like IS
 
 ^ Use https://github.com/visionmedia/google-search to google book to retrieve cover? And spider Goodreads.com for the blurb?
 
+Heroku's still using WEBrick, fix! to Thin?
+
+Link-Up has a very nice facility (presumably from the tutorial?) to redirect you to a given page if you are prompted to sign in. CUSFS needs this. Check out the bottom of the sessions controller in sweaton
+
 EASTER EGGS
 some sort of mini game where you play as the Cuddly Alien?? accessible through clicking the Cuddly Alien when you see it on random pages?
 
@@ -96,3 +100,31 @@ http://threejs.org/
 also http://hellorun.helloenjoy.com/ .......wow
 
 http://buildnewgames.com/introduction-to-crafty/ this. obviously.
+
+Bootstrap dropdowns have slightly annoying styling - colours on click/mouseover/mouseoff etc are off. Could redo so the entire thing is specified in the scss file
+
+Could just bite the bullet and upload the lot so entire spreadsheet's online and can begin to distribute to freshers. Need to create all sections on the Category menu but that shouldn't take long. Extra actions on the Items controller for games, films, graphic novels etc? And should implement Ransack asap, that seems pretty important to me!
+
+The "Browse by" menu ought to have more members. eg date, signed copies, 
+
+NB http://guides.rubyonrails.org/association_basics.html#controlling-caching allows counter-caching - i.e. more efficient counting of children.
+http://railscasts.com/episodes/23-counter-cache-column?view=asciicast
+or possibly https://github.com/magnusvk/counter_culture which is super up-to-date
+
+Searches for:
+	> Items by all (sensible) attributes, including number of available copies
+	> Authors by name
+	> Series (would also be entertaining to sort by length, ie freaking Stainless Steel Rat...)
+	> Category obviously
+	> Collections
+		> Should also make the Official Lists. Um, who even has that list...?!
+		> And what to do with any items which are on the official lists but which we don't have?! Possibly create as an Item and make Editions string empty? Need to deal with that in view etc.
+
+Ooh, author pictures from Wikipedia? /google images? (can happen at the same time as the main book cover and blurb stuff but is definitely secondary to it!)
+https://openlibrary.org/dev/docs/api/covers
+
+Stuff to go on homepage:
+Latest events in calendar
+Random selection of books
+Recent reviews
+Official recommendation lists

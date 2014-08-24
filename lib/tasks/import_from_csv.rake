@@ -15,7 +15,7 @@ namespace :import do
             puts "Duplicate entry detected. Are you trying to upload the same file twice?"
           else
             # This is the nth copy of a book already in the database - fine. Append its editioncode to the existing record.
-            existing_book.update_attribute(:editions, existing_book.editions + editioncode)
+            existing_book.add_edition(editioncode)
           end
 
         else
@@ -23,9 +23,27 @@ namespace :import do
           extra = bookcode.blank? ? "-" : ""
           tag = "#{authcode}/#{seriescode}#{extra}#{bookcode}"
           editioncode ||= "a"
-          medium ||= "Book"
 
-          new_item = Item.new(title: title, date: date, isbn: isbn, location: location,
+          case location
+          when "Main Collection"
+            medium = Item::MEDIA[0] # "Fiction"
+          when "Graphic Novels"
+            medium = Item::MEDIA[1] # "GraphicNovel"
+          when "Tie-In Novels"
+            medium = Item::MEDIA[2] # "TieIn"
+          when "Anthologies"
+            medium = Item::MEDIA[3] # "Anthology"
+          when "Nonfiction"
+            medium = Item::MEDIA[4] # "NonFiction"
+          when "Film"
+            medium = Item::MEDIA[5] # "Film"
+          when "Game"
+            medium =  Item::MEDIA[6] # "Game"
+          else # Default: fiction book.
+            medium =  Item::MEDIA[0] # "Fiction"
+          end
+
+          new_item = Item.new(title: title, date: date, isbn: isbn, medium: medium, location: location,
                               notes: notes, status: status, tag: tag, editions: editioncode)
 
           unless bookcode.blank? || seriesinfo[seriesinfo.length-1]==String(bookcode)
