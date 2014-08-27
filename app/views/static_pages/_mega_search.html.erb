@@ -1,0 +1,6 @@
+<%= form_tag search_path, method: :post, class: "search_form", role: "search" do |f| %>
+<div class="form-group">
+  <%= text_field_tag :q, nil, class: "form-control wide_search_box" %>
+  <%= submit_tag "Search", class: "btn btn-default" %>
+</div>
+<% end %>

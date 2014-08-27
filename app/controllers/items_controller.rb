@@ -38,6 +38,12 @@ class ItemsController < ApplicationController
     end
   end
 
+  def search
+    index
+    @title = "Search results" unless params[:q].empty?
+    render 'index'
+  end
+
   def index
     @search = Item.search(params[:q])
     @items = @search.result.paginate(page: params[:page])

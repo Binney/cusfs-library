@@ -1,16 +1,36 @@
 <% provide :title, @item.title %>
-<h1><%= @item.title %></h1>
-<p>by <%= link_to @item.author.pretty_name, @item.author %></p>
-<div>
-  <p><%= @item.date %><br>
-  	<%= @item.notes %><br>
-  	<%= @item.isbn %></p>
+
+<div class="row">
+	<aside class="span8 item-show-main">
+		<h1><%= @item.title %></h1>
+		<% if signed_in? && current_user.admin? %>
+			<%= link_to "Edit", edit_item_path(@item) %>
+		<% end %>
+		<p><%= link_to @item.author.pretty_name, @item.author %></p>
+		<p id="togglebtn">More v</p>
+		<div class="togglediv">
+		  <p><%= @item.date %><br>
+		  	<%= @item.notes %><br>
+		  	<%= @item.isbn %></p>
+		</div>
+		<div class="blurb">
+			<%= Faker::Lorem.paragraph %>
+		</div>
+		<%= render 'availability' %>
+		<%= render 'genre_info', item: @item %>
+		<div class="item-collections">
+			<%= render 'collections' %>
+		</div>
+	</aside>
+
+	<div class="span4 item-show-sidebar">
+		<div class="cover">
+			<%= cover_for @item %>
+		</div>
+
+
+		<div class="item-reviews">
+			<%= render 'reviews' %>
+		</div>
+	</div>
 </div>
-<%= render 'availability' %>
-<% if signed_in? && current_user.admin? %>
-	<%= link_to "Edit", edit_item_path(@item) %>
-<% end %>
-
-<%= render 'reviews' %>
-
-<%= render 'collections' %>

@@ -7,6 +7,7 @@ CusfsLibrary::Application.routes.draw do
   match '/signup', to: 'users#new', 		via: 'get'#
   match '/signin', to: 'sessions#new', 		via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'
+  match '/search', to: 'static_pages#search', via: 'get'
 
   match "fiction", to: 'items#fiction', via: 'get'
   match "graphic_novels", to: 'items#graphic_novels', via: 'get'
@@ -23,6 +24,16 @@ CusfsLibrary::Application.routes.draw do
     end
   end
   resources :items do
+    match "fiction", to: 'items#fiction', via: 'get'
+    match "graphic_novels", to: 'items#graphic_novels', via: 'get'
+    match "tie_ins", to: 'items#tie_ins', via: 'get'
+    match "anthologies", to: 'items#anthologies', via: 'get'
+    match "nonfiction", to: 'items#nonfiction', via: 'get'
+    match "films", to: 'items#films', via: 'get'
+    match "games", to: 'items#games', via: 'get'
+    collection do
+      match 'search' => 'items#search', via: [:get, :post], as: :search
+    end
     member do
       get :withdrawals, :reviews, :collections
     end

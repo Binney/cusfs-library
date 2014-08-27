@@ -1,0 +1,52 @@
+<% provide(:title, "Search results") %>
+<h1>Search<%= " results for #{params[:q]}" unless params[:q].nil? %></h1>
+
+<%= render 'static_pages/mega_search' %>
+
+<% unless params[:q].nil? %>
+
+	<h2>Items</h2>
+<% if @items.any? %>
+	<ul class="items">
+		<%= will_paginate @items, param_name: :items_page %>
+		<%= render @items %>
+	</ul>
+
+<% else %>
+No items found.
+<% end %>
+
+	<h2>Authors</h2>
+<% if @authors.any? %>
+	<ul class="authors">
+		<%= will_paginate @authors, param_name: :authors_page %>
+		<%= render @authors %>
+	</ul>
+
+<% else %>
+No authors found.
+<% end %>
+
+	<h2>Series</h2>
+<% if @series.any? %>
+	<ul class="series">
+		<%= will_paginate @series, param_name: :series_page %>
+		<%= render @series %>
+	</ul>
+
+<% else %>
+No series found.
+<% end %>
+
+	<h2>People<h2>
+<% if @users.any? %>
+	<ul class="users">
+		<%= will_paginate @users, param_name: :users_page %>
+		<%= render @users %>
+	</ul>
+
+<% else %>
+No users found.
+<% end %>
+
+<% end %>

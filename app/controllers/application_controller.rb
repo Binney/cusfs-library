@@ -14,6 +14,6 @@ class ApplicationController < ActionController::Base
 	end
 
 	def create_search
-		@search = Item.search(params[:q])
+		@search = Item.search(name_cont: params[:q])
 	end
 end

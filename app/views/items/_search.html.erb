@@ -1,4 +1,4 @@
-<%= search_form_for @search do |f| %>
+<%= search_form_for @search, url: search_items_path, html: {method: :post}, class: "search_form" do |f| %>
   <div class="field">
     <%= f.label :title_or_author_name_cont, "Title/author" %>
     <%= f.text_field :title_or_author_name_cont %>

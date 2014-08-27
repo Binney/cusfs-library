@@ -10,7 +10,14 @@ Each committee member ALSO has their own personal account which is theirs alone 
 
 It'd nice if all accounts had a Title, too, as a gimmick. As in, Chairbeing's is "Almighty", Reeve is "Omnipotent", and if you're some random user you can make something up, like in the Jomsbook. (Though they're moderated to a certain extent.)
 
-The string Editions column in Items is a bit weird but here goes. Some items have multiple editions, eg we have 3 copies of The State Of The Art by Iain M Banks; their codes are BANK2/1-4 followed by b,c,d respectively. How do we tell how many copies of the same Item are in the library, which codes they each have, and which one has just been withdrawn? Answer: The Item entry for The State Of The Art has an Editions entry which is "bcd". This means you can count the number of characters in the string to tell you how many copies are in the library; you can look inside the string to ask which of the three has been withdrawn (even if they don't go alphabetically; in the Banks example "a" has clearly been lost at some point). And if we want to add a new one or remove one, we can just delete that character of the string and it doesn't affect withdrawals of the other copies.
+
+
+
+
+
+
+
+
 
 TODO LIST
 
@@ -22,11 +29,7 @@ BUG: If you're importing a CSV the bit which detects the series is flawed. It ju
 
 How should it deal with 2in1 books, like Shadow and Betrayal by Daniel Abraham?!
 
-Gems for searching. Obviously use Ransack for the book search, but there's also Sphinx which appears to let you do searches of everything. So, that's nice. Means we can search Schedule and TTBAs and so on. Investigate!
-
 Add genre info to books (by default there's no genre, and this can be done whenever people want to procrastinate). Then get art for each genre so you can browse by type (eg steampunk, space opera, whatever - like the tags on Link Up)
-
-Add review options with stars and things
 
 Comments section at the bottom of each book? ^ Possibly same as reviews of books but you don't need to star it
 
@@ -119,6 +122,14 @@ Searches for:
 	> Collections
 		> Should also make the Official Lists. Um, who even has that list...?!
 		> And what to do with any items which are on the official lists but which we don't have?! Possibly create as an Item and make Editions string empty? Need to deal with that in view etc.
+
+Search also: Should direct you not to item index (or, possibly, can repurpose that page for the /books and /graphic_novels etc pages) but instead to a Search Results page which has multiple partials rendered:
+1) Items results (ie Item.search(params[:q].result))
+2) Author results (Author.search(params[:q].result))
+3) Series result (above)
+4) Review content contains
+5) Users and their "about me"s
+6) Collections - so if you enter "aldiss adams" it'll show you all collections with books by both Brian Aldiss and Douglas Adams in
 
 Ooh, author pictures from Wikipedia? /google images? (can happen at the same time as the main book cover and blurb stuff but is definitely secondary to it!)
 https://openlibrary.org/dev/docs/api/covers
