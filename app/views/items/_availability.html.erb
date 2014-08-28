@@ -1,4 +1,4 @@
-<%= @item.editions.length-@item.withdrawals.length %> of <%= @item.editions.length %> available ¤ 
+<%= @item.editions.length-@item.withdrawals.length %> of <%= @item.editions.length %> available <%= separator_symbol %>
 <% if signed_in? && current_user.has_withdrawn?(@item) %>
   You've currently got this book on loan.
   <%= render 'items/unwithdraw' %>

@@ -7,7 +7,7 @@ CusfsLibrary::Application.routes.draw do
   match '/signup', to: 'users#new', 		via: 'get'#
   match '/signin', to: 'sessions#new', 		via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'
-  match '/search', to: 'static_pages#search', via: 'get'
+  match '/search', to: 'static_pages#search', via: [:get, :post], as: :search
 
   match "fiction", to: 'items#fiction', via: 'get'
   match "graphic_novels", to: 'items#graphic_novels', via: 'get'

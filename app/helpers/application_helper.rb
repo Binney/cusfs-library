@@ -2,15 +2,15 @@ module ApplicationHelper
   def full_title(page_title, site_section)
     if site_section.to_i>0
       if page_title.blank?
-        "CUSFS Library ¤ The library of the Cambridge University Science Fiction Society and Jómsborg the New"
+        "CUSFS Library #{separator_symbol} The library of the Cambridge University Science Fiction Society and Jómsborg the New"
       else
-        "#{page_title} ¤ CUSFS Library ¤ The library of the Cambridge University Science Fiction Society and Jómsborg the New"
+        "#{page_title} #{separator_symbol} CUSFS Library #{separator_symbol} The library of the Cambridge University Science Fiction Society and Jómsborg the New"
       end
     else
       if page_title.blank?
-        "CUSFS ¤ The website of the Cambridge University Science Fiction Society and Jómsborg the New"
+        "CUSFS #{separator_symbol} The website of the Cambridge University Science Fiction Society and Jómsborg the New"
       else
-        "#{page_title} ¤ CUSFS ¤ The website of the Cambridge University Science Fiction Society and Jómsborg the New"
+        "#{page_title} #{separator_symbol} CUSFS #{separator_symbol} The website of the Cambridge University Science Fiction Society and Jómsborg the New"
       end
     end
   end
@@ -25,5 +25,9 @@ module ApplicationHelper
       render(association.to_s.singularize + "_fields", :f => builder)
     end
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
+  end
+
+  def separator_symbol
+    "¤"
   end
 end

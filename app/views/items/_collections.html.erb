@@ -1,7 +1,7 @@
 <div class="item-collections">
 	<h2>Lists featuring this <%= @item.medium.to_s.downcase %>
 	<% if signed_in? %>
-		 ¤ <%= render 'items/add_to_collection' %>
+		 <%= separator_symbol %> <%= render 'items/add_to_collection' %>
 	<% end %>
 	</h2>
 

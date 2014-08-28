@@ -26,4 +26,18 @@ class Item < ActiveRecord::Base
     end
   end
 
+  def average_rating
+    if self.reviews.any?
+      t = 0;
+      n = 0;
+      self.reviews.each do |r|
+        t += r.rating.to_i
+        n += 1
+      end
+      (t/n).round
+    else
+      nil
+    end
+  end
+
 end

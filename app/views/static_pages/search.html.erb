@@ -5,48 +5,54 @@
 
 <% unless params[:q].nil? %>
 
-	<h2>Items</h2>
-<% if @items.any? %>
-	<ul class="items">
-		<%= will_paginate @items, param_name: :items_page %>
-		<%= render @items %>
-	</ul>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			Skip to <%= link_to "items (#{@items.length} results)", '#items-section' %> <%= separator_symbol %> <%= link_to "authors (#{@authors.length} results)", '#authors-section' %> <%= separator_symbol %> <%= link_to "series (#{@series.length} results)", '#series-section' %> <%= separator_symbol %> <%= link_to "people (#{@users.length} results)", '#users-section' %>
+		</div>
+	</div>
 
-<% else %>
-No items found.
-<% end %>
+	<h2 id="items-section">Items (<%= @items.length %> results)</h2>
+	<% if @items.any? %>
+		<ul class="items">
+			<%= will_paginate @items, param_name: :items_page %>
+			<%= render @items %>
+		</ul>
 
-	<h2>Authors</h2>
-<% if @authors.any? %>
-	<ul class="authors">
-		<%= will_paginate @authors, param_name: :authors_page %>
-		<%= render @authors %>
-	</ul>
+	<% else %>
+		No items found.
+	<% end %>
 
-<% else %>
-No authors found.
-<% end %>
+	<h2 id="authors-section">Authors (<%= @authors.length %> results)</h2>
+	<% if @authors.any? %>
+		<ul class="authors">
+			<%= will_paginate @authors, param_name: :authors_page %>
+			<%= render @authors %>
+		</ul>
 
-	<h2>Series</h2>
-<% if @series.any? %>
-	<ul class="series">
-		<%= will_paginate @series, param_name: :series_page %>
-		<%= render @series %>
-	</ul>
+	<% else %>
+		No authors found.
+	<% end %>
 
-<% else %>
-No series found.
-<% end %>
+	<h2 id="series-section">Series (<%= @series.length %> results)</h2>
+	<% if @series.any? %>
+		<ul class="series">
+			<%= will_paginate @series, param_name: :series_page %>
+			<%= render @series %>
+		</ul>
 
-	<h2>People<h2>
-<% if @users.any? %>
-	<ul class="users">
-		<%= will_paginate @users, param_name: :users_page %>
-		<%= render @users %>
-	</ul>
+	<% else %>
+		No series found.
+	<% end %>
 
-<% else %>
-No users found.
-<% end %>
+	<h2 id="users-section">People (<%= @users.length %> results)<h2>
+	<% if @users.any? %>
+		<ul class="users">
+			<%= will_paginate @users, param_name: :users_page %>
+			<%= render @users %>
+		</ul>
+
+	<% else %>
+		No users found.
+	<% end %>
 
 <% end %>

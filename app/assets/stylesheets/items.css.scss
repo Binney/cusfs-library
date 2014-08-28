@@ -2,6 +2,8 @@
 /* Index */
 
 .items {
+  display: inline-block;
+  width: 100%;
   list-style: none;
   margin: 0;
   li {
@@ -12,6 +14,26 @@
       border-bottom: 1px solid $grayLighter;
     }
   }
+}
+
+.item-preview {
+  width: 100%;
+  .title {
+    font-size: 20px;
+    a {
+      color: $darkBlue;
+    }
+
+  }
+
+}
+
+.item-preview-body {
+  float: left;
+}
+
+.item-cover-preview {
+  float: right;
 }
 
 /* show */

@@ -139,3 +139,11 @@ Latest events in calendar
 Random selection of books
 Recent reviews
 Official recommendation lists
+
+Actually, I quite like the whole "footer navigation" thing. Like, a mini sitemap at the bottom of each page. I've never used it but it sure looks lovely.
+
+Stylinggggg D:
+
+Probably ought to refactor the Magic Separator character out into a helper, so we can change it if need be. As in, the ¤ thing. Looks nice atm but ought to check with eg ¤·Φ∞⌂◦☼◊♣| and obviously underlined o  º ° ○
+
+yay special characters!

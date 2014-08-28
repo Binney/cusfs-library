@@ -1,5 +1,5 @@
 <%= provide :title, @collection.name %>
 
-<h1><%= @collection.name %> ¤ by <%= @collection.user.name %></h1>
+<h1><%= @collection.name %> <%= separator_symbol %> by <%= @collection.user.name %></h1>
 
 <%= render @items %>
