@@ -4,5 +4,7 @@
 <%= render 'is_complete', series: @series %>
 <h2>Titles in this series</h2>
   <%= will_paginate @items %>
-  <%= render @items %>
+  <ul class="items">
+	  <%= render @items %>
+  </ul>
   <%= will_paginate @items %>

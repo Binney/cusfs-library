@@ -9,12 +9,31 @@
 		<p><%= link_to @item.author.pretty_name, @item.author %></p>
 		<p id="togglebtn">More v</p>
 		<div class="togglediv">
-		  <p><%= @item.date %><br>
-		  	<%= @item.notes %><br>
-		  	<%= @item.isbn %></p>
+			<table class="panel panel-default">
+				<tr>
+					<td>Date:</td>
+					<td><%= @item.date %></td>
+				</tr>
+				<tr>
+					<td>ISBN:</td>
+					<td><%= @item.isbn %></td>
+				</tr>
+				<tr>
+					<td>Notes:</td>
+					<td><%= @item.notes %></td>
+				</tr>
+				<tr>
+					<td>Tag:</td>
+					<td><%= @item.tag %></td>
+				</tr>
+				<tr>
+					<td>Copies:</td>
+					<td><%= @item.editions.length %> (<%= @item.editions %>)</td>
+				</tr>
+			</table>
 		</div>
 		<div class="blurb">
-			<%= Faker::Lorem.paragraph %>
+			<%= blurb_for @item %>
 		</div>
 		<%= render 'availability' %>
 		<%= render 'genre_info', item: @item %>

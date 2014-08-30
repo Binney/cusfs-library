@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
 	def create
 		@review = current_user.reviews.build(review_params)
 		if @review.save
-			flash[:success] = "Review submitted for review. It'll appear online soon!"
+			flash[:success] = "Review submitted for moderation. It'll appear online soon!"
 			# todo find subject of review, eg item or author or series
 			if !(@review.item_id.nil?)
 				redirect_to Item.find(@review.item_id)

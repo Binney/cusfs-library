@@ -14,6 +14,8 @@ class StaticPagesController < ApplicationController
     	@series = Series.search(name_cont: params[:q]).result.paginate(page: params[:series_page])
 
     	@users = User.search(name_cont: params[:q]).result.paginate(page: params[:users_page])
+
+      # TODO also would be awesome to search for collection names and genres here.
     end
   end
 

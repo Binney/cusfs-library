@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140809211832) do
+ActiveRecord::Schema.define(version: 20140829162415) do
 
   create_table "authors", force: true do |t|
     t.string   "name"
@@ -36,6 +36,10 @@ ActiveRecord::Schema.define(version: 20140809211832) do
     t.datetime "updated_at"
   end
 
+  add_index "exhibits", ["collection_id"], name: "index_exhibits_on_collection_id"
+  add_index "exhibits", ["item_id", "collection_id"], name: "index_exhibits_on_item_id_and_collection_id", unique: true
+  add_index "exhibits", ["item_id"], name: "index_exhibits_on_item_id"
+
   create_table "items", force: true do |t|
     t.string   "title"
     t.string   "medium"
@@ -57,6 +61,7 @@ ActiveRecord::Schema.define(version: 20140809211832) do
   add_index "items", ["date"], name: "index_items_on_date"
   add_index "items", ["isbn"], name: "index_items_on_isbn"
   add_index "items", ["medium"], name: "index_items_on_medium"
+  add_index "items", ["series_id"], name: "index_items_on_series_id"
   add_index "items", ["status"], name: "index_items_on_status"
   add_index "items", ["title"], name: "index_items_on_title"
 
@@ -73,6 +78,10 @@ ActiveRecord::Schema.define(version: 20140809211832) do
     t.datetime "updated_at"
   end
 
+  add_index "reviews", ["author_id"], name: "index_reviews_on_author_id"
+  add_index "reviews", ["item_id"], name: "index_reviews_on_item_id"
+  add_index "reviews", ["series_id"], name: "index_reviews_on_series_id"
+
   create_table "series", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -88,7 +97,10 @@ ActiveRecord::Schema.define(version: 20140809211832) do
     t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "remember_token"
-    t.boolean  "admin",           default: false
+    t.boolean  "admin",                  default: false
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
+    t.datetime "membership_expiry",      default: '3014-08-29 16:26:09'
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
@@ -102,5 +114,8 @@ ActiveRecord::Schema.define(version: 20140809211832) do
     t.datetime "updated_at"
     t.string   "edition"
   end
+
+  add_index "withdrawals", ["item_id"], name: "index_withdrawals_on_item_id"
+  add_index "withdrawals", ["user_id"], name: "index_withdrawals_on_user_id"
 
 end

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :sign_in_user # None of this is accessible without signing in first.
+  before_filter :admin_or_signin, only: [:new, :create]
 
   def new
   	@user = User.new
@@ -7,8 +9,8 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(user_params)
   	if @user.save 
-      sign_in @user
-      flash[:success] = "Account created. Welcome to CUSFS, " + @user.name + "!"
+      flash[:success] = "Account created! An email has been sent to the provided address with login details."
+      # TODO email new user with account details
       redirect_to @user
   	else
   	  render 'new'
@@ -45,6 +47,6 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :membership_expiry)
     end
 end

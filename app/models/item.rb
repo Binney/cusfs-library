@@ -19,10 +19,10 @@ class Item < ActiveRecord::Base
   end
 
   def add_edition(editioncode)
-    if this.editions.include?(String(editioncode))
+    if self.editions.include?(String(editioncode))
       puts "[WARNING] Item.rb: Can't update #{name} with edition #{editioncode} as that edition is already in the library."
     else
-      update_attribute(:editions, this.editions + editioncode)
+      update_attribute(:editions, self.editions + editioncode)
     end
   end
 
@@ -33,7 +33,9 @@ class Item < ActiveRecord::Base
       self.reviews.each do |r|
         t += r.rating.to_i
         n += 1
+        puts "Rating #{n}: #{r.rating}; total: #{t}"
       end
+      puts "So, #{t/n}"
       (t/n).round
     else
       nil

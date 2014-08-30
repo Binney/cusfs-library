@@ -2,4 +2,6 @@
 
 <h1><%= @collection.name %> <%= separator_symbol %> by <%= @collection.user.name %></h1>
 
-<%= render @items %>
+<ul class="items">
+	<%= render @items %>
+</ul>

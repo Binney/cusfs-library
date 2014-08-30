@@ -13,7 +13,7 @@
 	<% end %>
   	<%= f.text_field :title, placeholder: "Title" %>
     <%= f.text_area :content, placeholder: "Write a review..." %>
-	  <%= f.select :stars, [['★', 1], ['★★', 2], ['★★★', 3], ['★★★★', 4], ['★★★★★', 5]], selected: 5 %>
+	  <%= f.select :rating, [['★', 1], ['★★', 2], ['★★★', 3], ['★★★★', 4], ['★★★★★', 5]], selected: 5 %>
   </div>
   <%= f.submit "Post", class: "btn btn-large btn-primary" %>
 <% end %>

@@ -1,2 +1,6 @@
 <% provide :title, @user.name %>
 <h1><%= @user.name %>'s profile</h1>
+
+<% if current_user.admin? %>
+	<%= link_to "Renew membership", renew_user_path(@user) %>
+<% end %>

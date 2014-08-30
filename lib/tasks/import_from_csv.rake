@@ -3,7 +3,9 @@ namespace :import do
   desc "Import data from CSV files"
   task import_from_csv: :environment do
 
-    File.open("public/catalogue.csv").readlines.each do |line|
+    filenames = ["fiction", "films", "graphicnovels", "nonfiction", "tieins"]
+    filenames.each do |fn|
+    File.open("public/#{fn}.csv", "r:ISO-8859-1").readlines.each do |line|
       CSV.parse(line) do |line|
         title, author, date, isbn, location, x, notes, status, xx, tag, seriesinfo, xxx, authcode, seriescode, bookcode, editioncode, xxxx, alphabet, xxxxx, T, A, D, L, I, tagged, marked = line
 
@@ -82,5 +84,6 @@ namespace :import do
         end
       end
     end
+  end
   end
 end
