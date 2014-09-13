@@ -1,0 +1,17 @@
+<% provide(:title, "Creative") %>
+<% provide :site_section, "1" %>
+<h1>Creative</h1>
+
+<%= render 'media' %>
+
+<% if @creations.any? %>
+	<%= will_paginate %>
+
+	<ul class="creations">
+		<%= render @creations %>
+	</ul>
+
+	<%= will_paginate %>
+<% else %>
+Nothing found.
+<% end %>

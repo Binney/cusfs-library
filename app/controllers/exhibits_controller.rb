@@ -5,7 +5,7 @@ before_filter :signed_in
   	@item = Item.find(params[:exhibit][:item_id])
     @collection = Collection.find(params[:exhibit][:collection_id])
   	@collection.add_item(@item)
-    flash[:success] = "Added #{@item.title} to #{@collection.name}."
+    flash[:success] = "Added #{@item.pretty_name} to #{@collection.name}."
   	redirect_to @collection
   end
 
@@ -14,7 +14,7 @@ before_filter :signed_in
     @item = @exhibit.item
     @collection = @exhibit.collection
     @collection.remove_item(@item)
-    flash[:success] = "Removed #{@item.title} from #{@collection.name}."
+    flash[:success] = "Removed #{@item.pretty_name} from #{@collection.name}."
     redirect_to @collection
   end
 

@@ -1,7 +1,9 @@
 <%= provide :title, @collection.name %>
 
 <h1><%= @collection.name %> <%= separator_symbol %> by <%= @collection.user.name %></h1>
-
+<div class="panel panel-default panel-explanation">
+	<p><%= @collection.description %></p>
+</div>
 <ul class="items">
 	<%= render @items %>
 </ul>

@@ -1,0 +1,20 @@
+<% provide(:title, @title) %>
+<% provide :site_section, "2" %>
+<h1><%= @title %></h1>
+
+<%= render 'activities' %>
+
+<p><%= @explanation.html_safe %></p>
+
+<% if @events.any? %>
+	<%= will_paginate %>
+
+	<ul class="events">
+		<%= render @events %>
+	</ul>
+	<!-- TODO calendar view? -->
+
+	<%= will_paginate %>
+<% else %>
+No events found.
+<% end %>

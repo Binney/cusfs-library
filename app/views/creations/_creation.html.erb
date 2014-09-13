@@ -1,0 +1,9 @@
+<li>
+<h2><%= link_to creation.name, creation %></h2>
+<%= creation.medium.to_s %>
+<%= creation.created_at.to_s(:date) %>
+<div class="creation-description">
+	<%= creation.description %>
+</div>
+<span class="view-creation"><%= link_to "View", creation.url %></span>
+</li>

@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :admin_or_signin, only: [:new, :create, :edit]
+  before_action :admin_or_signin, only: [:new, :create, :edit, :update]
 
   def new
   	@item = Item.new
@@ -7,8 +7,10 @@ class ItemsController < ApplicationController
 
   def create
   	@item = Item.new(item_params)
+    @item.editions ||= 'a'
+    @item.title = @item.chop_articles_from_title
   	if @item.save 
-      flash[:success] = "Successfully added " + @item.title + " to the CUSFS Library!"
+      flash[:success] = "Successfully added " + @item.pretty_name + " to the CUSFS Library!"
       redirect_to @item
   	else
   	  render 'new'

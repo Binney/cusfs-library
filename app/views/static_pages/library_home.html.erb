@@ -1,0 +1,12 @@
+<% provide :title, "Library" %>
+<% provide :site_section, "0" %>
+
+<h1>Library</h1>
+
+<% if signed_in? %>
+<p>Welcome back! Display withdrawals here.</p>
+<% else %>
+<p>Welcome to the CUSFS Library! We have <%= @library_size %> items to browse, including <%= link_to "#{@fiction_size} novels", fiction_path %>, <%= link_to "#{graphic_novel_size} graphic novels", graphic_novels_path %>, and <%= link_to "#{@films_size}", films_path %>. They're all free to borrow for <%= link_to "CUSFS members", membership_path %>.</p>
+<% end %>
+
+<p>Display recommendations here!</p>

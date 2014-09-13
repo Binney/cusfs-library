@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+  before_action :admin_or_signin, only: :administration
+
   def home
   end
 
@@ -13,6 +15,8 @@ class StaticPagesController < ApplicationController
       # authors (Robert freaking Jordan I AM LOOKING AT YOU HERE.)
     	@series = Series.search(name_cont: params[:q]).result.paginate(page: params[:series_page])
 
+      @creations = Creation.search(keywords_cont: params[:q]).result.paginate(page: params[:page])
+      
     	@users = User.search(name_cont: params[:q]).result.paginate(page: params[:users_page])
 
       # TODO also would be awesome to search for collection names and genres here.
@@ -27,4 +31,25 @@ class StaticPagesController < ApplicationController
 
   def about
   end
+
+  def committee
+  end
+
+  def constitution
+  end
+
+  def membership
+  end
+
+  def administration
+  end
+
+  def library_home
+    #@recommendations = Item.all.where(average_rating > 3)[0..5]
+    @library_size = Item.count
+    @fiction_size = Item.where(medium: Item::MEDIA[0]).length
+    @films_size = Item.where(medium: Item::MEDIA[5]).length
+    @graphic_novels_size = Item.where(medium: Item::MEDIA[1]).length
+  end
+  
 end

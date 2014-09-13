@@ -1,0 +1,9 @@
+<li class="event">
+	<span class="title">
+		<%= link_to event.name, event %> <%= separator_symbol %> <%= event.time.to_s(:short) %>
+		 <%= separator_symbol %> <%= event.location %>
+	</span>
+	<div class="event-description">
+		<%= event.description %>
+	</div>
+</li>

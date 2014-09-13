@@ -4,13 +4,17 @@
 <%= render 'search' %>
 
 <% if @items.any? %>
+<div class="panel panel-default">
 	<%= will_paginate %>
+</div>
 
 	<ul class="items">
 		<%= render @items %>
 	</ul>
-
+<div class="panel panel-default">
 	<%= will_paginate %>
+</div>
+
 <% else %>
 No items found.
 <% end %>

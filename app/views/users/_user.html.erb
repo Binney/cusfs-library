@@ -1,7 +1,13 @@
-<span>
-	<li>
-<%= link_to user.name, user %><br>
-<%= "Golden shiny sticker saying THIS USER IS ON THE COMMITTEE!" if user.admin %><br>
-TODO other stats too? eg how many books they've withdrawn, how many reviews they've posted?
+<li>
+	<%= avatar_for user %>
+	<span class="user-name"><%= link_to user.name, user %></span> <%= separator_symbol %>
+	<%= link_to "#{user.reviews.length} reviews", reviews_user_path(user) %> <%= separator_symbol %> <%= link_to "#{user.collections.length} lists", collections_user_path(user) %>
+	<% if current_user.admin? %>
+		<%= separator_symbol %>
+		<%= link_to "#{user.withdrawals.length} books currently on withdrawal", withdrawals_user_path(user) %>
+	<% end %>
+	<span class="user-committee">
+		<%= image_tag("committee_badge.png", size: '52x52') if user.admin? %>
+	</span>
+	<p><%= user.about_me %></p>
 </li>
-</span>

@@ -1,1 +1,1 @@
-<li><%= withdrawal.item.title %>: withdrawn since <%= withdrawal.created_at.to_s(:short) %></li>
+<li><%= link_to withdrawal.item.pretty_name, withdrawal.item %>: withdrawn since <%= withdrawal.created_at.to_s(:short) %></li>

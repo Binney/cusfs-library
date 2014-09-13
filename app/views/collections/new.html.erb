@@ -11,8 +11,9 @@
 			<%= f.text_field :name %>
 
 			<%= f.label :description %>
-			<%= f.text_field :description %>
+			<%= f.text_area :description %>
 			<br>
+			Contents
 			<%= f.fields_for :exhibits do |builder| %>
 				<%= render 'exhibit_fields', f: builder %>
 			<% end %>

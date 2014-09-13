@@ -1,0 +1,36 @@
+<% provide :title, "Edit entry" %>
+<% provide :site_section, "1" %>
+<h1>Edit entry</h1>
+
+<div class="row">
+	<div class="span6 offset3">
+		<%= form_for(@creation) do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
+
+			<%= f.label :name %>
+			<%= f.text_field :name %>
+
+			<%= f.label :url %>
+			<%= f.text_field :url %>
+			<br><small>Usually you should put the raw files in the public_html folder under the archives/[medium] folder, though obviously you can host them elsewhere on the Internet at large if you want. There'll be an upload facility implemented here sometime around the same time as I ensure the website can also solve the Halting Problem and make a decent cuppa. Maybe then I will have a friend *sob*</small>
+
+			<%= f.label :medium, "Medium" %>
+	        <%= f.collection_select :medium, Creation::MEDIA, :to_s, :humanize %>
+
+			<%= f.label :created_at %>
+			<%= f.date_select :created_at, start_year: 1970, end_year: Date.today.year %>
+
+			<%= f.label :description %>
+			<%= f.text_area :description %>
+
+			<%= f.label :keywords %>
+			<%= f.text_area :keywords %>
+			<br><small>Enter some keywords so users can search for this item. Doesn't need to contain commas. e.g. "chainwriting Tommy coffee"</small>
+
+<br>
+			<%= f.submit "Save", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>
+
+<%= render 'shared/back_button', path: creative_path %>

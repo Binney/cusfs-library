@@ -25,7 +25,20 @@
     }
 
   }
+}
 
+.item-name {
+  font-weight: 600;
+}
+
+.item-author-name {
+  color: #00f;
+  font-weight: 600;
+  background-color: #f0f;
+  a {
+    color: #0f0;
+    background-color: #0ff;
+  }
 }
 
 .item-preview-body {
@@ -40,4 +53,10 @@
 
 .item-show-sidebar {
 	float: right;
+}
+
+.recommendedtrue {
+  width: 5px;
+  height: 100%;
+  background-color: $lightOrange;
 }

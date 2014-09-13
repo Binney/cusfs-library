@@ -1,27 +1,19 @@
 <li class="item-preview">
   <div class="item-preview-body">
-    <div id="recommended<%= item.is_recommended? %>"></div>
-    <span class="title">
-    	<b><%= link_to item.title, item %></b> <%= separator_symbol %> <%= link_to item.author.pretty_name, item.author %>, <%= item.date %>
-    </span>
+    <div id="recommended<%= item.is_recommended?.to_s %>"></div>
+    	<span class="item-name"><%= link_to item.pretty_name, item %></span> <%= separator_symbol %> 
+      <span class-"item-author-name"><%= link_to item.author.pretty_name, item.author %>, <%= item.date %></span>
   	<br>
     <% unless item.series.blank? %>
       Book <%= item.series_number %> of the <b><%= link_to item.series.name, item.series %> series</b>
     <% end %>
-  	<p><%= blurb_for item %></p>
-  	<% if item.is_available? %>
-  	  <%= render 'items/available', item: item %>
-  	<% else %>
-  	  <%= render 'items/unavailable', item: item %>
-  	<% end %>
-    <div class="item-reviews-preview">
-      <%=  item.reviews.length %> reviews 
-      <% if item.reviews.any? %>
-        <%= separator_symbol %> Average: <%= "★"*item.average_rating.to_i %><%= "☆"*(5-item.average_rating.to_i) %>
-      <% end %>
-    </div>
-  </div>
   <div class="item-cover-preview">
     <%= link_to mini_cover_for(item), item %>
+  </div>
+  	<p><%= blurb_for item %></p>
+    <div class="item-info">
+      <%= render 'items/availability', item: item %> <%= separator_symbol %>
+      <%= render 'items/review_preview', item: item %>
+    </div>
   </div>
 </li>

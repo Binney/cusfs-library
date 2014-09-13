@@ -9,15 +9,14 @@
 			<%= f.label :title %>
 			<%= f.text_field :title %>
 
-			<%= f.label :author %>
-			<%= f.text_field :author %>
-			<!-- TODO HERE: this clearly does not work; Author isn't a text field! Instead, replace with jquery's autocomplete function; you start typing the name and it searches the authors database for input. That way we can avoid typos. -->
+			<%= f.label :author_id %>
+	        <%= f.collection_select :author_id, Author.all, :id, :name %>
 
 			<%= f.label :medium, "Medium" %>
 	        <%= f.collection_select :medium, Item::MEDIA, :to_s, :humanize %>
 
 			<%= f.label :date %>
-			<%= f.text_field :date, default: Time.now.year  %>
+			<%= f.select :date, 1850..Date.today.year, selected: Date.today.year  %>
 
 			<%= f.label :notes %>
 			<%= f.text_area :notes %>
@@ -26,3 +25,5 @@
 		<% end %>
 	</div>
 </div>
+
+<%= render 'shared/back_button', path: items_path %>

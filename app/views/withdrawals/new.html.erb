@@ -1,0 +1,16 @@
+<% provide :title, "Check books out" %>
+<% provide :site_section, "0" %>
+
+<h1>Check books out of the Library</h1>
+
+<%= form_tag withdrawals_path, method: :post do %>
+
+	<% 2.times do |n| %>
+
+		<%= render 'new', i: n %>
+
+	<% end %>
+
+<%= submit_tag %>
+
+<% end %>

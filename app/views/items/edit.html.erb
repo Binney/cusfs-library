@@ -16,7 +16,7 @@
       <%= f.text_field :isbn %>
 
       <%= f.label :date %>
-      <%= f.select :date, (1850..Date.today.year) %>
+      <%= f.select :date, 1850..Date.today.year %>
 
       <%= f.label :medium %>
       <%= f.select :medium, Item::MEDIA.map { |m| [m.humanize, m] } %>
@@ -26,3 +26,5 @@
 
   </div>
 </div>
+
+<%= render 'shared/back_button', path: items_path %>

@@ -1,0 +1,21 @@
+<% provide(:title, @creation.name) %>
+<% provide :site_section, "1" %>
+<h1><%= @creation.name %></h1>
+<%= @creation.medium.to_s %>
+<%= @creation.created_at.to_s(:date) %>
+<div class="creation-description">
+	<%= @creation.description %>
+</div>
+
+<%= link_to "Click here to view!", @creation.url %>
+
+<% case @creation.medium %>
+	<% when Creation::MEDIA[0] %>
+		<%= render 'shared/back_button', path: ttba_path %>
+	<% when Creation::MEDIA[1] %>
+		<%= render 'shared/back_button', path: art_path %>
+	<% when Creation::MEDIA[2] %>
+		<%= render 'shared/back_button', path: chainwriting_path %>
+	<% else %>
+		<%= render 'shared/back_button', path: creative_path %>
+<% end %>

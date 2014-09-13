@@ -1,12 +1,12 @@
-<% provide :title, @item.title %>
+<% provide :title, @item.pretty_name %>
 
 <div class="row">
 	<aside class="span8 item-show-main">
-		<h1><%= @item.title %></h1>
+		<h1><%= @item.pretty_name %></h1>
+		<h2><%= link_to @item.author.pretty_name, @item.author %>, <%= @item.date %></h2>
 		<% if signed_in? && current_user.admin? %>
 			<%= link_to "Edit", edit_item_path(@item) %>
 		<% end %>
-		<p><%= link_to @item.author.pretty_name, @item.author %></p>
 		<p id="togglebtn">More v</p>
 		<div class="togglediv">
 			<table class="panel panel-default">
@@ -35,7 +35,8 @@
 		<div class="blurb">
 			<%= blurb_for @item %>
 		</div>
-		<%= render 'availability' %>
+		<%= render 'availability', item: @item %> <%= separator_symbol %>
+		<%= render 'review_preview', reviews: @item.reviews, item: @item %><br>
 		<%= render 'genre_info', item: @item %>
 		<div class="item-collections">
 			<%= render 'collections' %>
@@ -53,3 +54,22 @@
 		</div>
 	</div>
 </div>
+
+<% case @item.medium %>
+	<% when Item::MEDIA[0] %>
+		<%= render 'shared/back_button', path: fiction_path %>
+	<% when Item::MEDIA[1] %>
+		<%= render 'shared/back_button', path: graphic_novels_path %>
+	<% when Item::MEDIA[2] %>
+		<%= render 'shared/back_button', path: tieins_path %>
+	<% when Item::MEDIA[3] %>
+		<%= render 'shared/back_button', path: anthologies_path %>
+	<% when Item::MEDIA[4] %>
+		<%= render 'shared/back_button', path: nonfiction_path %>
+	<% when Item::MEDIA[5] %>
+		<%= render 'shared/back_button', path: films_path %>
+	<% when Item::MEDIA[6] %>
+		<%= render 'shared/back_button', path: games_path %>
+	<% else %>
+		<%= render 'shared/back_button', path: items_path %>
+<% end %>

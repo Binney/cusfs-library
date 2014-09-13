@@ -1,5 +1,5 @@
 <% provide(:title, "Search results") %>
-<h1>Search<%= " results for #{params[:q]}" unless params[:q].nil? %></h1>
+<h1>Search<%= " results for \"#{params[:q]}\"" unless params[:q].nil? %></h1>
 
 <%= render 'static_pages/mega_search' %>
 
@@ -7,11 +7,12 @@
 
 	<div class="panel panel-default">
 		<div class="panel-body">
-			Skip to <%= link_to "items (#{@items.length} results)", '#items-section' %> <%= separator_symbol %> <%= link_to "authors (#{@authors.length} results)", '#authors-section' %> <%= separator_symbol %> <%= link_to "series (#{@series.length} results)", '#series-section' %> <%= separator_symbol %> <%= link_to "people (#{@users.length} results)", '#users-section' %>
+			Skip to <%= link_to "items (#{@items.length.to_s} #{"result".pluralize(@items.length)})", '#items-section' %> <%= separator_symbol %> <%= link_to "authors (#{@authors.length.to_s} #{"result".pluralize(@authors.length)})", '#authors-section' %> <%= separator_symbol %> <%= link_to "series (#{@series.length.to_s} #{"result".pluralize(@series.length)})", '#series-section' %> <%= separator_symbol %> <%= link_to "people (#{@users.length.to_s} #{"result".pluralize(@users.length)})", '#users-section' %>
 		</div>
 	</div>
 
-	<h2 id="items-section">Items (<%= @items.length %> results)</h2>
+<div class="panel panel-default">
+	<h2 id="items-section">Items (<%= @items.length.to_s+" result".pluralize(@items.length) %>)</h2>
 	<% if @items.any? %>
 		<ul class="items">
 			<%= will_paginate @items, param_name: :items_page %>
@@ -21,38 +22,47 @@
 	<% else %>
 		No items found.
 	<% end %>
+</div>
 
-	<h2 id="authors-section">Authors (<%= @authors.length %> results)</h2>
 	<% if @authors.any? %>
+<div class="panel panel-default">
+		<h2 id="authors-section">Authors (<%=  @authors.length.to_s+" result".pluralize(@authors.length) %>)</h2>
 		<ul class="authors">
 			<%= will_paginate @authors, param_name: :authors_page %>
 			<%= render @authors %>
 		</ul>
-
-	<% else %>
-		No authors found.
+</div>
 	<% end %>
 
-	<h2 id="series-section">Series (<%= @series.length %> results)</h2>
 	<% if @series.any? %>
+<div class="panel panel-default">
+		<h2 id="series-section">Series (<%=  @series.length.to_s+" result".pluralize(@series.length) %> results)</h2>
 		<ul class="series">
 			<%= will_paginate @series, param_name: :series_page %>
 			<%= render @series %>
 		</ul>
-
-	<% else %>
-		No series found.
+</div>
 	<% end %>
 
-	<h2 id="users-section">People (<%= @users.length %> results)<h2>
+	<% if @creations.any? %>
+<div class="panel panel-default">
+		<h2 id="creations-section">TTBAs and other creative expression (<%=  @creations.length.to_s+" result".pluralize(@creations.length) %> results)</h2>
+		<ul class="creations">
+			<%= will_paginate @creations, param_name: :creations_page %>
+			<%= render @creations %>
+		</ul>
+	</div>
+	<% end %>
+
+
 	<% if @users.any? %>
+<div class="panel panel-default">
+		<h2 id="users-section">People (<%= @users.length.to_s+" result".pluralize(@users.length) %> results)<h2>
 		<ul class="users">
 			<%= will_paginate @users, param_name: :users_page %>
 			<%= render @users %>
 		</ul>
-
-	<% else %>
-		No users found.
+</div>
 	<% end %>
 
 <% end %>
