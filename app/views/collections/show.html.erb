@@ -1,9 +1,20 @@
 <%= provide :title, @collection.name %>
 
-<h1><%= @collection.name %> <%= separator_symbol %> by <%= @collection.user.name %></h1>
+<h1><%= @collection.name %>
+<% unless @collection.user.nil? %>
+ <%= separator_symbol %> by <%= @collection.user.name %>
+<% end %>
+</h1>
+
 <div class="panel panel-default panel-explanation">
-	<p><%= @collection.description %></p>
+	<p><%= simple_format @collection.description %></p>
 </div>
 <ul class="items">
-	<%= render @items %>
+	<% @exhibits.each do |exhibit| %>
+		<% if exhibit.explanation.blank? %>
+			<%= render exhibit.item %>
+		<% else %>
+			<%= render exhibit.item, item_text: exhibit.explanation %>
+		<% end %>
+	<% end %>
 </ul>

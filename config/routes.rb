@@ -18,6 +18,7 @@ CusfsLibrary::Application.routes.draw do
   match '/fiction', to: 'items#fiction', via: 'get'
   match '/graphic_novels', to: 'items#graphic_novels', via: 'get'
   match '/tie_ins', to: 'items#tie_ins', via: 'get'
+  match '/tieins', to: 'items#tie_ins', via: 'get'
   match '/anthologies', to: 'items#anthologies', via: 'get'
   match '/nonfiction', to: 'items#nonfiction', via: 'get'
   match '/films', to: 'items#films', via: 'get'
@@ -41,12 +42,14 @@ CusfsLibrary::Application.routes.draw do
       get :withdrawals
       get :collections
       get :reviews
+      match 'renew', to: 'users#edit', via: 'get'
     end
   end
   resources :items do
     match "fiction", to: 'items#fiction', via: 'get'
     match "graphic_novels", to: 'items#graphic_novels', via: 'get'
     match "tie_ins", to: 'items#tie_ins', via: 'get'
+    match "tieins", to: 'items#tie_ins', via: 'get'
     match "anthologies", to: 'items#anthologies', via: 'get'
     match "nonfiction", to: 'items#nonfiction', via: 'get'
     match "films", to: 'items#films', via: 'get'

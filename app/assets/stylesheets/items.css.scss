@@ -29,24 +29,64 @@
 
 .item-name {
   font-weight: 600;
+  a {
+    color: $darkBlue;
+    &:hover {
+      color: $lighterBlue;
+    }
+  }
 }
 
 .item-author-name {
-  color: #00f;
-  font-weight: 600;
-  background-color: #f0f;
+  font-weight: normal;
   a {
-    color: #0f0;
-    background-color: #0ff;
+    font-weight: 600;
   }
 }
 
 .item-preview-body {
   float: left;
+  width: 86%;
+}
+
+.item-title {
+  line-height: 150%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.item-series {
+  font-weight: 600;
 }
 
 .item-cover-preview {
   float: right;
+}
+
+/* Compact cover preview */
+
+.item-compact-preview {
+  border: none;
+  display: inline;
+  position: relative;
+  padding: 30px;
+  padding-left: 50px;
+}
+
+.item-compact-preview-title {
+  text-align: center;
+  position: absolute;
+  background-color:rgba(255,255,255,0.25);
+  color: #fff;
+  height: 150px;
+  width: 100px;
+  opacity: 0;
+}.item-compact-preview-title:hover {
+  opacity:1;
+}
+
+.item-compact-preview-title-text {
+    padding-top: 25%;
 }
 
 /* show */

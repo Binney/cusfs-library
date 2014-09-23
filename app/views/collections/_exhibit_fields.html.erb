@@ -1,2 +1,3 @@
 <%= f.collection_select :item_id, Item.all, :id, :title, selected: params[:item_id] %>
+<%= f.text_area :explanation, placeholder: "Say a bit about this item" %>
 <%= f.link_to_remove "remove" %>

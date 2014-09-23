@@ -83,6 +83,10 @@ textarea {
   @extend .error;
 }
 
-.togglebtn {
+#togglebtn {
   cursor: pointer;
+  font-weight: 600;
+  &:hover {
+    color: $darkOrange;
+  }
 }

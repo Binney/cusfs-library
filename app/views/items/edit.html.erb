@@ -12,14 +12,31 @@
       <%= f.collection_select :author_id, Author.all, :id, :name %>
       <!-- TODO replace with an autocompleting text box. Need to send changes to controller too, which can then tell whether said author exists already and create a record if they do. -->
 
+      <%= f.label :series_id, "Series" %>
+      <%= f.collection_select :series_id, Series.all, :id, :name %><br>
+      <small>If you don't see the series or author in these two boxes, you'll need to add them separately. <%= link_to "Create an author", new_author_path %> or <%= link_to "add a series", new_series_path %>.</small>
+
+      <%= f.label :series_number, "Number in series" %>
+      <%= f.text_field :series_number %>
+            
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+
       <%= f.label :isbn %>
       <%= f.text_field :isbn %>
+
+      <%= f.label :cover_url %>
+      <%= f.text_field :cover_url %>
 
       <%= f.label :date %>
       <%= f.select :date, 1850..Date.today.year %>
 
       <%= f.label :medium %>
       <%= f.select :medium, Item::MEDIA.map { |m| [m.humanize, m] } %>
+
+      <%= f.label :editions, "Add copy" %>
+      <%= f.text_field :editions %><br>
+      <small>When the library holds multiple copies of the same book, these copies are distinguished with a one-letter code at the end of their tag. Usually new copies will be the next letter in the alphabet from the most recently added copy. So, for instance, we have 3 copies of The Name of the Wind, labelled "a", "b", and "c" respectively. To add a new copy of this book, enter this code here at the end of the string.</small>
 <br>
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>
@@ -27,4 +44,4 @@
   </div>
 </div>
 
-<%= render 'shared/back_button', path: items_path %>
+<%= render 'shared/back_button', path: item_path(@item) %>

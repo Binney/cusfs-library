@@ -1,3 +1,13 @@
+<li class="series-preview">
 <h2><%= link_to series.name, series %></h2>
 <%= render 'series/is_complete', series: series %><br>
-<%= series.items.length %> items including <%= link_to series.items[0].title, series.items[0] %>
+<% if series.items.any? %>
+	<%= series.items.length %> items including <%= link_to series.items[0].title, series.items[0] %>
+<% else %>
+	No items.
+<% end %>
+<% if signed_in? && current_user.admin? %>
+	<%= link_to "delete", series, method: :delete,
+				data: { confirm: "You sure?" } %>
+<% end %>
+</li>

@@ -11,6 +11,8 @@ gem 'sprockets', '2.11.0'
 gem 'ransack'
 gem 'thin'
 gem 'nested_form'
+gem 'openlibrary'
+gem 'googlebooks'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

@@ -1,0 +1,8 @@
+<li class="item-compact-preview">
+	<%= link_to item do %>
+		<% if item.cover_url=="404cover.png" %>
+			<span class="item-compact-preview-title"><span class="item-compact-preview-title-text"><%= item.pretty_name %></span></span>
+		<% end %>
+		<%= mini_cover_for(item) %>
+	<% end %>
+</li>

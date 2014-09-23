@@ -1,4 +1,5 @@
 class CollectionsController < ApplicationController
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
 	def new
 		@collection = Collection.new
@@ -21,7 +22,7 @@ class CollectionsController < ApplicationController
 
 	def show
 		@collection = Collection.find(params[:id])
-		@items = @collection.items#.paginate(params[:page])
+		@exhibits = @collection.exhibits
 	end
 
 	def edit
@@ -41,7 +42,15 @@ class CollectionsController < ApplicationController
 	private
 
 		def collection_params
-			params.require(:collection).permit(:name, :description, exhibits_attributes: [:id, :item_id, :_destroy])
+			params.require(:collection).permit(:name, :description, exhibits_attributes: [:id, :item_id, :_destroy, :explanation])
+		end
+
+		def correct_user
+			sign_in_user
+			unless Collection.find(params[:id]).user_id == current_user.id
+				flash[:error] = "I'm sorry, #{current_user.name}. I'm afraid I can't do that."
+				redirect_to root_path
+			end
 		end
 
 end

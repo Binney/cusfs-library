@@ -1,0 +1,18 @@
+<% provide :title, "Edit series" %>
+<% provide :site_section, "1" %>
+<h1>Edit series</h1>
+
+<div class="row">
+	<div class="span6 offset3">
+		<%= form_for(@series) do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
+
+			<%= f.label :name %>
+			<%= f.text_field :name %>
+
+			<%= f.submit "Update", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>
+
+<%= render 'shared/back_button', path: series_path(@series) %>

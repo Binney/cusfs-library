@@ -2,11 +2,28 @@
 <% provide :site_section, "0" %>
 
 <h1>Library</h1>
-
+<p>Welcome to the CUSFS Library! We have <%= @library_size %> distinct items to browse, including <%= link_to "#{@fiction_size} novels", fiction_path %>, <%= link_to "#{@graphic_novels_size} graphic novels", graphic_novels_path %>, and <%= link_to "#{@films_size} films", films_path %>. They're all free to borrow for <%= link_to "CUSFS members", membership_path %>.</p>
 <% if signed_in? %>
-<p>Welcome back! Display withdrawals here.</p>
-<% else %>
-<p>Welcome to the CUSFS Library! We have <%= @library_size %> items to browse, including <%= link_to "#{@fiction_size} novels", fiction_path %>, <%= link_to "#{graphic_novel_size} graphic novels", graphic_novels_path %>, and <%= link_to "#{@films_size}", films_path %>. They're all free to borrow for <%= link_to "CUSFS members", membership_path %>.</p>
+
+	<h2>Your withdrawals</h2>
+	<%= render 'users/withdrawals', withdrawals: current_user.withdrawals %>
+
 <% end %>
 
-<p>Display recommendations here!</p>
+<h2>CUSFS recommends...</h2>
+<ul class="collection">
+	<%= render @collection %>
+</ul>
+<%= link_to "More recommendations", collections_path %>
+
+<% if @reviews.any? %>
+	<h2>Recent reviews</h2>
+	<ul class="reviews item-reviews">
+		<%= render @reviews %>
+	</ul>
+<% end %>
+
+<div class="panel panel-default">If you're reading this far down this page you must be bored. Why not read...</div>
+<ul class="items">
+<%= render @item %>
+</ul>

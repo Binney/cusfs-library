@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :admin_or_signin, only: [:new, :create, :edit, :update]
+  before_action :admin_user, only: [:new, :create, :edit, :update]
 
   def new
   	@item = Item.new
@@ -48,6 +48,7 @@ class ItemsController < ApplicationController
 
   def index
     @search = Item.search(params[:q])
+    #@search.sorts = 'name asc, author_name asc' if @search.sorts.empty? #TODO sort
     @items = @search.result.paginate(page: params[:page])
     @title = "All items"
   end
@@ -81,7 +82,6 @@ class ItemsController < ApplicationController
     @title = "Non-fiction"
     render 'index'
   end
-  def 
 
   def films
     @items = Item.all.where(medium: Item::MEDIA[5]).paginate(page: params[:page])
@@ -95,10 +95,18 @@ class ItemsController < ApplicationController
     render 'index'
   end
 
+  def destroy
+    Item.destroy(params[:id])
+    flash[:success] = "Item destroyed. You monster."
+    redirect_to items_path
+  end
+
   private
 
     def item_params
-      params.require(:item).permit(:title, :author, :author_id, :notes, :date, :medium, :isbn, :location, :status)
+      params.require(:item).permit(:title, :author, :author_id, :notes, :date, 
+        :medium, :isbn, :description, :location, :status, :series, :series_id, 
+        :series_number, :editions, :cover_url)
     end
 end
 

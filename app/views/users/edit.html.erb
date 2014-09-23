@@ -5,6 +5,7 @@
   <% provide(:title, 'Renew membership') %>
   <h1>Renew membership for <%= @user.name %></h1>
 <% end %>
+<% provide :site_section, '3' %>
 
 <div class="row">
   <div class="span6 offset3">
@@ -25,9 +26,11 @@
         <%= f.label :password_confirmation, "Confirmation" %>
         <%= f.password_field :password_confirmation %>
 
-      <% else %>
+      <% end %>
 
-        <%= f.label :membership_expiry, "Renew until" %>
+      <% if current_user.admin? %>
+
+        <%= f.label :membership_expiry, "Membership expiry date" %>
         <%= f.date_select :membership_expiry %>
 
       <% end %>

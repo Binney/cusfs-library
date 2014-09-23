@@ -3,11 +3,11 @@
 <div class="row">
 	<aside class="span8 item-show-main">
 		<h1><%= @item.pretty_name %></h1>
-		<h2><%= link_to @item.author.pretty_name, @item.author %>, <%= @item.date %></h2>
-		<% if signed_in? && current_user.admin? %>
-			<%= link_to "Edit", edit_item_path(@item) %>
-		<% end %>
-		<p id="togglebtn">More v</p>
+		<h2 class="item-title item-author-name"><%= link_to @item.author.pretty_name, @item.author %><%= ", #{@item.date}" unless @item.date==0 %>
+			<br>
+			<%= render 'series_info', item: @item %></h2>
+
+		<p id="togglebtn">Details v</p>
 		<div class="togglediv">
 			<table class="panel panel-default">
 				<tr>
@@ -33,7 +33,7 @@
 			</table>
 		</div>
 		<div class="blurb">
-			<%= blurb_for @item %>
+			<%= simple_format (blurb_for @item) %>
 		</div>
 		<%= render 'availability', item: @item %> <%= separator_symbol %>
 		<%= render 'review_preview', reviews: @item.reviews, item: @item %><br>
@@ -47,7 +47,11 @@
 		<div class="cover">
 			<%= cover_for @item %>
 		</div>
-
+		<% if signed_in? && current_user.admin? %>
+			<%= link_to "Edit", edit_item_path(@item) %>
+			<%= link_to "Delete", @item, method: :delete,
+				data: { confirm: "You sure?" } %>
+		<% end %>
 
 		<div class="item-reviews">
 			<%= render 'reviews' %>

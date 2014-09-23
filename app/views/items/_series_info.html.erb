@@ -1,0 +1,3 @@
+<% unless item.series_number.blank? || item.series_id.blank? %>
+Book <%= item.series_number %> of the <%= link_to item.series.name, item.series, class: "item-series" %> series
+<% end %>

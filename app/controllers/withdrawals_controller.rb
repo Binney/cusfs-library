@@ -1,6 +1,6 @@
 class WithdrawalsController < ApplicationController
 before_filter :signed_in
-before_filter :admin_or_signin, only: :index
+before_filter :admin_user, only: :index
 
   def create
 #  	@item = Item.find(params[:withdrawal][:item_id])
@@ -9,8 +9,6 @@ before_filter :admin_or_signin, only: :index
 #    flash[:success] = "Withdrawn #{@item.pretty_name} from the Library. It's due back at A TIME IN THE FUTURE."
 #  	redirect_to @item
     params[:withdrawals].each do |i, wd|
-      puts wd
-      puts "ahsaf"
       user = User.find(wd[:user_id][0])
       user.withdraw!(wd[:item_id][0], wd[:edition][0])
     end

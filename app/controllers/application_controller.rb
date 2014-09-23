@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 	include SessionsHelper
 	before_filter :create_search
 
-	def admin_or_signin
+	def admin_user
 		redirect_to root_path, notice: "You are not worthy. You shall not pass." unless signed_in? && current_user.admin?
 	end
 

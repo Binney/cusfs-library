@@ -1,4 +1,16 @@
-<li><%= link_to author.pretty_name, author %>
-Wrote <%= author.items.length %> titles including <%= author.items.first.title %>
-
+<li>
+	<h2><%= link_to author.pretty_name, author %></h2>
+	<% if signed_in? && current_user.admin? %>
+		<%= link_to "delete", author, method: :delete,
+				data: { confirm: "You sure?" } %>
+	<% end %>
+	<% if author.items.any? %>
+		<ul class="collection-items">
+			<% author.items.shuffle[0..6].each do |item| %>
+				<%= render 'items/item_preview', item: item %>
+			<% end %>
+		</ul>
+	<% else %>
+	May have written many titles but none of them are in the library.
+	<% end %>
 </li>

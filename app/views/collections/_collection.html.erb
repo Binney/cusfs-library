@@ -1,3 +1,8 @@
 <li>
-	<%= link_to collection.name, collection %> <%= separator_symbol %> <%= collection.items.length %> items
+	<h2><%= link_to collection.name, collection %></h2>
+	<ul class="collection-items">
+		<% collection.items.shuffle[0..6].each do |item| %>
+			<%= render 'items/item_preview', item: item %>
+		<% end %>
+	</ul>
 </li>

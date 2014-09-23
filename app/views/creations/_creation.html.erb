@@ -3,7 +3,7 @@
 <%= creation.medium.to_s %>
 <%= creation.created_at.to_s(:date) %>
 <div class="creation-description">
-	<%= creation.description %>
+	<%= simple_format creation.description %>
 </div>
 <span class="view-creation"><%= link_to "View", creation.url %></span>
 </li>

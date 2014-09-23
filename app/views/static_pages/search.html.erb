@@ -11,7 +11,7 @@
 		</div>
 	</div>
 
-<div class="panel panel-default">
+	<div class="item-results">
 	<h2 id="items-section">Items (<%= @items.length.to_s+" result".pluralize(@items.length) %>)</h2>
 	<% if @items.any? %>
 		<ul class="items">
@@ -22,30 +22,30 @@
 	<% else %>
 		No items found.
 	<% end %>
-</div>
+	</div>
 
 	<% if @authors.any? %>
-<div class="panel panel-default">
+		<div class="author-results">
 		<h2 id="authors-section">Authors (<%=  @authors.length.to_s+" result".pluralize(@authors.length) %>)</h2>
 		<ul class="authors">
 			<%= will_paginate @authors, param_name: :authors_page %>
 			<%= render @authors %>
 		</ul>
-</div>
+		</div>
 	<% end %>
 
 	<% if @series.any? %>
-<div class="panel panel-default">
+		<div class="series-results">
 		<h2 id="series-section">Series (<%=  @series.length.to_s+" result".pluralize(@series.length) %> results)</h2>
 		<ul class="series">
 			<%= will_paginate @series, param_name: :series_page %>
 			<%= render @series %>
 		</ul>
-</div>
+		</div>
 	<% end %>
 
 	<% if @creations.any? %>
-<div class="panel panel-default">
+		<div class="creations-results">
 		<h2 id="creations-section">TTBAs and other creative expression (<%=  @creations.length.to_s+" result".pluralize(@creations.length) %> results)</h2>
 		<ul class="creations">
 			<%= will_paginate @creations, param_name: :creations_page %>
@@ -56,13 +56,13 @@
 
 
 	<% if @users.any? %>
-<div class="panel panel-default">
+		<div class="users-results">
 		<h2 id="users-section">People (<%= @users.length.to_s+" result".pluralize(@users.length) %> results)<h2>
 		<ul class="users">
 			<%= will_paginate @users, param_name: :users_page %>
 			<%= render @users %>
 		</ul>
-</div>
+		</div>
 	<% end %>
 
 <% end %>

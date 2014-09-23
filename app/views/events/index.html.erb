@@ -6,15 +6,30 @@
 
 <p><%= @explanation.html_safe %></p>
 
-<% if @events.any? %>
-	<%= will_paginate %>
+<h2>Upcoming events</h2>
+<% if @forthcoming_events.any? %>
+	<%= will_paginate @forthcoming_events, page: :forthcoming_page %>
 
 	<ul class="events">
-		<%= render @events %>
+		<%= render @forthcoming_events %>
 	</ul>
 	<!-- TODO calendar view? -->
 
-	<%= will_paginate %>
+	<%= will_paginate @forthcoming_events, page: :forthcoming_page %>
+<% else %>
+No events found.
+<% end %>
+
+<h2>Past events</h2>
+<% if @past_events.any? %>
+	<%= will_paginate @past_events, page: :past_page %>
+
+	<ul class="events">
+		<%= render @past_events %>
+	</ul>
+	<!-- TODO calendar view? -->
+
+	<%= will_paginate @past_events, page: :past_page %>
 <% else %>
 No events found.
 <% end %>

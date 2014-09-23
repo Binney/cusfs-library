@@ -1,12 +1,30 @@
-<%= search_form_for @search, url: search_items_path, html: {method: :post}, class: "search_form" do |f| %>
-  <div class="field">
-    <%= f.label :title_or_author_name_cont, "Title/author" %>
-    <%= f.text_field :title_or_author_name_cont %>
-	  <h4 id="togglebtn">More</h4>
-	  <div class="togglediv">
+<h4 id="togglebtn">Advanced search</h4>
+
+<div class="togglediv">
+	<%= search_form_for @search, url: search_items_path, html: {method: :post}, class: "search_form" do |f| %>
+
+	    <%= f.label :title_cont, "Title" %>
+	    <%= f.text_field :title_cont %>
+
+	    <%= f.label :author_name_cont, "Author" %>
+	    <%= f.text_field :author_name_cont %>
+
 	    <%= f.label :series_name_cont, 'Series' %>
 	    <%= f.text_field :series_name_cont %>
-	  </div>
-  </div>
-  <div class="actions"><%= f.submit "Search", class: "btn btn-primary" %></div>
-<% end %>
+
+	    <%= f.label :date_eq, 'Date' %>
+	    <%= f.text_field :date_eq %>
+	    <small>Warning: The Library's records of the dates of items are neither 100% complete nor 100% accurate.</small>
+
+	    <%= f.label :medium_eq %>
+     	<%= f.select :medium_eq, (Item::MEDIA.map { |m| [m.humanize, m] }), include_blank: "All" %>
+
+	    <%= f.label :isbn_cont, 'ISBN' %>
+	    <%= f.text_field :isbn_cont %>
+
+	    <%= f.label :tag_cont, "Tag" %>
+	    <%= f.text_field :tag_cont %>
+
+	  <div class="actions"><%= f.submit "Search", class: "btn btn-primary" %></div>
+	<% end %>
+</div>

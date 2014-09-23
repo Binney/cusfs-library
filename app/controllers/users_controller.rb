@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :sign_in_user # None of this is accessible without signing in first.
-  before_filter :admin_or_signin, only: [:new, :create]
+  before_filter :admin_user, only: [:new, :create]
 
   def new
   	@user = User.new

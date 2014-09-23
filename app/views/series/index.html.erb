@@ -1,6 +1,15 @@
 <% provide :title, "All series" %>
 
 <h1>All series</h1>
+
+<div class="panel panel-default">
   <%= will_paginate %>
+</div>
+
+<ul class="items">
   <%= render @series %>
+</ul>
+
+<div class="panel panel-default">
   <%= will_paginate %>
+</div>

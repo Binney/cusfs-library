@@ -1,4 +1,6 @@
 class CreationsController < ApplicationController
+  before_action :admin_user, only: [:new, :create, :edit, :update, :destroy]
+
   def new
     @creation = Creation.new
   end

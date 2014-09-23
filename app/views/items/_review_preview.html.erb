@@ -1,4 +1,4 @@
-<%=  reviews.length %> <%= "reviews".pluralize(reviews.length) %> 
-<% if reviews.any? %>
+<%=  item.reviews.length %> <%= "reviews".pluralize(item.reviews.length) %> 
+<% if item.reviews.any? %>
 <%= separator_symbol %> Average: <%= "★"*item.average_rating.to_i %><%= "☆"*(5-item.average_rating.to_i) %>
 <% end %>

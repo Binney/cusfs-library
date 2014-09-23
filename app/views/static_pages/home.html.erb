@@ -3,3 +3,22 @@
 
 <h1>CUSFS</h1>
 <p>Welcome to the website of the Cambridge University Science Fiction Society! This provides information about the <%= link_to "activities", schedule_path %> of the Society, our <%= link_to "history", about_path %> and <%= link_to "members", membership_path %>, as well as hosting our <%= link_to "library catalogue", library_path %> and back issues of our magazine, <%= link_to "TTBA", ttba_path %>.</p>
+
+
+<h2>Upcoming events</h2>
+<% if @forthcoming_events.any? %>
+	<%= will_paginate @forthcoming_events, page: :forthcoming_page %>
+
+	<ul class="events">
+		<%= render @forthcoming_events %>
+	</ul>
+
+	<%= will_paginate @forthcoming_events, page: :forthcoming_page %>
+<% else %>
+No events found.
+<% end %>
+
+<h2>CUSFS recommends...</h2>
+<ul class="collection">
+	<%= render @collection %>
+</ul>
