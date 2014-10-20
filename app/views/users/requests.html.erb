@@ -1,0 +1,7 @@
+<% provide(:title, "#{@user.name}'s requests") %>
+<% provide :site_section, '0' %>
+<h1><%= @user.name %>'s requests</h1>
+
+<%= render 'requests', requests: @requests %>
+
+<%= link_to "Back to profile", @user %>

@@ -1,0 +1,101 @@
+@import "typography.css.scss";
+
+/* Header */
+
+.cusfs-logo-main {
+  z-index: 999;
+  position: absolute;
+  float: right;
+  width: 100%;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.cusfs-logo {
+  pointer-events: auto;
+  cursor: image-url("spock.png");
+}
+
+.cusfs-uppermost-navbar {
+	padding-bottom: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.cusfs-main-menu {
+  border-top: solid 1px #fff;
+	text-transform: uppercase;
+	font-family: $serifFont;
+	font-size: 32px;
+	letter-spacing: 4px;
+  background-color: black;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin-bottom: 0px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  .nav > li > a {
+    font-family: $serifFont;
+
+  }
+
+  .nav > li > .minor-white-site-section {
+    &:hover {
+      text-decoration:none;
+      text-shadow: 0px 0px 10px #0ff;
+    }    
+  }
+
+  .nav > li > .great-orange-site-section {
+    color: $lightOrange;
+    letter-spacing: 9px;
+    &:hover {
+      color: $paleOrange;
+      text-shadow: 0px 0px 20px #f00;
+    }
+  }
+
+}
+
+.great-orange-site-section {
+	font-size: 64px;
+}
+
+.blue-caret {
+  border-top-color: $darkBlue !important;
+}
+
+.cusfs-library-navbar {
+  margin-bottom: 50px;
+	background-color: $lightOrange;
+  font-family: $sansFont;
+  font-weight: 600;
+  color: black;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none; 
+  .nav > li > a {
+    text-shadow: none;
+    font-weight: 600;
+    color: $darkBlue;
+
+    &:hover .blue-caret {
+      border-top-color: white !important;
+    }
+    &:focus .blue-caret {
+      border-top-color: white !important;
+    }
+  }
+}

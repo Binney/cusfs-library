@@ -1,0 +1,10 @@
+<% if reservations.any? %>
+  <ul class="reservations">
+  <%= render reservations %>
+  </ul>
+<% else %>
+  No items currently reserved.
+  <% if signed_in? %>
+  	<%= link_to "Reserve something!", new_reservation_path %>
+  <% end %>
+<% end %>

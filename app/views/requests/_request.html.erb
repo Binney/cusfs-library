@@ -1,0 +1,9 @@
+<li class="request">
+	<h3><span class="request-title"><%= request.title %></span> <%= separator_symbol %> 
+	<span class="request-who">Requested by <%= request.user.name %></span>
+	<% if you_admin? %>
+		<%= link_to "delete", request, method: :delete, data: {confirm: "You sure?"} %>
+	<% end %>
+	</h3>
+	<p class="request-notes"><%= request.notes %></p>
+</li>

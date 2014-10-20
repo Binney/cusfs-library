@@ -1,4 +1,5 @@
 <% provide :title, @author.pretty_name %>
+<% provide :site_section, "0" %>
 
 <h1><%= @author.pretty_name %></h1>
   <%= will_paginate @items %>

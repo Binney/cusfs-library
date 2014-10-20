@@ -1,9 +1,13 @@
-<li class="event">
-	<span class="title">
-		<%= link_to event.name, event %> <%= separator_symbol %> <%= event.time.to_s(:short) %>
-		 <%= separator_symbol %> <%= event.location %>
-	</span>
-	<div class="event-description">
-		<%= simple_format event.description[0..340] %><%= "..." if event.description.length>340 %>
-	</div>
+<li class="item-preview">
+  <div class="item-cover-preview">
+    <%= link_to image_tag(event.image_url, width: "100px", height: "150px"), event %>
+  </div>
+  <div class="item-preview-body">
+    <h2 class="item-title">
+		<%= event.time.to_s(:short) %> <%= separator_symbol %> <%= link_to event.name, event %> <%= separator_symbol %> <%= event.activity.humanize %>
+    </h2>
+	<span class="event-location"><%= render "events/location", location: event.location %></span>
+  	<p><%= render 'shared/truncated_text', description: event.description, path: event %></p>
+  </div>
+
 </li>

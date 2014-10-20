@@ -1,7 +1,7 @@
 class Author < ActiveRecord::Base
 	has_many :items
 	has_many :reviews
-	default_scope order('name ASC')
+	default_scope { order('name ASC') }
 
 	def pretty_name
 		# Names are stored in the database in the form "Surname, Forename" for alphabetical reasons. This function rearranges that into the format "Forename Surname".

@@ -1,0 +1,8 @@
+<% provide(:title, "#{@user.name}'s collections") %>
+<% provide :site_section, "0" %>
+
+<h1><%= @user.name %>'s collections</h1>
+
+<%= render 'collections', collections: @collections %>
+
+<%= link_to "< Back to profile", @user %>

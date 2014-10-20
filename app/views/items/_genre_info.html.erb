@@ -1,2 +1,9 @@
-<%= link_to image_tag('genres/space_opera.png', size: '52x52', alt: "Space opera #{item.pretty_name}"), '#' %>
-<%= link_to image_tag('genres/horror.png', size: '52x52', alt: "Horror #{item.pretty_name}"), '#' %>
+<ul class="collection">
+	<% @item.genres.each do |genre| %>
+		<li><%= link_to mini_icon_for(genre), genre %></li>
+	<% end %>
+</ul>
+
+<% if signed_in? %>
+	<%= render 'tag_item' %>
+<% end %>

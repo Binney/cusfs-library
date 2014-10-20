@@ -1,5 +1,11 @@
 <% provide :title, @review.title %>
+<% provide :site_section, '0' %>
 
-<h1><%= link_to @review.title, @review %></h1>
-<p><%= @review.content[0..140] %></p>
-<%= "★"*@review.rating %><%= "☆"*(5-@review.rating) %>
+<h2><%= mini_cover_for @review.topic %><%= link_to @review.topic_title, @review.topic %>: <%= @review.title %></h2>
+<h3>By <%= @review.user.name %>
+	<% if @review.user.id==current_user.id %>
+		<%= separator_symbol %> <%= link_to "edit", edit_review_path(@review) %>
+	<% end %>
+</h3>
+<p><%= simple_format @review.content %></p>
+Verdict: <%= "★"*@review.rating.to_i %><%= "☆"*(5-@review.rating.to_i) %>

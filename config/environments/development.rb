@@ -13,8 +13,20 @@ CusfsLibrary::Application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: "smtp.mandrillapp.com",
+    port: 587,
+    authentication: "plain",
+    user_name: "sar.binney@hotmail.co.uk",
+    password: "PoumGKjhVDALQx8DXRPBDQ",
+    enable_starttls_auto: false
+  }
+  # Care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = true
+
+  # So you can email people with correct URLs.
+  config.action_mailer.default_url_options = { :host => "http://cusfs.soc.srcf.net" }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

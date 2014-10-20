@@ -1,0 +1,7 @@
+<li>
+	<span class="item-name"><%= reservation.item.title %> <%= separator_symbol %> Reserved <%= reservation.created_at.to_s(:short) %></span>
+	<% if signed_in? && (current_user.admin? || reservation.user_id==current_user.id) %>
+		<%= separator_symbol %> <%= link_to "delete", reservation, method: :delete, data: { confirm: "You sure?" } %>
+	<% end %>
+	<p><%= reservation.notes %></p>
+</li>

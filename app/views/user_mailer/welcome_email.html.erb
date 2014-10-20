@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to CUSFS, <%= @user.name %>!</h1>
+    <p>You are now officially a digital member of the Cambridge University Science Fiction Society. Congratulations!</p>
+
+    <p>Your email address is the one this is being emailed to and your password is <%= @pw %>. Please go and change it asap - you can do that <%= link_to "here", @url %>.</p>
+
+    <p>Now you're a full member you can withdraw books, write reviews, create lists, reserve items, and request items be added to the collection. Instructions can be found <%= link_to "here", help_path %>. Have fun and good luck!</p>
+
+    <p>Yours scintillatingly,<br>
+    The Secretary</p>
+  </body>
+</html>

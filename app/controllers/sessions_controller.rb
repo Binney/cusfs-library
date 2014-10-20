@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :signed_in_already, only: [:new, :create]
 
 	def new
 	end
@@ -8,7 +9,7 @@ class SessionsController < ApplicationController
       if user && user.authenticate(params[:session][:password])
         sign_in user
         flash[:success] = "Welcome back, #{user.name}"
-        redirect_to user
+        redirect_back_or user
       else
         flash.now[:error] = 'Invalid email/password combination.'
         render 'new'
@@ -19,5 +20,14 @@ class SessionsController < ApplicationController
     sign_out
     redirect_to root_url
 	end
+
+  private
+
+    def signed_in_already
+      if signed_in?
+        flash[:error] = "You're already signed in!"
+        redirect_to current_user
+      end
+    end
 
 end

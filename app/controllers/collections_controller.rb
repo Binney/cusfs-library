@@ -18,6 +18,13 @@ class CollectionsController < ApplicationController
 
 	def index
 		@collections = Collection.all.paginate(page: params[:page])
+		@title = "All lists"
+	end
+
+	def recommendations
+		@collections = Collection.all[0..11].paginate(page: params[:page])
+		@title = "CUSFS Official Recommendations"
+		render 'index'
 	end
 
 	def show
@@ -47,7 +54,7 @@ class CollectionsController < ApplicationController
 
 		def correct_user
 			sign_in_user
-			unless Collection.find(params[:id]).user_id == current_user.id
+			unless current_user.admin? || Collection.find(params[:id]).user_id == current_user.id
 				flash[:error] = "I'm sorry, #{current_user.name}. I'm afraid I can't do that."
 				redirect_to root_path
 			end

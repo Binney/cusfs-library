@@ -5,11 +5,14 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: {with: VALID_EMAIL_REGEX},
                     uniqueness: {case_sensitive: false}
   has_secure_password
-  validates :password, length: {minimum: 6}
+  validates :password, presence: true, confirmation: true, length: {minimum: 6}, if: :password
   has_many :withdrawals
   has_many :reviews
   has_many :collections
+  has_many :requests
+  has_many :reservations
   accepts_nested_attributes_for :withdrawals
+  default_scope { order('name ASC') }
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64
@@ -29,10 +32,6 @@ class User < ActiveRecord::Base
 
   def withdraw!(item, edition)
     withdrawals.create!(item_id: item, edition: edition) # TODO item id wat 
-  end
-
-  def unwithdraw!(item, edition)
-    withdrawals.find_by(item_id: item.id, edition: edition).destroy
   end
 
   def about_me

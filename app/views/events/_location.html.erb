@@ -1,0 +1,10 @@
+<% case location %>
+<% when "Riley Auditorium, Clare College" %>
+	<%= link_to location, locations_path(anchor: "Riley") %>
+<% when "Glover Room, Clare College" %>
+	<%= link_to location, locations_path(anchor: "Glover") %>
+<% when "New Combination Room, Pembroke College" %>
+	<%= link_to location, locations_path(anchor: "NCR") %>
+<% else %>
+	<%= location %>
+<% end %>

@@ -1,4 +1,5 @@
 <% provide :title, @item.pretty_name %>
+<% provide :site_section, "0" %>
 
 <div class="row">
 	<aside class="span8 item-show-main">
@@ -41,6 +42,7 @@
 		<div class="item-collections">
 			<%= render 'collections' %>
 		</div>
+		<%= render 'reviews/reviews', reviews: @reviews %>
 	</aside>
 
 	<div class="span4 item-show-sidebar">
@@ -54,7 +56,9 @@
 		<% end %>
 
 		<div class="item-reviews">
-			<%= render 'reviews' %>
+			<% if signed_in? %>
+				<%= render partial: 'reviews/new', locals: {item_id: @item.id} %>
+			<% end %>
 		</div>
 	</div>
 </div>

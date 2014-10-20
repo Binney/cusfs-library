@@ -2,6 +2,7 @@
 <% provide :site_section, "0" %>
 
 <h1>All withdrawals</h1>
+<%= link_to "Check books out", checkout_path %>
 
 <% if @withdrawals.any? %>
 	<ul class="withdrawals">

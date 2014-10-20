@@ -3,7 +3,7 @@
 <%= creation.medium.to_s %>
 <%= creation.created_at.to_s(:date) %>
 <div class="creation-description">
-	<%= simple_format creation.description %>
+	<%= render 'shared/truncated_text', description: creation.description, path: creation %>
 </div>
-<span class="view-creation"><%= link_to "View", creation.url %></span>
+<span class="view-creation"><%= link_to "View", creation.url %> <%= separator_symbol %> <%= link_to "Download", creation.url, download: creation.name %></span>
 </li>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140916194314) do
+ActiveRecord::Schema.define(version: 20141003153334) do
 
   create_table "authors", force: true do |t|
     t.string   "name"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20140916194314) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "keywords"
+    t.string   "image_url"
   end
 
   create_table "events", force: true do |t|
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(version: 20140916194314) do
     t.string   "activity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_url"
   end
 
   create_table "exhibits", force: true do |t|
@@ -60,6 +62,18 @@ ActiveRecord::Schema.define(version: 20140916194314) do
   add_index "exhibits", ["collection_id"], name: "index_exhibits_on_collection_id"
   add_index "exhibits", ["item_id", "collection_id"], name: "index_exhibits_on_item_id_and_collection_id", unique: true
   add_index "exhibits", ["item_id"], name: "index_exhibits_on_item_id"
+
+  create_table "genres", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "description"
+  end
+
+  create_table "genres_items", id: false, force: true do |t|
+    t.integer "genre_id"
+    t.integer "item_id"
+  end
 
   create_table "items", force: true do |t|
     t.string   "title"
@@ -87,6 +101,23 @@ ActiveRecord::Schema.define(version: 20140916194314) do
   add_index "items", ["series_id"], name: "index_items_on_series_id"
   add_index "items", ["status"], name: "index_items_on_status"
   add_index "items", ["title"], name: "index_items_on_title"
+
+  create_table "requests", force: true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "notes"
+    t.integer  "support"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reservations", force: true do |t|
+    t.integer  "user_id"
+    t.text     "notes"
+    t.integer  "item_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "reviews", force: true do |t|
     t.string   "title"
@@ -124,6 +155,7 @@ ActiveRecord::Schema.define(version: 20140916194314) do
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.datetime "membership_expiry",      default: '3014-08-29 16:26:09'
+    t.text     "about_me"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -1,5 +1,5 @@
 <li>
-	<%= avatar_for user %>
+	<%= mini_avatar_for user %>
 	<span class="user-name"><%= link_to user.name, user %></span> <%= separator_symbol %>
 	<%= link_to "#{user.reviews.length} reviews", reviews_user_path(user) %> <%= separator_symbol %> <%= link_to "#{user.collections.length} lists", collections_user_path(user) %>
 	<% if current_user.admin? %>

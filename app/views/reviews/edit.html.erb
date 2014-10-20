@@ -1,0 +1,18 @@
+<% provide :title, "Edit review" %>
+<% provide :site_section, "0" %>
+<h1><%= @review.topic_title %></h1>
+
+<div class="">
+<%= form_for(@review) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	<%= f.hidden_field :user_id, value: current_user.id %>
+
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+
+	<%= f.label :content %>
+	<%= f.text_area :content %>
+<br>
+	<%= f.submit "Save", class: "btn btn-large btn-primary" %>
+<% end %>
+</div>

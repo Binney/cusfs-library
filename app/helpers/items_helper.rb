@@ -11,5 +11,19 @@ module ItemsHelper
 	def blurb_for item
 		item.description || "Couldn't find a description."
 	end
+
+	def chop_articles_from(title)
+		# Remove "the", "a", and "an" from the start of item titles so they are listed alphabetically by first non-article word.
+	    # e.g. "A Game of Thrones" => "Game of Thrones, A"
+	    if title[0..1]=="A " || title[0..1]=="a "
+	      title[2..title.length] + ", A"
+	    elsif title[0..2]=="An " || title[0..2]=="an "
+	      title[3..title.length] + ", An"
+	    elsif title[0..3]=="The " || title[0..3]=="the "
+	      title[4..title.length] + ", The"
+	    else
+	      title
+	    end
+	end
 	
 end

@@ -8,6 +8,10 @@
     <%= render 'layouts/main_menu' %>
   </div>
   <nav class="navbar navbar-default cusfs-library-navbar" role="navigation">
-    <%= render 'layouts/library_navbar'%>
+  	<% if yield(:site_section)=="0" %>
+	    <%= render 'layouts/library_navbar' %>
+    <% else %>
+	    <%= render 'layouts/general_navbar' %>
+    <% end %>
   </nav>
 </header>

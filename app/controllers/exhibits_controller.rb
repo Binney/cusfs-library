@@ -1,5 +1,5 @@
 class ExhibitsController < ApplicationController
-before_filter :signed_in
+before_action :signed_in
 
   def create
   	@item = Item.find(params[:exhibit][:item_id])

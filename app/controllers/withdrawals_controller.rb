@@ -1,6 +1,6 @@
 class WithdrawalsController < ApplicationController
-before_filter :signed_in
-before_filter :admin_user, only: :index
+before_action :signed_in
+before_action :admin_user
 
   def create
 #  	@item = Item.find(params[:withdrawal][:item_id])
@@ -18,9 +18,9 @@ before_filter :admin_user, only: :index
   def destroy
     @withdrawal = Withdrawal.find(params[:id])
     @item = @withdrawal.item
-    current_user.unwithdraw!(@item, @withdrawal.edition)
+    @withdrawal.destroy
     flash[:success] = "Returned #{@item.pretty_name} to the Library!"
-    redirect_to @item
+    redirect_to withdrawals_path
   end
 
   def new

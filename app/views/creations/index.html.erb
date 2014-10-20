@@ -1,8 +1,10 @@
 <% provide(:title, "Creative") %>
 <% provide :site_section, "1" %>
-<h1>Creative</h1>
+<h1><%= @title %></h1>
 
 <%= render 'media' %>
+
+<p><%= @explanation.html_safe %></p>
 
 <% if @creations.any? %>
 	<%= will_paginate %>
@@ -13,5 +15,5 @@
 
 	<%= will_paginate %>
 <% else %>
-Nothing found.
+	<p>Nothing found.</p>
 <% end %>

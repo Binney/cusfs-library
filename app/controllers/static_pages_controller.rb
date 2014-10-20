@@ -5,7 +5,7 @@ class StaticPagesController < ApplicationController
     @items = Item.all.shuffle[0..5]
     offset = rand(11)
     @collection = Collection.first(offset: offset)
-    @forthcoming_events = Event.all.select{ |ev| ev.time>Time.now }.paginate(page: params[:forthcoming_page])
+    @forthcoming_events = Event.all.select{ |ev| ev.time>Time.now }[0..2]
   end
 
   def search
@@ -27,6 +27,24 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def library_home
+    #@recommendations = Item.all.where(average_rating > 3).shuffle[0..5]
+    @library_size = Item.count
+    @fiction_size = Item.where(medium: Item::MEDIA[0]).length
+    @films_size = Item.where(medium: Item::MEDIA[5]).length
+    @graphic_novels_size = Item.where(medium: Item::MEDIA[1]).length
+
+    @reviews = Review.all[0..4]
+    offset = rand(11)
+    @collection = Collection.first(offset: offset)
+
+    offset = rand(Item.count)
+    @item = Item.first(offset: offset)
+
+    @event = Event.all.where(activity: "Library_opening").select{ |ev| ev.time>Time.now }.first
+
+  end
+
   def help
   end
 
@@ -45,22 +63,10 @@ class StaticPagesController < ApplicationController
   def membership
   end
 
+  def links
+  end
+
   def administration
   end
 
-  def library_home
-    #@recommendations = Item.all.where(average_rating > 3)[0..5]
-    @library_size = Item.count
-    @fiction_size = Item.where(medium: Item::MEDIA[0]).length
-    @films_size = Item.where(medium: Item::MEDIA[5]).length
-    @graphic_novels_size = Item.where(medium: Item::MEDIA[1]).length
-
-    @reviews = Review.all.order(:created_at)[0..5]
-    offset = rand(11)
-    @collection = Collection.first(offset: offset)
-
-    offset = rand(Item.count)
-    @item = Item.first(offset: offset)
-  end
-  
 end

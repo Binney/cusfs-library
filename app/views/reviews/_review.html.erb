@@ -1,5 +1,6 @@
 <li>
-	<h2><%= link_to review.title, review %></h2>
-	<p><%= review.content.to_s[0..140] %></p>
-	<%= "★"*review.rating.to_i %><%= "☆"*(5-review.rating.to_i) %>
+	<h3><%= link_to review.topic_title, review %>: <%= link_to review.title, review %>
+	<%= "★"*review.rating.to_i %><%= "☆"*(5-review.rating.to_i) %> 
+	<span class="review-info"><%= separator_symbol %> Posted <%= review.created_at.to_s(:short) %> by <%= review.user.name %></span>
+	</h3>
 </li>

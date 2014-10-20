@@ -8,20 +8,14 @@ class Item < ActiveRecord::Base
   has_many :reviews
   has_many :collections, through: :exhibits
   has_many :exhibits
-  default_scope order("title ASC")
+  has_and_belongs_to_many :genres
+
+  default_scope { order("title ASC") }
 
   def chop_articles_from_title
     # Remove "the", "a", and "an" from the start of item titles so they are listed alphabetically by first non-article word.
     # e.g. "A Game of Thrones" => "Game of Thrones, A"
-    if self.title[0..1]=="A " || self.title[0..1]=="a "
-      self.title[2..self.title.length] + ", A"
-    elsif self.title[0..2]=="An " || self.title[0..2]=="an "
-      self.title[3..self.title.length] + ", An"
-    elsif self.title[0..3]=="The " || self.title[0..3]=="the "
-      self.title[4..self.title.length] + ", The"
-    else
-      self.title
-    end
+    chop_articles_from(title)
   end
 
   def pretty_name

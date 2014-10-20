@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
   def create
   	@item = Item.new(item_params)
     @item.editions ||= 'a'
-    @item.title = @item.chop_articles_from_title
+    @item.title = chop_articles_from(@item.title)
   	if @item.save 
       flash[:success] = "Successfully added " + @item.pretty_name + " to the CUSFS Library!"
       redirect_to @item
@@ -19,9 +19,9 @@ class ItemsController < ApplicationController
 
   def show
   	@item = Item.find(params[:id])
-    @reviews = @item.reviews.paginate(page: params[:page])
+    @reviews = @item.reviews
     if signed_in?
-      @review = @item.reviews.build
+      @review = current_user.reviews.build
     end
     @collections = @item.collections
   end

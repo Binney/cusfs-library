@@ -10,7 +10,7 @@
 <% if @forthcoming_events.any? %>
 	<%= will_paginate @forthcoming_events, page: :forthcoming_page %>
 
-	<ul class="events">
+	<ul class="items">
 		<%= render @forthcoming_events %>
 	</ul>
 	<!-- TODO calendar view? -->
@@ -24,7 +24,7 @@ No events found.
 <% if @past_events.any? %>
 	<%= will_paginate @past_events, page: :past_page %>
 
-	<ul class="events">
+	<ul class="items">
 		<%= render @past_events %>
 	</ul>
 	<!-- TODO calendar view? -->

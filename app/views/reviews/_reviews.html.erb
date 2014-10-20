@@ -1,0 +1,10 @@
+<% if reviews.any? %>
+  <%= render 'reviews/review_mega', review: reviews.first %>
+  
+  <h3>Other reviews</h3>
+  <ul class="reviews">
+  <%= render reviews[1..-1] %>
+  </ul>
+<% else %>
+  No reviews.
+<% end %>

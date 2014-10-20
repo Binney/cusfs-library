@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>According to our records, you currently have <%= @title %> withdrawn from the CUSFS Library.</h1>
+    <p>Someone else has requested it and wants to take it out.</p>
+
+    <p>At the first convenient time, please return it to the Library. You can do that in person at <%= link_to "the next Library opening", @url %> or <%= link_to "email the Secretary", @sec_email %> to coordinate a handover if you can't make it.</p>
+
+    <p>If you want to keep it a little longer, <%= link_to "email the Secretary", @sec_email %> and they'll pass the message on.</p>
+
+    <p>Thanks very much for understanding!</p>
+
+    <p>Yours frabjously,<br>
+    The Secretary</p>
+  </body>
+</html>

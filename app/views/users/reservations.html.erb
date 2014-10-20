@@ -1,0 +1,7 @@
+<% provide(:title, "#{@user.name}'s reservations") %>
+<% provide :site_section, '0' %>
+<h1><%= @user.name %>'s reservations</h1>
+
+<%= render 'reservations', reservations: @reservations %>
+<br>
+<%= link_to "Back to profile", @user %>

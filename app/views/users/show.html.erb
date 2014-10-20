@@ -1,6 +1,33 @@
 <% provide :title, @user.name %>
+<% provide :site_section, '3' %>
+
 <h1><%= @user.name %>'s profile</h1>
+
+TODO About Me here (in right-aligned partial)<br>
+
+<%= avatar_for @user %>
+
+<%= link_to "Account settings", edit_user_path(@user) %><br>
 
 <% if current_user.admin? %>
 	<%= link_to "Renew membership", renew_user_path(@user) %>
+	<%= link_to "Delete", @user, method: :delete, data: {confirm: "Are you absolutely sure? This can't be undone!"} %>
 <% end %>
+
+<% if current_user.id==@user.id || current_user.admin? %>
+	<h2><%= link_to "Current withdrawals", withdrawals_user_path(@user) %></h2>
+	<%= render 'withdrawals', withdrawals: @user.withdrawals %>
+
+	<h2><%= link_to "Reservations", reservations_user_path(@user) %></h2>
+	<%= render 'reservations', reservations: @user.reservations %>
+
+	<h2><%= link_to "Requests", requests_user_path(@user) %></h2>
+	<%= render 'requests', requests: @user.requests %>
+
+<% end %>
+
+<h2><%= link_to "Reviews", reviews_user_path(@user) %></h2>
+<%= render 'reviews/reviews', reviews: @user.reviews %>
+
+<h2><%= link_to "Collections and lists", collections_user_path(@user) %></h2>
+<%= render 'collections', collections: @user.collections %>

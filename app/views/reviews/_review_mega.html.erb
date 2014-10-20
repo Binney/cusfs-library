@@ -1,0 +1,3 @@
+<h2><%= link_to review.topic_title, review %>: <%= link_to review.title, review %></h2>
+<p><%= review.content.to_s[0..140] %><%= "..." if review.content.length>140 %> <%= link_to "[more]", review %></p>
+<p>Posted <%= review.created_at.to_s(:short) %> by <%= review.user.name %> <%= separator_symbol %> Verdict: <%= "★"*review.rating.to_i %><%= "☆"*(5-review.rating.to_i) %></p>

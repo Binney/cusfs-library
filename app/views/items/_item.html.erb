@@ -13,7 +13,7 @@
     <% if defined? item_text %>
       <p><%= item_text %></p>
     <% else %>
-    	<p><%= simple_format(blurb_for(item).to_s[0..340]) %><%= "..." if blurb_for(item).length>340 %></p>
+    	<p><%= render 'shared/truncated_text', description: blurb_for(item), path: item %></p>
     <% end %>
     <div class="item-info">
       <%= render 'items/availability', item: item %> <%= separator_symbol %>

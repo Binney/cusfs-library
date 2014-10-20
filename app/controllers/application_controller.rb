@@ -4,16 +4,28 @@ class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
 	include SessionsHelper
 	before_filter :create_search
+	before_filter :routing_wtf
 
 	def admin_user
 		redirect_to root_path, notice: "You are not worthy. You shall not pass." unless signed_in? && current_user.admin?
 	end
 
 	def sign_in_user
-		redirect_to signin_path, notice: "They who would cross the Bridge of Death must answer me this question: What... is your name?" unless signed_in?
-	end
+      unless signed_in?
+        store_location
+        redirect_to signin_url, notice: "They who would cross the Bridge of Death must answer me this question: What... is your name?"
+      end
+    end
 
 	def create_search
 		@search = Item.search(name_cont: params[:q])
 	end
+
+	def routing_wtf
+		if request.host=="www.srcf.ucam.org"
+			puts "You're visiting via a deprecated route and so are being redirected to the proper one...!"
+			redirect_to "http://cusfs.soc.srcf.net#{request.fullpath}"
+		end
+	end
+
 end

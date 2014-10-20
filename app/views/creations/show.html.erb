@@ -7,7 +7,7 @@
 	<%= simple_format @creation.description %>
 </div>
 
-<%= link_to "Click here to view!", @creation.url %>
+<%= link_to "View", @creation.url %> <%= separator_symbol %> <%= link_to "Download", @creation.url, download: @creation.name %>
 
 <% case @creation.medium %>
 	<% when Creation::MEDIA[0] %>

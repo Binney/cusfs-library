@@ -1,0 +1,19 @@
+<% provide(:title, "Browse genres") %>
+<% provide :site_section, "0" %>
+<h1>Browse genres</h1>
+
+<% if @genres.any? %>
+<div class="panel panel-default">
+	<%= will_paginate %>
+</div>
+
+	<ul class="items">
+		<%= render @genres %>
+	</ul>
+<div class="panel panel-default">
+	<%= will_paginate %>
+</div>
+
+<% else %>
+No genres found.
+<% end %>

@@ -8,6 +8,7 @@ CusfsLibrary::Application.routes.draw do
   match '/committee', to: 'static_pages#committee', via: 'get'
   match '/constitution', to: 'static_pages#constitution', via: 'get'
   match '/membership', to: 'static_pages#membership', via: 'get'
+  match '/links', to: 'static_pages#links', via: 'get'
   match '/admin', to: 'static_pages#administration', via: 'get'
   match '/signin', to: 'sessions#new', 		via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'
@@ -15,6 +16,7 @@ CusfsLibrary::Application.routes.draw do
   match '/checkout', to: 'withdrawals#new', via: 'get'
 
   match '/library', to: 'static_pages#library_home', via: 'get'
+  match '/recommendations', to: 'collections#recommendations', via: 'get'
   match '/fiction', to: 'items#fiction', via: 'get'
   match '/graphic_novels', to: 'items#graphic_novels', via: 'get'
   match '/tie_ins', to: 'items#tie_ins', via: 'get'
@@ -30,8 +32,10 @@ CusfsLibrary::Application.routes.draw do
   match '/art', to: 'creations#art', via: 'get'
 
   match '/schedule', to: 'events#index', via: 'get'
+  match '/locations', to: 'events#locations', via: 'get'
   match "/discussions", to: 'events#discussions', via: 'get'
   match "/screenings", to: 'events#screenings', via: 'get'
+  match "/library_openings", to: 'events#library_openings', via: 'get'
   match "/pub_meets", to: 'events#pub_meets', via: 'get'
   match "/speakers", to: 'events#speaker_events', via: 'get'
   match "/games_nights", to: 'events#games_nights', via: 'get'
@@ -42,6 +46,8 @@ CusfsLibrary::Application.routes.draw do
       get :withdrawals
       get :collections
       get :reviews
+      get :reservations
+      get :requests
       match 'renew', to: 'users#edit', via: 'get'
     end
   end
@@ -63,7 +69,10 @@ CusfsLibrary::Application.routes.draw do
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :withdrawals, only: [:create, :destroy]
-  resources :series, :authors, :reviews, :events, :creations, :withdrawals
+  resources :series, :authors, :reviews, :creations, :withdrawals, :requests, :reservations, :genres
+  resources :events do
+    match "/locations", to: 'events#locations', via: 'get'
+  end
   resources :exhibits, only: [:create, :destroy]
   resources :collections do
     member do

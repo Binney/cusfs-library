@@ -30,4 +30,9 @@ module ApplicationHelper
   def separator_symbol
     "¤"
   end
+
+  def print_multiline(text)
+    text.gsub("\r\n"," ").html_safe
+  end
+
 end

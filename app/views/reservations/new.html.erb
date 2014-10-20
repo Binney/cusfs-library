@@ -1,0 +1,19 @@
+<% provide :title, "Reserve an item" %>
+<% provide :site_section, "0" %>
+<h1>Reserve an item</h1>
+
+<%= form_for(@reservation) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	<%= f.hidden_field :user_id, value: current_user.id %>
+
+	<p>Fill in this form to reserve an item in the Library if, for example:<br>
+	1) you can't go to the library opening sessions. We can organise to meet you elsewhere, or get it to your pidge. Please leave any info in the box below. The Librarian will email you to confirm the handover.<br>
+	2) you want an item from the library which someone else already has withdrawn. They'll be emailed to ask for it back (anonymously). This is actively encouraged; in our experience people often withdraw books and forget to read them for long periods of time, enabled by our lack of a borrowing time limit, so whoever has the book will probably happily return it.</p>
+
+	<%= f.collection_select :item_id, Item.all, :id, :title %>
+
+	<%= f.label :notes, "Please place any extra information here." %>
+	<%= f.text_area :notes %>
+<br>
+	<%= f.submit "Reserve", class: "btn btn-large btn-primary" %>
+<% end %>

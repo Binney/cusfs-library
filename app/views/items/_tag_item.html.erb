@@ -1,0 +1,7 @@
+<%= form_for @item do |f| %>
+    <%= hidden_field_tag "item[genre_ids][]", nil %>
+    <% Genre.all.each do |genre| %>
+      <%= check_box_tag "item[genre_ids][]", genre.id, @item.genre_ids.include?(genre.id), id: dom_id(genre) %>
+      <%= label_tag dom_id(genre), genre.name %><br>
+    <% end %>
+<% end %>

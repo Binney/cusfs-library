@@ -24,6 +24,24 @@ class ReviewsController < ApplicationController
 
 	end
 
+	def show
+		@review = Review.find(params[:id])
+	end
+
+	def edit
+		@review = Review.find(params[:id])
+	end
+
+	def update
+		@review = review.find(params[:id])
+		if @review.update_attributes(review_params)
+			flash[:success] = "Updated review."
+			redirect_to @review
+		else
+			render 'edit'
+		end
+	end
+
 	def index
 		@item_reviews = Review.where.not(item_id: nil)
 		@author_reviews = Review.where.not(author_id: nil)

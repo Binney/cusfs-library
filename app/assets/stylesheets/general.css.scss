@@ -61,6 +61,7 @@ section {
 
 textarea {
   resize: vertical;
+  width: 100%;
 }
 
 .center {
@@ -89,4 +90,14 @@ textarea {
   &:hover {
     color: $darkOrange;
   }
+}
+
+.question {
+  font-weight: 600;
+  color: $darkBlue;
+}
+
+.committee-position {
+  text-align: right;
+  width: 50%;
 }

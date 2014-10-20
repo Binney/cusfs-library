@@ -1,0 +1,29 @@
+<% provide :title, "Locations" %>
+<% provide :site_section, "2" %>
+
+<h1>Frequently used locations of CUSFS events</h1>
+
+<ul class="items">
+
+	<li class="item-preview" id="Riley">
+		<h2 class="item-title"><%= link_to "Riley Auditorium", "http://map.cam.ac.uk/Clare+College?loc=2" %> <%= separator_symbol %> Clare College</h2>
+		<p>We use the Riley for <%= link_to "film screenings", screenings_path %>. It's a large auditorium with a fantastic big screen. It's also wheelchair accessible via a modern lift.<br>
+
+			To get there, head to Clare Memorial Court, which is off Queen's Road. There's a wheelchair accessible drive up the right hand side of the main entrance. Head through the main gates and on the right path around the library (octagonal building in the middle). Once you're facing the UL, turn right and head through a small tunnel following signs to the Gillespie Centre. The Riley is on the basement floor; ring a CUSFSite to be let in and we can open the doors if they don't do so automatically.</p>
+	</li>
+
+	<li class="item-preview" id="Glover">
+		<h2 class="item-title"><%= link_to "Glover Room", "http://map.cam.ac.uk/Clare+College?loc=2" %> <%= separator_symbol %> Clare College</h2>
+		<p>Weekly <%= link_to "games evenings", games_nights_path %> often take place in the Glover Room in Clare, which is a small room on the ground floor with wheelchair access.<br>
+
+			It's roughly next door to the Riley Auditorium so follow the above instructions to get to the Gillespie Centre; the Glover Room is on ground level on the right as you enter the building.</p>
+	</li>
+
+	<li class="item-preview" id="NCR">
+		<h2 class="item-title"><%= link_to "New Combination Room", "http://map.cam.ac.uk/Foundress+Court+(Pembroke+College)" %> <%= separator_symbol %> Pembroke College</h2>
+		<p>The NCR is a comfy and spacious common room with a TV. We hold most <%= link_to "weekly discussions", discussions_path %> here as well as the occasional <%= link_to "film screening", screenings_path %>. It's wheelchair accessible via a lift.<br>
+
+			If you're coming in through the porter's lodge on Trumpington Street, turn right past the chapel, then turn left to walk past the library (red brick, stained glass, clock tower), go through some gates. There will be a modern building on your right. The main entrance is located in the right-angle of its L-shape, and the NCR is one floor up. There is a ramp to the entrance and a lift inside; the NCR is on the first floor.</p>
+	</li>
+
+</ul>

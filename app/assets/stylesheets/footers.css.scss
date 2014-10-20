@@ -1,0 +1,66 @@
+footer {
+  float: bottom;
+  margin-top: 45px;
+  font-family: $serifFont;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding-top: 5px;
+  padding-bottom: 30px;
+  border-top: 1px solid $darkBlue;
+  color: $darkBlue;
+  a {
+    font-family: $serifFont;
+    color: $darkBlue;
+    &:hover {
+      color: $lighterBlue;
+      text-decoration: none;
+    }
+  }
+  .footer-title {
+    padding-top: 2px;
+    float: left;
+    font-family: $serifFont;
+    margin-bottom: 10px;
+  }
+  .footer-main-nav {
+    padding-top: 2px;
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}
+
+.leftcontainer {
+	width: 50%;
+	float: left;
+	padding: 0px;
+	text-align: center;
+}
+
+.rightcontainer {
+	width: 50%;
+	padding: 0px;
+	float: right;
+	text-align: center;
+}
+
+.footer-menus {
+	width: 100%;
+	position: relative;
+
+}
+
+.upcontainer {
+	padding-bottom: 50px;
+}
+
+.footer-nav {
+	list-style-type: none;
+	margin-left: 0px;
+	li {
+		margin: 0px;
+	}
+}

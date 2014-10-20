@@ -1,0 +1,5 @@
+<% unless @event.blank? %>
+
+	<h2>Next library opening: <%= link_to @event.time.to_s(:short), @event %></h2>
+
+<% end %>

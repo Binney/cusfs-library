@@ -12,28 +12,28 @@
     <%= form_for(@user) do |f| %>
 	  <%= render 'shared/error_messages', object: f.object %>
 
-    <% if current_user.id == @user.id %>
+    <% "if current_user.id == @user.id" %>
 
-        <%= f.label :name %>
-        <%= f.text_field :name %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
 
-        <%= f.label :email %>
-        <%= f.text_field :email %>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
 
-        <%= f.label :password %>
-        <%= f.password_field :password %>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
 
-        <%= f.label :password_confirmation, "Confirmation" %>
-        <%= f.password_field :password_confirmation %>
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation %>
 
-      <% end %>
+    <% "end" %>
 
-      <% if current_user.admin? %>
+    <% if current_user.admin? %>
 
-        <%= f.label :membership_expiry, "Membership expiry date" %>
-        <%= f.date_select :membership_expiry %>
+      <%= f.label :membership_expiry, "Membership expiry date" %>
+      <%= f.date_select :membership_expiry %>
 
-      <% end %>
+    <% end %>
 <br>
       <%= f.submit "Save", class: "btn btn-large btn-primary" %>
     <% end %>

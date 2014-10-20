@@ -1,4 +1,5 @@
 <% provide(:title, "Search results") %>
+<% provide :site_section, "3" %>
 <h1>Search<%= " results for \"#{params[:q]}\"" unless params[:q].nil? %></h1>
 
 <%= render 'static_pages/mega_search' %>
@@ -7,7 +8,15 @@
 
 	<div class="panel panel-default">
 		<div class="panel-body">
-			Skip to <%= link_to "items (#{@items.length.to_s} #{"result".pluralize(@items.length)})", '#items-section' %> <%= separator_symbol %> <%= link_to "authors (#{@authors.length.to_s} #{"result".pluralize(@authors.length)})", '#authors-section' %> <%= separator_symbol %> <%= link_to "series (#{@series.length.to_s} #{"result".pluralize(@series.length)})", '#series-section' %> <%= separator_symbol %> <%= link_to "people (#{@users.length.to_s} #{"result".pluralize(@users.length)})", '#users-section' %>
+			Skip to <%= link_to "items (#{@items.length.to_s} #{"result".pluralize(@items.length)})", '#items-section' %>
+			 <%= separator_symbol %>
+			  <%= link_to "authors (#{@authors.length.to_s} #{"result".pluralize(@authors.length)})", '#authors-section' %>
+			  <%= separator_symbol %>
+			   <%= link_to "series (#{@series.length.to_s} #{"result".pluralize(@series.length)})", '#series-section' %>
+			    <%= separator_symbol %>
+			     <%= link_to "people (#{@users.length.to_s} #{"result".pluralize(@users.length)})", '#users-section' %>
+			    <%= separator_symbol %>
+			     <%= link_to "creative (#{@creations.length.to_s} #{"result".pluralize(@creations.length)})", '#creations-section' %>
 		</div>
 	</div>
 
@@ -46,7 +55,7 @@
 
 	<% if @creations.any? %>
 		<div class="creations-results">
-		<h2 id="creations-section">TTBAs and other creative expression (<%=  @creations.length.to_s+" result".pluralize(@creations.length) %> results)</h2>
+		<h2 id="creations-section">TTBAs and other creative expression (<%=  @creations.length.to_s+" result".pluralize(@creations.length) %>)</h2>
 		<ul class="creations">
 			<%= will_paginate @creations, param_name: :creations_page %>
 			<%= render @creations %>
@@ -57,7 +66,7 @@
 
 	<% if @users.any? %>
 		<div class="users-results">
-		<h2 id="users-section">People (<%= @users.length.to_s+" result".pluralize(@users.length) %> results)<h2>
+		<h2 id="users-section">People (<%= @users.length.to_s+" result".pluralize(@users.length) %>)<h2>
 		<ul class="users">
 			<%= will_paginate @users, param_name: :users_page %>
 			<%= render @users %>
@@ -65,4 +74,9 @@
 		</div>
 	<% end %>
 
+	<% if signed_in? %>
+	<h2>Request a book</h2>
+	Can't find what you're looking for in the Library? <%= link_to "Request we obtain a copy!", new_request_path %>
+	<% end %>
+	
 <% end %>

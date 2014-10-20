@@ -1,0 +1,22 @@
+<% provide :title, "Request an item" %>
+<% provide :site_section, "0" %>
+<h1>Request an item be added to the Library</h1>
+
+<%= form_for(@request) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	<%= f.hidden_field :user_id, value: current_user.id %>
+
+	<p>We welcome requests for new items to be bought and added to the Library. It's what your membership is intended for, after all. However, we're loath to purchase multiple copies of the same thing so do check if what you're requesting is already in the Library; if someone's already withdrawn it, you <%= link_to "reserve it here", new_reservation_path %>. If you can point out a conspicuous gap in a particular series (eg "we're missing Book 4 of a 7-book series"), all the better!
+
+		<br>
+
+	Provide as many details as you reasonably can; title and author are a minimum. You're welcome to justify the request in the "notes" box (ie say why you think this would be a good addition to the Library, whether or not you've read it) but that's not essential.</p>
+
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+
+	<%= f.label :notes %>
+	<%= f.text_area :notes %>
+<br>
+	<%= f.submit "Request", class: "btn btn-large btn-primary" %>
+<% end %>

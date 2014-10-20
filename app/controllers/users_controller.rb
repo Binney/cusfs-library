@@ -1,16 +1,18 @@
 class UsersController < ApplicationController
-  before_filter :sign_in_user # None of this is accessible without signing in first.
-  before_filter :admin_user, only: [:new, :create]
+  before_action :sign_in_user # None of this is accessible without signing in first.
+  before_action :admin_user, only: [:new, :create]
+  before_action :correct_user, only: [:edit, :update, :withdrawals, :requests, :reservations]
 
   def new
   	@user = User.new
   end
 
   def create
+    @pw = params[:user][:password]
   	@user = User.new(user_params)
   	if @user.save 
       flash[:success] = "Account created! An email has been sent to the provided address with login details."
-      # TODO email new user with account details
+      UserMailer.welcome_email(@user, @pw).deliver
       redirect_to @user
   	else
   	  render 'new'
@@ -25,7 +27,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def 
+
   def update
+    if user_params[:password].blank?
+      user_params.delete(:password)
+      user_params.delete(:password_confirmation)
+    end
+
     @user = User.find(params[:id])
     if @user.update_attributes(user_params) 
       flash[:success] = "Updated successfully!"
@@ -35,18 +44,57 @@ class UsersController < ApplicationController
     end
   end
 
+  def index
+    @users = User.all.paginate(page: params[:page])
+  end
+
+  def collections
+    @user = User.find(params[:id])
+    @collections = @user.collections
+  end
+
+  def reviews 
+    @user = User.find(params[:id])
+    @reviews = @user.reviews
+  end
+
   def withdrawals
     @user = User.find(params[:id])
     @withdrawals = @user.withdrawals
   end
 
-  def index
-    @users = User.all.paginate(page: params[:page])
+  def requests
+    @user = User.find(params[:id])
+    @requests = @user.requests
+  end
+
+  def reservations 
+    @user = User.find(params[:id])
+    @reservations = @user.reservations
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:success] = "User destroyed."
+    redirect_to users_path
   end
 
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :membership_expiry)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :membership_expiry, withdrawals_attributes: [:user_id, :item_id, :edition, :_destroy])
+    end
+
+    def correct_user
+      sign_in_user
+      puts params[:id]
+      puts current_user.id
+      if (params[:id].to_i == current_user.id.to_i) || current_user.admin?
+        # Fine!
+      else
+        flash[:error] = "I'm sorry, #{current_user.name}. I'm afraid I can't do that."
+        redirect_to root_path
+      end
     end
 end

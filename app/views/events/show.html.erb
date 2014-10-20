@@ -2,11 +2,14 @@
 <% provide :site_section, "2" %>
 <h1><%= @event.name %></h1>
 
-<li class="event">
-	<span class="title">
-		<%= @event.name %> <%= separator_symbol %> <%= @event.time.to_s(:short) %> <%= separator_symbol %> <%= @event.location %>
+	<span class="item-name">
+		<%= @event.name %> <%= separator_symbol %> <%= @event.time.to_s(:short) %> <%= separator_symbol %> <%= render "events/location", location: @event.location %>
 	</span>
+		<% if signed_in? && current_user.admin? %>
+			<%= separator_symbol %> <%= link_to "Edit", edit_event_path(@event) %>
+			<%= separator_symbol %> <%= link_to "Delete", @event, method: :delete,
+				data: { confirm: "You sure?" } %>
+		<% end %>
 	<div class="event-description">
 		<%= simple_format @event.description %>
 	</div>
-</li>
