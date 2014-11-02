@@ -13,8 +13,11 @@
 			<%= f.label :activity, "Activity" %>
 	        <%= f.collection_select :activity, Event::ACTIVITIES, :to_s, :humanize %>
 
-			<%= f.label :time %>
-			<%= f.datetime_select :time %>
+			<%= f.label :time, minute_step: 5 %>
+			<%= f.datetime_select :time, minute_step: 5 %>
+
+			<%= f.label :end_time, minute_step: 5 %>
+			<%= f.datetime_select :end_time, minute_step: 5 %>
 
 			<%= f.label :description %>
 			<%= f.text_area :description %>

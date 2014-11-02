@@ -4,7 +4,11 @@
   </div>
   <div class="item-preview-body">
     <h2 class="item-title">
-		<%= event.time.to_s(:short) %> <%= separator_symbol %> <%= link_to event.name, event %> <%= separator_symbol %> <%= event.activity.humanize %>
+		<%= event.time.to_s(:short) %>
+    <% if event.end_time.to_i > event.time.to_i %>
+      - <%= event.end_time.to_s(:time) %>
+    <% end %>
+     <%= separator_symbol %> <%= link_to event.name, event %> <%= separator_symbol %> <%= event.activity.humanize %>
     </h2>
 	<span class="event-location"><%= render "events/location", location: event.location %></span>
   	<p><%= render 'shared/truncated_text', description: event.description, path: event %></p>

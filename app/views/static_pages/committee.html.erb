@@ -4,20 +4,20 @@
 <div class="panel panel-default">
   <!-- Default panel contents -->
   <div class="panel-heading">Committee</div>
+  <%= will_paginate @committees %>
   <div class="panel-body">
-    <p>The CUSFS Committee for 2014-2015 is:</p>
+    <p>The CUSFS Committee for <%= @committees.first["year"] %> <%= @committees.first[:current] ? "is" : "was" %>:</p>
   </div>
-
   <!-- Table -->
   <table class="table">
-	<tr><td class="committee-position">Chairbeing:</td><td>Danielle Saunders (ds636)</td></tr>
-	<tr><td class="committee-position">Secretary:</td><td>Sarah Binney (sb913)</td></tr>
-	<tr><td class="committee-position">Librarian:</td><td>Lizzie Colwill (ec504)</td></tr>
-	<tr><td class="committee-position">Junior Treasurer:</td><td>Rory Hennell James (rh570)</td></tr>
-	<tr><td class="committee-position">Membership Secretary:</td><td>Catherine Gray (cg508)</td></tr>
-	<tr><td class="committee-position">TTBA Editor:</td><td>Isobel Sands (is361)</td></tr>
+	<tr><td class="committee-position">Chairbeing:</td><td><%= @committees.first["Chairbeing"] %></td></tr>
+	<tr><td class="committee-position">Secretary:</td><td><%= @committees.first["Secretary"] %></td></tr>
+	<tr><td class="committee-position">Librarian:</td><td><%= @committees.first["Librarian"] %></td></tr>
+	<tr><td class="committee-position">Junior Treasurer:</td><td><%= @committees.first["Treasurer"] %></td></tr>
+	<tr><td class="committee-position">Membership Secretary:</td><td><%= @committees.first["Memsec"] %></td></tr>
+	<tr><td class="committee-position">TTBA Editor:</td><td><%= @committees.first["TTBA"] %></td></tr>
   </table>
-	Contact the committee as a whole at <%= link_to "soc-cusfs [at] lists dot cam [dot] ac [dot] uk", "soc-cusfs@lists.cam.ac.uk" %>.</p>
+	Contact the committee as a whole at <%= link_to "soc-cusfs [at] lists dot cam [dot] ac [dot] uk", "mailto:soc-cusfs@lists.cam.ac.uk" %>.</p>
 </div>
 
 
@@ -25,15 +25,15 @@
   <!-- Default panel contents -->
   <div class="panel-heading">Committee</div>
   <div class="panel-body">
-    <p>The Reeve of Jomsborg and their companions for 2014-2015 are:</p>
+    <p>The Reeve of Jomsborg and their companions for <%= @committees.first["year"] %> <%= @committees.first[:current] ? "are" : "were" %>::</p>
   </div>
 
   <!-- Table -->
   <table class="table">
-  <tr><td class="committee-position">Reeve:</td><td>Margaret Young (mry25)</td></tr>
-  <tr><td class="committee-position">Runecaster:</td><td>Curtis Reubens (cr507)</td></tr>
-  <tr><td class="committee-position">Geldjarl:</td><td>Rory Hennell James (rh570)</td></tr>
-  <tr><td class="committee-position">Meadkeeper:</td><td>Lizzie Colwill (ec504)</td></tr>
-  <tr><td class="committee-position">Bard:</td><td>Lilian Halstead (lah64)</td></tr>
+  <tr><td class="committee-position">Reeve:</td><td><%= @committees.first["Reeve"] %></td></tr>
+  <tr><td class="committee-position">Runecaster:</td><td><%= @committees.first["Runecaster"] %></td></tr>
+  <tr><td class="committee-position">Geldjarl:</td><td><%= @committees.first["Geldjarl"] %></td></tr>
+  <tr><td class="committee-position">Meadkeeper:</td><td><%= @committees.first["Meadkeeper"] %></td></tr>
+  <tr><td class="committee-position">Bard:</td><td><%= @committees.first["Bard"] %></td></tr>
   </table>
 </div>

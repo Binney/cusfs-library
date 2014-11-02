@@ -13,7 +13,7 @@ CusfsLibrary::Application.routes.draw do
   match '/signin', to: 'sessions#new', 		via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'
   match '/search', to: 'static_pages#search', via: [:get, :post], as: :search
-  match '/checkout', to: 'withdrawals#new', via: 'get'
+  match "/checkout", to: 'users#checkout', via: 'get'
 
   match '/library', to: 'static_pages#library_home', via: 'get'
   match '/recommendations', to: 'collections#recommendations', via: 'get'
@@ -40,6 +40,7 @@ CusfsLibrary::Application.routes.draw do
   match "/speakers", to: 'events#speaker_events', via: 'get'
   match "/games_nights", to: 'events#games_nights', via: 'get'
   match "/cinema_trips", to: 'events#cinema_trips', via: 'get'
+
 
   resources :users do
     member do

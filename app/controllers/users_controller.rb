@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :sign_in_user # None of this is accessible without signing in first.
   before_action :admin_user, only: [:new, :create]
   before_action :correct_user, only: [:edit, :update, :withdrawals, :requests, :reservations]
+  include ApplicationHelper
 
   def new
   	@user = User.new
@@ -27,21 +28,56 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def 
+  def checkout
+    @user = current_user
+  end
 
   def update
-    if user_params[:password].blank?
-      user_params.delete(:password)
-      user_params.delete(:password_confirmation)
+    puts user_params[:withdrawals_attributes]
+    puts "Asdflfjkafj " + user_params[:withdrawals_attributes].to_s + user_params[:withdrawals_attributes].blank?.to_s
+    if user_params[:withdrawals_attributes].blank?
+      puts "Saving!"
+      # Normal "update settings" update.
+      if user_params[:password].blank?
+        user_params.delete(:password)
+        user_params.delete(:password_confirmation)
+      end
+
+      @user = User.find(params[:id])
+      if @user.update_attributes(user_params) 
+        flash[:success] = "Updated successfully!"
+        redirect_to @user
+      else
+        render 'edit'
+      end
+
+    else
+      puts "Checking out!"
+      # Withdrawing items via "checkout" action.
+      smoothly = true
+      user_params[:withdrawals_attributes].each do |i, withdrawal|
+        puts withdrawal["user_id"]
+        user = User.find(withdrawal[:user_id])
+        item = Item.find(withdrawal[:item_id])
+        puts withdrawal[:item_id]
+        puts item.title + ", "
+        smoothly = smoothly && user.withdraw!(withdrawal[:item_id], withdrawal[:edition])
+
+        if user.withdrawals.length>total_books_limit # total_books_limit can be found in application_helper
+          flash[:error] = "WARNING:  Having withdrawn #{item.pretty_name}, #{user.name} now has #{user.withdrawals.length} books withdrawn, which is more than the borrowing limit. Get them to return something!"
+        end
+      end
+
+      if smoothly
+        flash[:success] = "Withdrawals saved!"
+        redirect_to withdrawals_path
+      else
+        @user = current_user
+        render 'checkout'
+      end
+
     end
 
-    @user = User.find(params[:id])
-    if @user.update_attributes(user_params) 
-      flash[:success] = "Updated successfully!"
-      redirect_to @user
-    else
-      render 'edit'
-    end
   end
 
   def index
@@ -83,7 +119,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :membership_expiry, withdrawals_attributes: [:user_id, :item_id, :edition, :_destroy])
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :membership_expiry, withdrawals_attributes: [:id, :user_id, :item_id, :edition, :_destroy])
     end
 
     def correct_user

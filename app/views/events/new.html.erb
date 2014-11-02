@@ -13,8 +13,12 @@
 			<%= f.label :activity, "Activity" %>
 	        <%= f.collection_select :activity, Event::ACTIVITIES, :to_s, :humanize %>
 
-			<%= f.label :time %>
+			<%= f.label :time, "Start time" %>
 			<%= f.datetime_select :time, minute_step: 5, value: DateTime.now.change({ hour: 19, min: 30 }) %>
+
+			<%= f.label :end_time %>
+			<%= f.datetime_select :end_time, minute_step: 5 %><br>
+			<small>For a blank/indeterminate end time, set it to anything *before* the start time.</small>
 
 			<%= f.label :description %>
 			<%= f.text_area :description %>

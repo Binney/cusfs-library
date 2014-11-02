@@ -1,7 +1,0 @@
-<%= label_tag :user_id %>
-<%= collection_select "withdrawals[#{i}][user_id]", '', User.all, :id, :name, class: "user_id" %>
-
-<%= label_tag :item_id %>
-<%= collection_select "withdrawals[#{i}][item_id]", '', Item.all, :id, :title, class: "item_id" %>
-
-<%= text_field_tag "withdrawals[#{i}][edition]", '' %>

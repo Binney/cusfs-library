@@ -4,4 +4,7 @@
   </ul>
 <% else %>
   None found.
+  <% if signed_in? %>
+  	<%= link_to "Request something!", new_request_path %>
+  <% end %>
 <% end %>

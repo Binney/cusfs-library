@@ -1,0 +1,21 @@
+<% provide(:title, 'Check books out') %>
+<% provide :site_section, '0' %>
+
+<div class="row">
+  <div class="span6 offset3">
+
+    <%= nested_form_for(@user) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.fields_for :withdrawals do |builder| %>
+        <%= render 'withdrawals_fields', f: builder %>
+      <% end %>
+      <br>
+      <%= f.link_to_add "Add", :withdrawals %>
+      <br>
+      <%= f.submit "Save", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+
+  </div>
+</div>

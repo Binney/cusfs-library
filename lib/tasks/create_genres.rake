@@ -1,5 +1,5 @@
 namespace :db do
-  desc "Google all books without descriptions and find a suitable blurb"
+  desc "Create genre tags"
   task create_genres: :environment do 
 
     Genre.create(name: "Epic_Fantasy")
@@ -8,7 +8,7 @@ namespace :db do
     Genre.create(name: "Steampunk")
     Genre.create(name: "Horror")
     Genre.create(name: "Cyberpunk")
-    Genre.create(name: "New Weird")
+    Genre.create(name: "New_Weird")
 
   end
 end

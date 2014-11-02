@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :collections
   has_many :requests
   has_many :reservations
-  accepts_nested_attributes_for :withdrawals
+  accepts_nested_attributes_for :withdrawals, :allow_destroy => true
   default_scope { order('name ASC') }
 
   def User.new_remember_token
@@ -31,11 +31,11 @@ class User < ActiveRecord::Base
   end
 
   def withdraw!(item, edition)
-    withdrawals.create!(item_id: item, edition: edition) # TODO item id wat 
+    withdrawals.create!(item_id: item.id, edition: edition)
   end
 
-  def about_me
-    Faker::Lorem.paragraph(3)
+  def withdraw!(item_id, edition)
+    withdrawals.create!(item_id: item_id, edition: edition)
   end
 
   private

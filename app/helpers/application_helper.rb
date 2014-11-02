@@ -31,6 +31,10 @@ module ApplicationHelper
     "¤"
   end
 
+  def total_books_limit
+    10
+  end
+
   def print_multiline(text)
     text.gsub("\r\n"," ").html_safe
   end

@@ -3,7 +3,11 @@
 <h1><%= @event.name %></h1>
 
 	<span class="item-name">
-		<%= @event.name %> <%= separator_symbol %> <%= @event.time.to_s(:short) %> <%= separator_symbol %> <%= render "events/location", location: @event.location %>
+		<%= @event.name %> <%= separator_symbol %> <%= @event.time.to_s(:short) %>
+	    <% if @event.end_time.to_i > @event.time.to_i %>
+      		- <%= @event.end_time.to_s(:time) %>
+    	<% end %>
+    	<%= separator_symbol %> <%= render "events/location", location: @event.location %>
 	</span>
 		<% if signed_in? && current_user.admin? %>
 			<%= separator_symbol %> <%= link_to "Edit", edit_event_path(@event) %>

@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+  include CommitteesHelper
   before_action :admin_user, only: :administration
 
   def home
@@ -55,6 +56,8 @@ class StaticPagesController < ApplicationController
   end
 
   def committee
+    # Complete list of past committees can be found in app/helpers/committees.rb
+    @committees = past_committees.paginate(page: params[:page], per_page: 1)
   end
 
   def constitution

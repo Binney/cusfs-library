@@ -1,0 +1,8 @@
+<%= f.label :user_id %>
+<%= f.collection_select :user_id, User.all, :id, :name, class: "user_id" %>
+
+<%= f.label :item_id, "Item" %>
+<%= f.collection_select :item_id, Item.all, :id, :title, class: "item_id" %>
+
+<%= f.text_field :edition %>
+<%= f.link_to_remove "remove" %>
