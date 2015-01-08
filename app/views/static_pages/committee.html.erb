@@ -25,7 +25,7 @@
   <!-- Default panel contents -->
   <div class="panel-heading">Committee</div>
   <div class="panel-body">
-    <p>The Reeve of Jomsborg and their companions for <%= @committees.first["year"] %> <%= @committees.first[:current] ? "are" : "were" %>::</p>
+    <p>The Reeve of <%= link_to "Jomsborg", history_path %> and their companions for <%= @committees.first["year"] %> <%= @committees.first[:current] ? "are" : "were" %>::</p>
   </div>
 
   <!-- Table -->
@@ -37,3 +37,5 @@
   <tr><td class="committee-position">Bard:</td><td><%= @committees.first["Bard"] %></td></tr>
   </table>
 </div>
+
+TODO vice-presidents here!

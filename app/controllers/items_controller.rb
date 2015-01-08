@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :admin_user, only: [:new, :create, :edit, :update]
+  include ItemsHelper
+  require 'csv'
+  before_action :admin_user, only: [:new, :create, :edit, :update, :download_catalogue, :destroy]
 
   def new
   	@item = Item.new
@@ -89,10 +91,35 @@ class ItemsController < ApplicationController
     render 'index'
   end
 
-  def games
+  def boardgames
     @items = Item.all.where(medium: Item::MEDIA[6]).paginate(page: params[:page])
-    @title = "Games"
+    @title = "Board games"
     render 'index'
+  end
+
+  def download_catalogue
+    @items = Item.all
+    file = "CUSFS_catalogue_#{Time.now.to_formatted_s(:number)}.txt"
+    CSV.open( file, 'w' ) do |writer|
+      @items.each do |item|
+      end
+    end
+  end
+
+  def download
+    puts "#{current_user.name} is downloading the library catalogue..."
+    @items = Item.all
+    @file = "CUSFS_catalogue.csv"
+    CSV.open( @file, 'w' ) do |writer|
+      writer << ["Title", "Author", "Year", "ISBN", "Location", "Notes", "Status", "Tag", "Series name", "Number in series"]
+      @items.each do |item|
+        status = (item.status == "-") ? item.availability_status : item.status
+        author_name = item.author ? item.author.name : "?"
+        series_name = item.series ? item.series.name : "?"
+        writer << [item.title, author_name, item.date, item.isbn, item.location, item.notes, status, item.tag, series_name, item.series_number]
+      end
+    end
+    send_file @file
   end
 
   def destroy

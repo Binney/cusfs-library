@@ -4,32 +4,43 @@
 
 <%= render 'activities' %>
 
-<p><%= @explanation.html_safe %></p>
+<p><%= @explanation.html_safe %>
 
-<h2>Upcoming events</h2>
+<center><b>Where do we hold these events? <%= link_to "See locations list", locations_path %>.</b></center></p>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h2>Upcoming events</h2>
+	</div>
+	<div class="panel-body">
 <% if @forthcoming_events.any? %>
-	<%= will_paginate @forthcoming_events, page: :forthcoming_page %>
+	<%= will_paginate @forthcoming_events %>
 
 	<ul class="items">
 		<%= render @forthcoming_events %>
 	</ul>
 	<!-- TODO calendar view? -->
 
-	<%= will_paginate @forthcoming_events, page: :forthcoming_page %>
+	<%= will_paginate @forthcoming_events %>
 <% else %>
 No events found.
 <% end %>
+	</div>
+</div>
 
-<h2>Past events</h2>
+<div class="panel panel-default">
+	<div class="panel-heading">
+<h2>Past events <%= separator_symbol %> <%= link_to "view all", @past_link %></h2>
+	</div>
+	<div class="panel-body">
 <% if @past_events.any? %>
-	<%= will_paginate @past_events, page: :past_page %>
 
 	<ul class="items">
 		<%= render @past_events %>
 	</ul>
-	<!-- TODO calendar view? -->
 
-	<%= will_paginate @past_events, page: :past_page %>
 <% else %>
 No events found.
 <% end %>
+	</div>
+</div>

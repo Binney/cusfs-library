@@ -1,0 +1,9 @@
+<% provide :title, "The Cuddly Alien Game" %>
+<% provide :site_section, "0" %>
+<%= javascript_include_tag params[:controller] %>
+
+<div class="togglediv">
+	<%= select("item", "title", Item.all.pluck(:title), id: "bookSelect" ) %>
+</div>
+<div id="cuddlyalien"></div>
+<p>Instructions: arrow keys and spacebar. Alternatively yell directions at your screen as loudly as you can.</p>

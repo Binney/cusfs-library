@@ -15,4 +15,5 @@
 //= require bootstrap
 //= require turbolinks
 //= require jquery_nested_form
-//= require_tree .
+//= require toggle.js
+//= require analytics.js

@@ -1,0 +1,29 @@
+<div class="panel panel-default">
+<div class="pagination">
+<ul>
+
+	<% if @committee.previous %>
+		<li class="prev previous_page"><%= link_to "← Previous", "/committees/#{@committee.previous.id}" %></li>
+	<% else %>
+		<li class="prev previous_page disabled"><%= link_to "← Previous", '#', enabled: false %></li>
+	<% end %>
+
+	<% Committee.all[-4..-1].reverse.each do |committee| %>
+		<%= render 'committee_view_button', committee: committee %>
+	<% end %>
+
+	<li><%= link_to "View all", committees_path %></li>
+
+	<% Committee.all[0..3].reverse.each do |committee| %>
+		<%= render 'committee_view_button', committee: committee %>
+	<% end %>
+
+	<% if @committee.successor %>
+		<li class="next next_page"><%= link_to "Next →", "/committees/#{@committee.successor.id}" %></li>
+	<% else %>
+		<li class="next next_page disabled"><%= link_to "Next →", '#', enabled: false %></li>
+	<% end %>
+
+</ul>
+</div>
+</div>

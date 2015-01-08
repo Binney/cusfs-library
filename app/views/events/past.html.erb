@@ -1,0 +1,18 @@
+<% provide(:title, @title) %>
+<% provide :site_section, "2" %>
+<h1><%= @title %> <%= separator_symbol %> <%= link_to "view forthcoming events", @link %></h1>
+
+<%= render 'activities_past' %>
+
+<% if @events.any? %>
+	<%= will_paginate @events %>
+
+	<ul class="items">
+		<%= render @events %>
+	</ul>
+	<!-- TODO calendar view? -->
+
+	<%= will_paginate @events %>
+<% else %>
+No events found.
+<% end %>

@@ -1,0 +1,14 @@
+<% provide :title, "CUSFS Committee of #{@committee.date}" %>
+<% provide :site_section, "3" %>
+
+<%= render 'committee_selection' %>
+
+<% if you_admin? %>
+	<%= link_to "Elect a new committee", new_committee_path %>
+<% end %>
+
+<%= render 'cusfs_committee', committee: @committee %>
+
+<%= render 'jomscommittee', committee: @committee %>
+
+<%= render 'vice_presidents', committee: @committee %>  

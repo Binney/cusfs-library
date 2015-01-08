@@ -12,6 +12,9 @@ Time to exert your godlike powers and edit the site!
 	<li><%= link_to "New item", new_item_path %></li>
 	<li><%= link_to "Create author", new_author_path %></li>
 	<li><%= link_to "Create series", new_series_path %></li>
+
+	<li><%= link_to "Download catalogue", download_catalogue_path, data: { confirm: "This file will be large (~) and will take the server some time to prepare (not more than a couple of minutes). Continue?" } %></li>
+	<li><%= link_to "Download author list", download_authors_path %></li>
 </div>
 
 <div class="panel panel-default">
@@ -32,4 +35,5 @@ Time to exert your godlike powers and edit the site!
 	<h2>Users</h2>
 	<li><%= link_to "Create new user", new_user_path %></li>
 	<li><%= link_to "Manage users", users_path %></li>
+	<li><%= link_to "Download membership list", download_users_path %></li>
 </div>

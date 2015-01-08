@@ -1,0 +1,14 @@
+<% unless committee.vice_presidents.blank? %>
+  <div class="panel panel-default">
+    <div class="panel-heading">Vice-Presidents</div>
+    <div class="panel-body">
+      <p>The CUSFS Vice-Presidents for this year were selected through <%= committee.vp_election_method.blank? ? "an unknown method" : "the medium of #{committee.vp_election_method}" %>.</p>
+      <table class="table">
+        <% vps = committee.vice_presidents.split("\n") %>
+        <% vps.each do |vp| %>
+          <tr><td class="committee-position"><%= vp %></td></tr>
+        <% end %>
+      </table>      
+    </div>
+  </div>
+<% end %>

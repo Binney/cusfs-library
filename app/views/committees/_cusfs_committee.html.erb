@@ -1,0 +1,22 @@
+  <div class="panel panel-default">
+    <div class="panel-heading">CUSFS Committee
+      <% if you_admin? %>
+        <%= separator_symbol %> <%= link_to "edit", edit_committee_path(committee) %>
+        <%= separator_symbol %> <%= link_to "delete", committee, method: :delete, data: {confirm: "You sure?"} %>
+      <% end %>
+    </div>
+
+    <div class="panel-body">
+      <p>The CUSFS Committee for <%= committee.date %> <%= committee.current? ? "is" : "was" %>:</p>
+    </div>
+
+    <table class="table">
+    	<tr><td class="committee-position">Chairbeing:</td><td><%= committee.chairbeing %></td></tr>
+    	<tr><td class="committee-position">Secretary:</td><td><%= committee.secretary %></td></tr>
+    	<tr><td class="committee-position">Librarian:</td><td><%= committee.librarian %></td></tr>
+    	<tr><td class="committee-position">Junior Treasurer:</td><td><%= committee.treasurer %></td></tr>
+    	<tr><td class="committee-position">Membership Secretary:</td><td><%= committee.memsec %></td></tr>
+    	<tr><td class="committee-position">TTBA Editor:</td><td><%= committee.ttba %></td></tr>
+    </table>
+  	Contact the committee as a whole at <%= link_to "soc-cusfs [at] lists dot cam [dot] ac [dot] uk", "mailto:soc-cusfs@lists.cam.ac.uk" %>.</p>
+  </div>

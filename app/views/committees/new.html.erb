@@ -1,0 +1,68 @@
+<% provide :title, "Elect the Committee" %>
+<% provide :site_section, "1" %>
+<h1>Elect a Committee</h1>
+
+<div class="row">
+	<div class="span6 offset3">
+		<%= form_for(@committee) do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
+
+			<%= f.label :start_year %>
+			<%= f.text_field :start_year %><br>
+			<small>This is a number used to order the committees, regardless of how long their period of office was. For technical reasons please make it the start year of the committee * 10. So for example you might have 20550 for the ACTUAL committee that started in 2055 and 20545 for the committee that was elected for 45 minutes during the AGM of 2055 and consisted entirely of gremlins.</small>
+
+			<%= f.label :date %>
+			<%= f.text_field :date %><br>
+			<small>Put some details on how long this committee served for; for example, "2014-2015" or "The Very Brief Committee of September 2017".</small>
+
+			<%= f.label :chairbeing %>
+			<%= f.text_field :chairbeing %>
+
+			<%= f.label :secretary %>
+			<%= f.text_field :secretary %>
+
+			<%= f.label :treasurer %>
+			<%= f.text_field :treasurer %>
+
+			<%= f.label :librarian %>
+			<%= f.text_field :librarian %>
+
+			<%= f.label :memsec %>
+			<%= f.text_field :memsec %>
+
+			<%= f.label :ttba %>
+			<%= f.text_field :ttba %>
+
+			<h2>The Jomscommittee</h2>
+
+			<%= f.label :reeve %>
+			<%= f.text_field :reeve %>
+
+			<%= f.label :runecaster %>
+			<%= f.text_field :runecaster %>
+
+			<%= f.label :geldjarl %>
+			<%= f.text_field :geldjarl %>
+
+			<%= f.label :meadkeeper %>
+			<%= f.text_field :meadkeeper %>
+
+			<%= f.label :bard %>
+			<%= f.text_field :bard %>
+
+			<h2>The Vice-Presidents</h2>
+
+			<%= f.label :vice_presidents %>
+			<%= f.text_area :vice_presidents %>
+			<small>One per line</small>
+
+			<%= f.label :vp_election_method, "How were these Vice-Presidents elected?" %>
+			<%= f.text_field :vp_election_method %>
+
+
+			<%= f.submit "Elect!", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>
+
+<%= render 'shared/back_button', path: committees_path %>

@@ -40,6 +40,10 @@ class Item < ActiveRecord::Base
   	self.withdrawals.length<self.editions.length
   end
 
+  def availability_status
+    self.is_available? ? "Available" : "Withdrawn"
+  end
+
   def add_edition(editioncode)
     if self.editions.include?(String(editioncode))
       puts "[WARNING] Item.rb: Can't update #{title} with edition #{editioncode} as that edition is already in the library."

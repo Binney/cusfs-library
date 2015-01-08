@@ -2,7 +2,7 @@
 <% provide :site_section, "3" %>
 
 <h1>Help</h1>
-<p>Some instructions for the website. If you can't find what you're looking for, or something's broken and you're getting Mauve Alert (500) errors, <%= link_to "email the Secretary", committee_path %> to ask for help!</p>
+<p>Some instructions for the website. If you can't find what you're looking for, or something's broken and you're getting Mauve Alert (500) errors, <%= link_to "email the Secretary", current_path %> to ask for help!</p>
 
 <h2 id="library-help">Using the Library</h2>
 
@@ -46,7 +46,7 @@
 <% if signed_in? && !current_user.admin? %>
 
 <span class="question">Q: How do I become an admin?</span>
-<p>You don't. Only the committee are admins and they have separate accounts for that. If you're on the committee but don't have access to your committee account, <%= link_to "pester the Secretary", committee_path %> into doing their job.
+<p>You don't. Only the committee are admins and they have separate accounts for that. If you're on the committee but don't have access to your committee account, <%= link_to "pester the Secretary", current_path %> into doing their job.
 	</p>
 	
 <span class="question">Q: What if I AM the secretary?</span>

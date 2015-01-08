@@ -29,18 +29,19 @@ body {
   box-sizing: border-box;
 }
 
-.container-library {
+.container-0 { /* Library section */
   background-image: image-url("starburst.jpg");
   background-color: black;
 }
 
-.container-creative {
-  background-image: image-url("map.jpg"); /* TODO um this looks horrendous */
-  background-color: #ae9066;
+.container-1 { /* Creative section */
+  background-image: image-url("starburst.jpg"); /* TODO actual creative background */
+  background-color: black;
 }
 
-.container-schedule {
-  /* TODO steampunk machinery background */
+.container-2 { /* Schedule section */
+  background-image: image-url("contraption.png");
+  background-color: black;
 }
 
 .cusfs-body {
@@ -53,6 +54,18 @@ body {
   position: relative;
   background-color: $baseBlue;
   font-family: $sansFont;
+}
+
+.cusfs-body-0 {
+  background-color: $baseBlue;
+}
+
+.cusfs-body-1 {
+  background-color: $baseBlue;
+}
+
+.cusfs-body-2 {
+  background-color: #f3f3f3;
 }
 
 section {

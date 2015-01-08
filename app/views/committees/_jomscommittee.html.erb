@@ -1,0 +1,14 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Jómscommittee</div>
+  <div class="panel-body">
+    <p>The Reeve of <%= link_to "Jómsborg", history_path %> and their companions for <%= committee.date %> <%= committee.current? ? "are" : "were" %>:</p>
+  </div>
+
+  <table class="table">
+  <tr><td class="committee-position">Reeve:</td><td><%= committee.reeve %></td></tr>
+  <tr><td class="committee-position">Runecaster:</td><td><%= committee.runecaster %></td></tr>
+  <tr><td class="committee-position">Geldjarl:</td><td><%= committee.geldjarl %></td></tr>
+  <tr><td class="committee-position">Meadkeeper:</td><td><%= committee.meadkeeper %></td></tr>
+  <tr><td class="committee-position">Bard:</td><td><%= committee.bard %></td></tr>
+  </table>
+</div>

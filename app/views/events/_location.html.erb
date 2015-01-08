@@ -5,6 +5,10 @@
 	<%= link_to location, locations_path(anchor: "Glover") %>
 <% when "New Combination Room, Pembroke College" %>
 	<%= link_to location, locations_path(anchor: "NCR") %>
+<% when "Castle End Meeting Rooms, The Colony, Clare College" %>
+	<%= link_to location, locations_path(anchor: "Castle_End") %>
+<% when "The CUSFS Library" %>
+	<%= link_to location, locations_path(anchor: "Library") %>
 <% else %>
 	<%= location %>
 <% end %>

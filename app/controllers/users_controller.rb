@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   before_action :sign_in_user # None of this is accessible without signing in first.
-  before_action :admin_user, only: [:new, :create]
+  before_action :admin_user, only: [:new, :create, :download_users, :destroy]
   before_action :correct_user, only: [:edit, :update, :withdrawals, :requests, :reservations]
   include ApplicationHelper
+  require 'csv'
 
   def new
   	@user = User.new
@@ -107,6 +108,20 @@ class UsersController < ApplicationController
   def reservations 
     @user = User.find(params[:id])
     @reservations = @user.reservations
+  end
+
+  def download
+    puts "#{current_user.name} is downloading the membership list..."
+    @users = User.all
+    @file = "CUSFS_membership.csv"
+    CSV.open( @file, 'w' ) do |writer|
+      #writer << ["Name", "Email", "Active membership?", "Membership expiry"]
+      @users.each do |user|
+        is_active = user.membership_expiry > Date.today
+        writer << [user.name, user.email, is_active, user.membership_expiry]
+      end
+    end
+    send_file @file
   end
 
   def destroy
