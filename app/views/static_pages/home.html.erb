@@ -1,33 +1,27 @@
 <% provide :title, 'Home' %>
 <% provide :site_section, '3' %>
 
-<h1>Home</h1>
+<div class="content">
+	<h1>Home</h1>
 
-<% unless signed_in? %>
-	<div class="panel panel-default">
-		New to CUSFS? Start here: <%= link_to "about", about_path %> <%= separator_symbol %> 
-		<%= link_to "membership", membership_path %> <%= separator_symbol %> 
-		<%= link_to "events", schedule_path %> <%= separator_symbol %> 
-		<%= link_to "committee", current_path %>
+	<% unless signed_in? %>
+		<div class="welcome-help">
+			New to CUSFS? Start here: <%= link_to "about", about_path %> <%= separator_symbol %> 
+			<%= link_to "membership", membership_path %> <%= separator_symbol %> 
+			<%= link_to "events", schedule_path %> <%= separator_symbol %> 
+			<%= link_to "committee", current_path %>
+		</div>
+	<% end %>
+
+	<div class="welcome-message">
+	<h3>Welcome to the website of the Cambridge University Science Fiction Society! This provides information about the <%= link_to "activities", schedule_path %> of the Society, our <%= link_to "history", about_path %> and <%= link_to "members", membership_path %>, as well as hosting our <%= link_to "library catalogue", library_path %> and back issues of our magazine, <%= link_to "TTBA", ttba_path %>.</h3>
 	</div>
-<% end %>
-
-<div class="panel panel-default">
-<p>Welcome to the website of the Cambridge University Science Fiction Society! This provides information about the <%= link_to "activities", schedule_path %> of the Society, our <%= link_to "history", about_path %> and <%= link_to "members", membership_path %>, as well as hosting our <%= link_to "library catalogue", library_path %> and back issues of our magazine, <%= link_to "TTBA", ttba_path %>.</p>
 </div>
 
-<h2>Upcoming events</h2>
-<% if @forthcoming_events.any? %>
+<div class="content">
+	<%= render 'upcoming_events' %>
+</div>
 
-	<ul class="items">
-		<%= render @forthcoming_events %>
-	</ul>
-
-<% else %>
-No events found.
-<% end %>
-
-<h2>CUSFS recommends...</h2>
-<ul class="collection">
-	<%= render @collection %>
-</ul>
+<div class="content">
+	<%= render 'site_previews' %>
+</div>

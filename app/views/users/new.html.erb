@@ -1,29 +1,56 @@
 <% provide(:title, 'Create new user') %>
 <% provide :site_section, '3' %>
 
-<h1>Create new user</h1>
+<div class="content">
+  <h1>Create new user</h1>
+</div>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@user) do |f| %>
-	  <%= render 'shared/error_messages', object: f.object %>
+<div class="content">
 
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+      <%= form_for(@user, html: {class: "form-horizontal"}) do |f| %>
+  	  <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label :email %>
-      <%= f.text_field :email %>
+          <div class="form-group">
+            <%= f.label :name, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :name, class: "form-control" %>
+            </div>
+          </div>
 
-      <%= f.label :membership_expiry, "Member until" %>
-      <%= f.date_select :membership_expiry, selected: 1.year.from_now %>
+          <div class="form-group">
+            <%= f.label :email, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :email, class: "form-control" %>
+            </div>
+          </div>
 
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+          <div class="form-group">
+            <%= f.label :membership_expiry, "Member until", class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.date_select :membership_expiry, selected: 1.year.from_now, class: "form-control" %>
+            </div>
+          </div>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation %>
-<br>
-      <%= f.submit "Create user account", class: "btn btn-large btn-primary" %>
-    <% end %>
-  </div>
+          <div class="form-group">
+            <%= f.label :password, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.password_field :password, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password_confirmation, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.password_field :password_confirmation, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="actions form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <%= f.submit "Create user account", class: "btn btn-large btn-primary" %>
+            </div>
+          </div>
+
+      <% end %>
+
 </div>

@@ -3,8 +3,10 @@ class ApplicationController < ActionController::Base
 	# For APIs, you may want to use :null_session instead.
 	protect_from_forgery with: :exception
 	include SessionsHelper
+	include QuotesHelper
 	before_filter :create_search
 	before_filter :routing_wtf
+	before_filter :pick_a_quote
 
 	def admin_user
 		redirect_to root_path, notice: "You are not worthy. You shall not pass." unless signed_in? && current_user.admin?
@@ -26,6 +28,10 @@ class ApplicationController < ActionController::Base
 			puts "You're visiting via a deprecated route and so are being redirected to the proper one...!"
 			redirect_to "http://cusfs.soc.srcf.net#{request.fullpath}"
 		end
+	end
+
+	def pick_a_quote
+		@quote = all_quotes[rand(all_quotes.length-1)]
 	end
 
 end

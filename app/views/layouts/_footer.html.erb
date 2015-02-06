@@ -1,16 +1,17 @@
-<footer class="footer">
-  <b><%= link_to "Cambridge University Science Fiction Society", '#', class: "footer-title" %>
-  <nav>
-    <ul class="footer-main-nav">
-      <li><%= link_to "Help", help_path %></li>
-      <li><%= link_to "About", about_path %></li>
-      <li><%= link_to "Contact", contact_path %></li>
-    </ul>
-  </nav>
-</b>
-<div class="footer-menus">
-	<div class="upcontainer leftcontainer">
-		<div class="leftcontainer">
+<footer class="footer content">
+	<div class="row bordered-foot">
+	  <b><%= link_to "Cambridge University Science Fiction Society", '#', class: "footer-title" %>
+	  <nav>
+	    <ul class="footer-main-nav">
+	      <li><%= link_to "Help", help_path %></li>
+	      <li><%= link_to "About", about_path %></li>
+	      <li><%= link_to "Contact", contact_path %></li>
+	    </ul>
+	  </nav>
+	</b>
+	</div>
+	<div class="row">
+		<div class="col-md-3">
 			<ul class="footer-nav">
 				<li><%= link_to "History", history_path %></li>
 				<li><%= link_to "Membership", membership_path %></li>
@@ -20,7 +21,7 @@
 				<li><%= link_to "Archive", "/old" %></li>
 			</ul>
 		</div>
-		<div class="rightcontainer">
+		<div class="col-md-3">
 			<ul class="footer-nav">
 				<li><%= link_to "Library openings", library_openings_path %></li>
 				<li><%= link_to "Books", fiction_path %></li>
@@ -29,9 +30,7 @@
 				<li><%= link_to "Genres", '#' %></li>
 			</ul>
 		</div>
-	</div>
-	<div class="upcontainer rightcontainer">
-		<div class="leftcontainer">
+		<div class="col-md-3">
 			<ul class="footer-nav">
 				<li><%= link_to "Creative", creative_path %></li>
 				<li><%= link_to "TTBA Magazine", ttba_path %></li>
@@ -39,7 +38,7 @@
 				<li><%= link_to "Art", art_path %></li>
 			</ul>
 		</div>
-		<div class="rightcontainer">
+		<div class="col-md-3">
 			<ul class="footer-nav">
 				<li><%= link_to "Schedule", schedule_path %></li>
 				<li><%= link_to "Locations", locations_path %></li>
@@ -50,7 +49,4 @@
 			</ul>
 		</div>
 	</div>
-</div>
-
-
 </footer>

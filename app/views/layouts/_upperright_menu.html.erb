@@ -1,4 +1,6 @@
-<ul class="nav pull-right">
+<div class="container-fluid">
+<ul class="nav navbar-nav navbar-right">
+  <li class="quote"><%= link_to "\"#{@quote}\"", '#' %></li>
   <% if signed_in? %>
     <li><%= link_to current_user.name, current_user %></li>
     <li><%= link_to "Settings", edit_user_path(current_user) %></li>
@@ -13,3 +15,4 @@
     <li><%= link_to "Sign in",   signin_path %></li>
   <% end %>
 </ul>
+</div>

@@ -2,23 +2,25 @@
 <html>
 <head>
   <title><%= full_title(yield(:title), yield(:site_section)).html_safe %></title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <!--[if IE]>
+    <%= stylesheet_link_tag "application-ie", media: "all", "data-turbolinks-track" => true %>
+  <![endif]-->
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %> 
   <%= csrf_meta_tags %>
   <%= favicon_link_tag %>
   <%= render 'layouts/shim' %>
 </head>
 <body>
-  <%= content_tag :div, class: "metacontainer container-#{yield(:site_section)}" do %>
   <%= render 'layouts/header' %>
+  <%= content_tag :div, class: "metacontainer metacontainer-#{yield(:site_section)}" do %>
     <%= content_tag :div, class: "container cusfs-body cusfs-body-#{yield(:site_section)}" do %>
         <% flash.each do |key, value| %>
           <div class="alert alert-<%= key %>"><%= value %></div>
         <% end %>
         <%= yield %>
       <%= render 'layouts/footer' %>
-    <% end %>
   <% end %>
-
+  <% end %>
 </body>
 </html>

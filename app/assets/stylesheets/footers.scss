@@ -1,0 +1,48 @@
+footer {
+  background-color: $translucentBaseBlue;
+  float: bottom;
+  margin-top: 45px;
+  margin-bottom: 0px !important;
+  font-family: $serifFont;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding-top: 5px;
+  padding-bottom: 30px;
+  color: $darkBlue;
+  a {
+    font-family: $serifFont;
+    color: $darkBlue;
+    &:hover {
+      color: $lighterBlue;
+      text-decoration: none;
+    }
+  }
+  .footer-title {
+    padding-top: 2px;
+    float: left;
+    font-family: $serifFont;
+    margin-bottom: 10px;
+  }
+  .footer-main-nav {
+    padding-top: 2px;
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}
+
+.bordered-foot {
+  border-top: 1px solid $darkBlue;
+}
+
+.footer-nav {
+	list-style-type: none;
+  text-align: center;
+	margin-left: 0px;
+	li {
+		margin: 0px;
+	}
+}

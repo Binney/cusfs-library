@@ -1,36 +1,50 @@
 <% provide :title, "All reviews" %>
 <% provide :site_section, "0" %>
 
-<h1>All reviews</h1>
+<div class="content">
+	<h1>All reviews</h1>
+</div>
 
 <% unless @reviews.any? %>
-	No reviews! Tragic, really.
+
+	<div class="content">
+		<p>No reviews! Tragic, really.</p>
+	</div>
+
 <% else %>
 
-	<h2>Recent</h2>
-		<ul class="reviews recent-reviews">
-			<%= render @reviews %>
-		</ul>
+	<div class="content">
+		<h2>Recent</h2>
+			<ul class="reviews recent-reviews">
+				<%= render @reviews[0..4] %>
+			</ul>
+	</div>
 
-	<% if @item_reviews.any? %>
-	<h2>Item reviews</h2>
-		<ul class="reviews item-reviews">
-			<%= render @item_reviews %>
-		</ul>
-	<% end %>
+	<div class="content">
+		<% if @item_reviews.any? %>
+		<h2>Item reviews</h2>
+			<ul class="reviews item-reviews">
+				<%= render @item_reviews %>
+			</ul>
+		<% end %>
+	</div>
 
-	<% if @author_reviews.any? %>
-	<h2>Author reviews</h2>
-		<ul class="reviews author-reviews">
-			<%= render @author_reviews %>
-		</ul>
-	<% end %>
+	<div class="content">
+		<% if @author_reviews.any? %>
+		<h2>Author reviews</h2>
+			<ul class="reviews author-reviews">
+				<%= render @author_reviews %>
+			</ul>
+		<% end %>
+	</div>
 
-	<% if @series_reviews.any? %>
-	<h2>Series reviews</h2>
-		<ul class="reviews series-reviews">
-			<%= render @series_reviews %>
-		</ul>
-	<% end %>
+	<div class="content">
+		<% if @series_reviews.any? %>
+		<h2>Series reviews</h2>
+			<ul class="reviews series-reviews">
+				<%= render @series_reviews %>
+			</ul>
+		<% end %>
+	</div>
 
 <% end %>

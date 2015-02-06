@@ -1,7 +1,11 @@
 <% provide(:title, @event.name) %>
 <% provide :site_section, "2" %>
-<h1><%= @event.name %></h1>
 
+<div class="content">
+	<h1><%= @event.name %></h1>
+</div>
+
+<div class="content">
 	<span class="item-name">
 		<%= @event.name %> <%= separator_symbol %> <%= @event.time.to_s(:short) %>
 	    <% if @event.end_time.to_i > @event.time.to_i %>
@@ -17,3 +21,8 @@
 	<div class="event-description">
 		<%= simple_format @event.description %>
 	</div>
+</div>
+
+<div class="content">
+	<%= image_tag @event.image_url, width: "300px", height: "450px" %>
+</div>

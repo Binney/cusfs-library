@@ -1,46 +1,59 @@
 <% provide(:title, @title) %>
 <% provide :site_section, "2" %>
-<h1><%= @title %></h1>
 
-<%= render 'activities' %>
+<div class="content">
+	<h1><%= @title %></h1>
+</div>
 
-<p><%= @explanation.html_safe %>
+<div class="content">
+	<%= render 'activities' %>
+</div>
 
-<center><b>Where do we hold these events? <%= link_to "See locations list", locations_path %>.</b></center></p>
+<div class="content">
+	<p><%= @explanation.html_safe %>
 
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h2>Upcoming events</h2>
-	</div>
-	<div class="panel-body">
-<% if @forthcoming_events.any? %>
-	<%= will_paginate @forthcoming_events %>
+	<center><b>Where do we hold these events? <%= link_to "See locations list", locations_path %>.</b></center></p>
+</div>
 
-	<ul class="items">
-		<%= render @forthcoming_events %>
-	</ul>
-	<!-- TODO calendar view? -->
+<div class="content">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h2>Upcoming events</h2>
+		</div>
+		<div class="panel-body">
+	<% if @forthcoming_events.any? %>
+		<%= will_paginate @forthcoming_events %>
 
-	<%= will_paginate @forthcoming_events %>
-<% else %>
-No events found.
-<% end %>
+		<ul class="items">
+			<%= render @forthcoming_events %>
+		</ul>
+		<!-- TODO calendar view? -->
+
+		<%= will_paginate @forthcoming_events %>
+	<% else %>
+	No events found.
+	<% end %>
+		</div>
 	</div>
 </div>
 
-<div class="panel panel-default">
-	<div class="panel-heading">
-<h2>Past events <%= separator_symbol %> <%= link_to "view all", @past_link %></h2>
-	</div>
-	<div class="panel-body">
-<% if @past_events.any? %>
+<div class="content">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+	<h2>Past events <%= separator_symbol %> <%= link_to "view all", @past_link %></h2>
+		</div>
+		<div class="panel-body">
+	<% if @past_events.any? %>
 
-	<ul class="items">
-		<%= render @past_events %>
-	</ul>
+		<ul class="items">
+			<% @past_events.each do |event| %>
+				<%= render 'past_event', event: event %>
+			<% end %>
+		</ul>
 
-<% else %>
-No events found.
-<% end %>
+	<% else %>
+	No events found.
+	<% end %>
+		</div>
 	</div>
 </div>

@@ -1,0 +1,53 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,600|Cinzel);
+
+$serifFont: "Cinzel";
+$sansFont: Raleway, sans-serif;
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+	line-height: 1;
+	font-family: $sansFont;
+}
+
+h1 {
+	font-family: $sansFont;
+	font-weight: 600;
+	font-size: 3em;
+	letter-spacing: -2px;
+	margin-bottom: 30px;
+	color: $darkBlue;
+}
+
+h2 {
+	font-size: 1.8em;
+	margin-bottom: 20px;
+	font-weight: normal;
+	color: black;
+}
+
+h3 {
+	font-size: 1.2em;
+	margin-bottom: 15px;
+	font-weight: normal;
+	color: black;
+	line-height: 200%;
+}
+
+p {
+	font-size: 1.1em;
+	line-height: 1.7em;
+	font-family: $sansFont;
+	a {
+		font-weight: 600;
+	}
+}
+
+a {
+	font-family: $sansFont;
+	color: $darkOrange;
+	&:hover {
+		text-decoration: none;
+		color: $lightOrange;
+	}
+}

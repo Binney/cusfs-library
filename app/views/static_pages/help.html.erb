@@ -1,99 +1,118 @@
 <% provide :title, 'Help' %>
 <% provide :site_section, "3" %>
 
+<div class="content">
 <h1>Help</h1>
-<p>Some instructions for the website. If you can't find what you're looking for, or something's broken and you're getting Mauve Alert (500) errors, <%= link_to "email the Secretary", current_path %> to ask for help!</p>
+</div>
 
+<div class="content">
+	<p>Some instructions for the website. If you can't find what you're looking for, or something's broken and you're getting Mauve Alert (500) errors, <%= link_to "email the Secretary", current_path %> to ask for help!</p>
+</div>
+
+<!--[if IE]>
+	<div class="content">
+	<span class="question">Q: Boy, this site looks awfully silly.</span>
+	<p>That's because you're using Internet Explorer. Please stop doing that. No, seriously, the website looks fine in Firefox, Chrome, any version of Internet Explorer from 10 upwards, and most other browsers the Secretary tested. Unfortunately Internet Explorer <9 messes up the styling so if you want the full CUSFS experience you should switch browser. (You should also switch browser anyway. IE is terrible. I am so sorry for you.)</p>
+	</div>
+<![endif]-->
+
+<div class="content">
 <h2 id="library-help">Using the Library</h2>
 
-<p>The Library is CUSFS' several-thousand-book repository of science fiction and fantasy tomes. We also have films and a small number of communal board games.</p>
+	<p>The Library is CUSFS' several-thousand-book repository of science fiction and fantasy tomes. We also have films and a small number of communal board games.</p>
 
-<span class="question">Q: How do I find an item I'm looking for?</span>
-<p>There are lots of ways to do this. You can browse items alphabetically by clicking <%= link_to "Browse", items_path %> in the menu bar. You can also browse by author or series name. Sort by category (e.g. graphic novels or tie-ins) under the Category tab. Alternatively, use the search box.</p>
+	<span class="question">Q: How do I find an item I'm looking for?</span>
+	<p>There are lots of ways to do this. You can browse items alphabetically by clicking <%= link_to "Browse", items_path %> in the menu bar. You can also browse by author or series name. Sort by category (e.g. graphic novels or tie-ins) under the Category tab. Alternatively, use the search box.</p>
 
-<span class="question">Q: How do I search?</span>
-<p>There's a search box in the orange menu bar. Try short strings which will be found verbatim in the item's title, for example "Game of Thrones" or "Amazing Maurice". "Game Thrones" won't work. If you can't find what you're looking for, try searching by author name or series title. You can also search for users by name and TTBAs by content.
-	</p>
-	
-<span class="question">Q: There's a typo in one of the items. Can I change it?</span>
-<p>No, but you can <%= link_to "email us", contact_path %> and we can change it instead. (Seriously, please do! The gradual polishing of all entries in the Library is an ongoing process...)
-	</p>
+	<span class="question">Q: How do I search?</span>
+	<p>There's a search box in the orange menu bar. Try short strings which will be found verbatim in the item's title, for example "Game of Thrones" or "Amazing Maurice". "Game Thrones" won't work. If you can't find what you're looking for, try searching by author name or series title. You can also search for users by name and TTBAs by content.
+		</p>
+		
+	<span class="question">Q: There's a typo in one of the items. Can I change it?</span>
+	<p>No, but you can <%= link_to "email us", contact_path %> and we can change it instead. (Seriously, please do! The gradual polishing of all entries in the Library is an ongoing process...)
+		</p>
 
-<span class="question">Q: What's the deal on borrowing?</span>
-<p>First, <%= link_to "ensure you've got an account with us", '#account-user-help' %>. Then attend a <%= link_to "library opening session", library_openings_path %> and you can get the Librarian to check out up to 10 books for as long as you like. (Well, we'd like them back before you graduate. But there's no enforced time limit.) You can return them at opening sessions too.
-	</p>
+	<span class="question">Q: What's the deal on borrowing?</span>
+	<p>First, <%= link_to "ensure you've got an account with us", '#account-user-help' %>. Then attend a <%= link_to "library opening session", library_openings_path %> and you can get the Librarian to check out up to 10 books for as long as you like. (Well, we'd like them back before you graduate. But there's no enforced time limit.) You can return them at opening sessions too.
+		</p>
 
-<span class="question">Q: I can't get to a library opening session! What should I do?</span>
-<p>You can reserve books 
-	<% if signed_in? %>
-		<%= link_to "here", new_reservation_path %>.
-	<% else %>
-		if you have an <%= link_to "account", '#user-help' %> with us. Just log in and click "reserve a book".
-	<% end %>
-	We'll then organise to give you the books, either in person or in your pidge.
-	</p>
+	<span class="question">Q: I can't get to a library opening session! What should I do?</span>
+	<p>You can reserve books 
+		<% if signed_in? %>
+			<%= link_to "here", new_reservation_path %>.
+		<% else %>
+			if you have an <%= link_to "account", '#user-help' %> with us. Just log in and click "reserve a book".
+		<% end %>
+		We'll then organise to give you the books, either in person or in your pidge.
+		</p>
+</div>
 
+<div class="content">
 <h2 id="user-help">Accounts</h2>
 
-<span class="question" id="account-user-help">Q: How do I get an account?</span>
-<p>You need to be a <%= link_to "CUSFS member", membership_path %>. Come to any CUSFS meeting and the memsec will sign you up. You'll then get an email with account details and instructions on how to change your password.
-	</p>
+	<span class="question" id="account-user-help">Q: How do I get an account?</span>
+	<p>You need to be a <%= link_to "CUSFS member", membership_path %>. Come to any CUSFS meeting and the memsec will sign you up. You'll then get an email with account details and instructions on how to change your password.
+		</p>
 
-<span class="question">Q: Can I delete my account?</span>
-<p>Sure (sniff :C ). <%= link_to "Email a commmittee member", contact_path %> and they'll delete your account. We're sorry to see you go!
-	</p>
+	<span class="question">Q: Can I delete my account?</span>
+	<p>Sure (sniff :C ). <%= link_to "Email a commmittee member", contact_path %> and they'll delete your account. We're sorry to see you go!
+		</p>
 
-<% if signed_in? && !current_user.admin? %>
+	<% if signed_in? && !current_user.admin? %>
 
-<span class="question">Q: How do I become an admin?</span>
-<p>You don't. Only the committee are admins and they have separate accounts for that. If you're on the committee but don't have access to your committee account, <%= link_to "pester the Secretary", current_path %> into doing their job.
-	</p>
-	
-<span class="question">Q: What if I AM the secretary?</span>
-<p> Then, well, um, congratulations! Nag the previous secretary into doing THEIR job; if that fails email Binney who built this site at s.binney@physics.org, or if the worst comes to the worst hack the site and alter your login details.
-	</p>
+	<span class="question">Q: How do I become an admin?</span>
+	<p>You don't. Only the committee are admins and they have separate accounts for that. If you're on the committee but don't have access to your committee account, <%= link_to "pester the Secretary", current_path %> into doing their job.
+		</p>
+		
+	<span class="question">Q: What if I AM the secretary?</span>
+	<p> Then, well, um, congratulations! Nag the previous secretary into doing THEIR job; if that fails email Binney who built this site at s.binney@physics.org, or if the worst comes to the worst hack the site and alter your login details.
+		</p>
 
-<% end %>
+	<% end %>
+</div>
 
 <% if you_admin? %>
+<div class="content">
 
 <h2 id="admin-help">Admin wizardry</h2>
-<p>Most admin stuff can be found on the Admin button on the uppermost right corner when you're signed in with your committee account.</p>
+	<p>Most admin stuff can be found on the Admin button on the uppermost right corner when you're signed in with your committee account.</p>
 
-<span class="question">Q: How do I add users?</span>
-<p><%= link_to "Here", new_user_path %>. Their username should be something temporary since they'll be prompted to change it upon first login.
-	</p>
+	<span class="question">Q: How do I add users?</span>
+	<p><%= link_to "Here", new_user_path %>. Their username should be something temporary since they'll be prompted to change it upon first login.
+		</p>
 
-<span class="question">Q: How do I delete users?</span>
-<p>Visit their <%= link_to "profile", users_path %> and there's a link saying "delete" under their profile picture. Beware! This is permanent and irreversible, and will remove all their reviews, collections, and so on. Only do this if that person has specifically requested it; accounts whose membership has expired should be kept active by default.
-	</p>
+	<span class="question">Q: How do I delete users?</span>
+	<p>Visit their <%= link_to "profile", users_path %> and there's a link saying "delete" under their profile picture. Beware! This is permanent and irreversible, and will remove all their reviews, collections, and so on. Only do this if that person has specifically requested it; accounts whose membership has expired should be kept active by default.
+		</p>
 
-<span class="question">Q: How do I add items to the Library?</span>
-<p>If there are only a few items, add them one by one <%= link_to "here", new_item_path %>. If there are many, give the Secretary a CSV of information and they'll upload it. (An automatic upload facility is planned for An Unspecified Point In The Future.)
-	</p>
+	<span class="question">Q: How do I add items to the Library?</span>
+	<p>If there are only a few items, add them one by one <%= link_to "here", new_item_path %>. If there are many, give the Secretary a CSV of information and they'll upload it. (An automatic upload facility is planned for An Unspecified Point In The Future.)
+		</p>
 
-<span class="question">Q: How do I add authors/series?</span>
-<p>See above; you can add authors <%= link_to "here", new_author_path %> and series <%= link_to "here", new_series_path %>.
-	</p>
+	<span class="question">Q: How do I add authors/series?</span>
+	<p>See above; you can add authors <%= link_to "here", new_author_path %> and series <%= link_to "here", new_series_path %>.
+		</p>
 
-<span class="question">Q: How do I edit an item?</span>
-<p>There's a little button saying "edit" on the item's page below the cover. You can change stuff there. You can also change the cover art; find a suitable image on the interweb and copy its url into the cover url box. (Be sure to make the image somewhere which is unlikely to change or be deleted, for example Wikipedia.)
-	</p>
+	<span class="question">Q: How do I edit an item?</span>
+	<p>There's a little button saying "edit" on the item's page below the cover. You can change stuff there. You can also change the cover art; find a suitable image on the interweb and copy its url into the cover url box. (Be sure to make the image somewhere which is unlikely to change or be deleted, for example Wikipedia.)
+		</p>
 
-<span class="question">Q: How do I add TTBAs?</span>
-<p>First, upload the PDF to the public_html/archive/ttba folder; preferably name it in the same convention as the others in that folder. Then, go to <%= link_to "the admin panel and click New creation", new_creation_path %>. Enter the url as being cusfs.soc.srcf.net/archive/ttba/[name] and add a brief description. Also remember to add keywords; these are what get searched for in the search box so I'd recommend putting in the names of all articles in that issue.
-	</p>
+	<span class="question">Q: How do I add TTBAs?</span>
+	<p>First, upload the PDF to the public_html/archive/ttba folder; preferably name it in the same convention as the others in that folder. Then, go to <%= link_to "the admin panel and click New creation", new_creation_path %>. Enter the url as being cusfs.soc.srcf.net/archive/ttba/[name] and add a brief description. Also remember to add keywords; these are what get searched for in the search box so I'd recommend putting in the names of all articles in that issue.
+		</p>
 
-<span class="question">Q: How do I add an event listing?</span>
-<p><%= link_to "Here", new_event_path %>. It'll show up in the schedule page. You're encouraged to add a picture but it's not necessary.
-	</p>
+	<span class="question">Q: How do I add an event listing?</span>
+	<p><%= link_to "Here", new_event_path %>. It'll show up in the schedule page. You're encouraged to add a picture but it's not necessary.
+		</p>
+</div>
 
-<h2>Most importantly...</h2>
-<span class="question">Q: How do I hack the site?</span>
-<p>Make an account with the SRCF and get someone already on the site to add you. The site is in the cusfs-library folder of the cusfs society folder and is built on Ruby on Rails. If you're a Rails veteran you can get stuck in; if you've got no idea what Rails is, start at <%= link_to "http://railstutorial.org/book", "http://railstutorial.org/book" %>. It's an exceptional tutorial by Michael Hartl which will teach you how to build Twitter in a couple of days. After you're done on the tutorial you'll be at a stage where you can happily add functionality wherever you like.<br>
-If you're still feeling lost, ask previous Secretaries for guidance. This site was built in 2014 by Binney (s.binney@physics.org) who ought to still be answering that email if you contact her in The Future, so she may well be able to help. In principle you ought to be able to maintain the site without ever seeing a byte of source code, so hopefully you won't even need this paragraph.
-	</p>
+<div class="content">
+	<h2>Most importantly...</h2>
+	<span class="question">Q: How do I hack the site?</span>
+	<p>Make an account with the SRCF and get someone already on the site to add you. The site is in the cusfs-library folder of the cusfs society folder and is built on Ruby on Rails. If you're a Rails veteran you can get stuck in; if you've got no idea what Rails is, start at <%= link_to "http://railstutorial.org/book", "http://railstutorial.org/book" %>. It's an exceptional tutorial by Michael Hartl which will teach you how to build Twitter in a couple of days. After you're done on the tutorial you'll be at a stage where you can happily add functionality wherever you like.<br>
+	If you're still feeling lost, ask previous Secretaries for guidance. This site was built in 2014 by Binney (s.binney@physics.org) who ought to still be answering that email if you contact her in The Future, so she may well be able to help. In principle you ought to be able to maintain the site without ever seeing a byte of source code, so hopefully you won't even need this paragraph.
+		</p>
 
-<h3>GOOD LUCK.</h3>
-
+	<h3>GOOD LUCK.</h3>
+</div>
 <% end %>

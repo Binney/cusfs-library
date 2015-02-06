@@ -1,0 +1,10 @@
+<h2>Upcoming events</h2>
+<% if @forthcoming_events.any? %>
+
+	<ul class="items">
+		<%= render @forthcoming_events %>
+	</ul>
+
+<% else %>
+	No events found.
+<% end %>

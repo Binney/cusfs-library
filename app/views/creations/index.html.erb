@@ -1,19 +1,28 @@
 <% provide(:title, "Creative") %>
 <% provide :site_section, "1" %>
-<h1><%= @title %></h1>
 
-<%= render 'media' %>
+<div class="content">
+	<h1><%= @title %></h1>
+</div>
 
-<p><%= @explanation.html_safe %></p>
+<div class="content">
+	<%= render 'media' %>
+</div>
 
-<% if @creations.any? %>
-	<%= will_paginate %>
+<div class="content">
+	<p><%= @explanation.html_safe %></p>
+</div>
 
-	<ul class="creations">
-		<%= render @creations %>
-	</ul>
+<div class="content">
+	<% if @creations.any? %>
+		<%= will_paginate %>
 
-	<%= will_paginate %>
-<% else %>
-	<p>Nothing found.</p>
-<% end %>
+		<ul class="creations">
+			<%= render @creations %>
+		</ul>
+
+		<%= will_paginate %>
+	<% else %>
+		<p>Nothing found.</p>
+	<% end %>
+</div>

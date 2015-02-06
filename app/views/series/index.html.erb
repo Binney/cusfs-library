@@ -1,16 +1,30 @@
 <% provide :title, "All series" %>
 <% provide :site_section, "0" %>
 
-<h1>All series</h1>
-
-<div class="panel panel-default">
-  <%= will_paginate %>
+<div class="content">
+	<h1>All series</h1>
 </div>
 
-<ul class="items">
-  <%= render @series %>
-</ul>
+<% if @series.any? %>
 
-<div class="panel panel-default">
-  <%= will_paginate %>
-</div>
+	<div class="content content-mini">
+		<%= will_paginate %>
+	</div>
+
+	<div class="content">
+		<ul class="items">
+		  <%= render @series %>
+		</ul>
+	</div>
+
+	<div class="content content-mini">
+		  <%= will_paginate %>
+	</div>
+
+<% else %>
+
+	<div class="content">
+		<p>No series found. GIVE ME BACK MY HARRY POTTER YOU SON OF A SUBMARINER.</p>
+	</div>
+
+<% end %>

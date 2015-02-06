@@ -1,22 +1,23 @@
 <div class="container-fluid">
-<ul class="nav pull-right">
-	<% case yield(:site_section) %>
-		<% when "1" %>
-			<li><%= link_to "Library", library_path, class: "minor-white-site-section" %></li>
-			<li><%= link_to "Creative", creative_path, class: "great-orange-site-section" %></li>
-			<li><%= link_to "Schedule", events_path, class: "minor-white-site-section" %></li>
-		<% when "2" %>
-			<li><%= link_to "Library", library_path, class: "minor-white-site-section" %></li>
-			<li><%= link_to "Creative", creative_path, class: "minor-white-site-section" %></li>
-			<li><%= link_to "Schedule", events_path, class: "great-orange-site-section" %></li>
-		<% when "3" %>
-			<li><%= link_to "Library", library_path, class: "minor-white-site-section" %></li>
-			<li><%= link_to "Creative", creative_path, class: "minor-white-site-section" %></li>
-			<li><%= link_to "Schedule", events_path, class: "minor-white-site-section" %></li>
-		<% else %>
-			<li><%= link_to "Library", library_path, class: "great-orange-site-section" %></li>
-			<li><%= link_to "Creative", creative_path, class: "minor-white-site-section" %></li>
-			<li><%= link_to "Schedule", events_path, class: "minor-white-site-section" %></li>
-		<% end %>
-</ul>
+  <ul class="nav navbar-nav pull-right">
+  <% case yield(:site_section) %>
+    <% when "1" %>
+      <li><%= link_to "Library", library_path, class: "minor-white-site-section" %></li>
+      <li><%= link_to "Creative", creative_path, class: "great-orange-site-section" %></li>
+      <li><%= link_to "Schedule", events_path, class: "minor-white-site-section" %></li>
+    <% when "2" %>
+      <li><%= link_to "Library", library_path, class: "minor-white-site-section" %></li>
+      <li><%= link_to "Creative", creative_path, class: "minor-white-site-section" %></li>
+      <li><%= link_to "Schedule", events_path, class: "great-orange-site-section" %></li>
+    <% when "3" %>
+      <li><%= link_to "Library", library_path, class: "minor-white-site-section" %></li>
+      <li><%= link_to "Creative", creative_path, class: "minor-white-site-section" %></li>
+      <li><%= link_to "Schedule", events_path, class: "minor-white-site-section" %></li>
+    <% else %>
+      <li><%= link_to "Library", library_path, class: "great-orange-site-section" %></li>
+      <li><%= link_to "Creative", creative_path, class: "minor-white-site-section" %></li>
+      <li><%= link_to "Schedule", events_path, class: "minor-white-site-section" %></li>
+    <% end %>
+  </ul>
+
 </div>

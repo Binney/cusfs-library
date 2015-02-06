@@ -1,68 +1,139 @@
 <% provide :title, "Edit committee" %>
 <% provide :site_section, "1" %>
-<h1>Edit a Committee</h1>
 
-<div class="row">
-	<div class="span6 offset3">
-		<%= form_for(@committee) do |f| %>
-			<%= render 'shared/error_messages', object: f.object %>
-
-			<%= f.label :start_year %>
-			<%= f.text_field :start_year %><br>
-			<small>This is a number used to order the committees, regardless of how long their period of office was. For technical reasons please make it the start year of the committee * 10. So for example you might have 20550 for the ACTUAL committee that started in 2055 and 20545 for the committee that was elected for 45 minutes during the AGM of 2055 and consisted entirely of gremlins.</small>
-
-			<%= f.label :date %>
-			<%= f.text_field :date %><br>
-			<small>Put some details on how long this committee served for; for example, "2014-2015" or "The Very Brief Committee of September 2017".</small>
-
-			<%= f.label :chairbeing %>
-			<%= f.text_field :chairbeing %>
-
-			<%= f.label :secretary %>
-			<%= f.text_field :secretary %>
-
-			<%= f.label :treasurer %>
-			<%= f.text_field :treasurer %>
-
-			<%= f.label :librarian %>
-			<%= f.text_field :librarian %>
-
-			<%= f.label :memsec %>
-			<%= f.text_field :memsec %>
-
-			<%= f.label :ttba %>
-			<%= f.text_field :ttba %>
-
-			<h2>The Jomscommittee</h2>
-
-			<%= f.label :reeve %>
-			<%= f.text_field :reeve %>
-
-			<%= f.label :runecaster %>
-			<%= f.text_field :runecaster %>
-
-			<%= f.label :geldjarl %>
-			<%= f.text_field :geldjarl %>
-
-			<%= f.label :meadkeeper %>
-			<%= f.text_field :meadkeeper %>
-
-			<%= f.label :bard %>
-			<%= f.text_field :bard %>
-
-			<h2>The Vice-Presidents</h2>
-
-			<%= f.label :vice_presidents %>
-			<%= f.text_area :vice_presidents %>
-			<small>One per line</small>
-
-			<%= f.label :vp_election_method, "How were these Vice-Presidents elected?" %>
-			<%= f.text_field :vp_election_method %>
-
-
-			<%= f.submit "Save", class: "btn btn-large btn-primary" %>
-		<% end %>
-	</div>
+<div class="content">
+	<h1>Edit a Committee</h1>
 </div>
 
-<%= render 'shared/back_button', path: committees_path %>
+<div class="content">
+
+      <%= form_for(@committee, html: {class: "form-horizontal"}) do |f| %>
+  	  <%= render 'shared/error_messages', object: f.object %>
+
+          <div class="form-group">
+            <%= f.label :start_year, "Start year (?)", class: "col-sm-2 control-label", id: "togglebtn" %>
+            <div class="col-sm-10">
+              <%= f.text_field :start_year, class: "form-control" %>
+				<small class="togglediv">This is a number used to order the committees, regardless of how long their period of office was. For technical reasons please make it the start year of the committee multiplied by 10. So for example you might have 20550 for the ACTUAL committee that started in 2055 and 20545 for the committee that was elected for 45 minutes during the AGM of 2055 and consisted entirely of gremlins.</small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :date, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :date, class: "form-control" %>
+				<small>Put some details on how long this committee served for; for example, "2014-2015" or "The Very Brief Committee of September 2017".</small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :chairbeing, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :chairbeing, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :secretary, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :secretary, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :treasurer, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :treasurer, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :librarian, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :librarian, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :memsec, "Membership Secretary", class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :memsec, class: "form-control" %>
+            </div>
+          </div>
+           
+          <div class="form-group">
+            <%= f.label :ttba, "TTBA Editor", class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :ttba, class: "form-control" %>
+            </div>
+          </div>
+
+          <h2>The Jomscommittee</h2>
+
+          <div class="form-group">
+            <%= f.label :reeve, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :reeve, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :runecaster, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :runecaster, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :geldjarl, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :geldjarl, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :meadkeeper, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :meadkeeper, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :bard, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :bard, class: "form-control" %>
+            </div>
+          </div>
+          
+          <h2>The Vice-Presidents</h2>
+
+          <div class="form-group">
+            <%= f.label :vice_presidents, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_area :vice_presidents, class: "form-control" %>
+				<small>One per line</small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :vp_election_method, "How were these Vice-Presidents elected?", class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_area :vp_election_method, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="actions form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <%= f.submit "Save", class: "btn btn-large btn-primary" %>
+            </div>
+          </div>
+
+      <% end %>
+
+</div>
+
+
+<div class="content">
+	<%= render 'shared/back_button', path: committees_path %>
+</div>
+

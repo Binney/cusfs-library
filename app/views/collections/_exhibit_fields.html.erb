@@ -1,3 +1,9 @@
-<%= f.collection_select :item_id, Item.all, :id, :title, selected: params[:item_id] %>
-<%= f.text_area :explanation, placeholder: "Say a bit about this item" %>
-<%= f.link_to_remove "remove" %>
+<div class="form-group">
+	<%= f.link_to_remove "Remove", class: "col-sm-2 control-label field-link" %>
+	<div class="col-sm-4">
+		<%= f.collection_select :item_id, Item.all, :id, :title, {}, {class: "item-select"} %>
+	</div>
+	<div class="col-sm-6">
+		<%= f.text_area :explanation, placeholder: "Say a bit about this item...", class: "form-control" %>
+	</div>
+</div>

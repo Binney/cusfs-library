@@ -1,0 +1,15 @@
+<li class="item-preview">
+  <div class="item-cover-preview">
+    <%= link_to image_tag(event.image_url, width: "100px", height: "150px"), event %>
+  </div>
+  <div class="item-preview-body">
+    <h3 class="item-title">
+		<%= event.time.to_s(:short) %>
+    <% if event.end_time.to_i > event.time.to_i %>
+      - <%= event.end_time.to_s(:time) %>
+    <% end %>
+     <%= separator_symbol %> <%= link_to event.name, event %> <%= separator_symbol %> <%= event.activity.humanize %>
+    </h3>
+  </div>
+
+</li>

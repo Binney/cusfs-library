@@ -1,6 +1,8 @@
-<%= form_tag search_path, method: :post, class: "search_form", role: "search" do |f| %>
-<div class="form-group">
-  <%= text_field_tag :q, nil, class: "form-control wide_search_box" %>
-  <%= submit_tag "Search", class: "btn btn-default" %>
-</div>
+<%= form_tag search_path, method: :post, class: "search_form form-inline", role: "search" do |f| %>
+	<div class="form-group">
+	  <%= text_field_tag :q, params[:q], class: "form-control" %>
+	  <%= submit_tag "Search", class: "btn btn-default" %>
+	  <span id="togglebtn">?</span>
+	  	<small class="togglediv">The search is about as intelligent as a stoned Orc. Make your queries pretty simple, remove articles, and don't search for combinations of author name and book title - just search for the title verbatim or the author's surname, for example.</small>
+	</div>
 <% end %>

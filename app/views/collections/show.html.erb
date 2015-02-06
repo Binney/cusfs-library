@@ -1,21 +1,31 @@
 <%= provide :title, @collection.name %>
 <% provide :site_section, "0" %>
 
-<h1><%= @collection.name %>
-<% unless @collection.user.nil? %>
- <%= separator_symbol %> by <%= @collection.user.name %>
-<% end %>
-</h1>
 
-<div class="panel panel-default panel-explanation">
+<div class="content">
+	<h1><%= @collection.name %>
+	<% unless @collection.user.nil? %>
+		<%= separator_symbol %> by <%= @collection.user.name %>
+	<% end %>
+	</h1>
+</div>
+
+<div class="content">
 	<p><%= simple_format @collection.description %></p>
 </div>
-<ul class="items">
-	<% @exhibits.each do |exhibit| %>
-		<% if exhibit.explanation.blank? %>
-			<%= render exhibit.item %>
-		<% else %>
-			<%= render exhibit.item, item_text: exhibit.explanation %>
-		<% end %>
+
+<div class="content">
+	<% if @exhibits.any? %>
+		<ul class="items">
+			<% @exhibits.each do |exhibit| %>
+				<% if exhibit.explanation.blank? %>
+					<%= render exhibit.item %>
+				<% else %>
+					<%= render exhibit.item, item_text: exhibit.explanation %>
+				<% end %>
+			<% end %>
+		</ul>
+	<% else %>
+		<p>This list is empty!</p>
 	<% end %>
-</ul>
+</div>

@@ -1,47 +1,98 @@
 <% provide :title, "New entry" %>
 <% provide :site_section, "0" %>
-<h1>New entry</h1>
 
-<div class="row">
-	<div class="span6 offset3">
-		<%= form_for(@item) do |f| %>
-			<%= render 'shared/error_messages', object: f.object %>
-
-			<%= f.label :title %>
-			<%= f.text_field :title %>
-
-			<%= f.label :author_id, "Author" %>
-			<%= f.collection_select :author_id, Author.all, :id, :name %>
-			<!-- TODO replace with an autocompleting text box. Need to send changes to controller too, which can then tell whether said author exists already and create a record if they do. -->
-
-			<%= f.label :series_id, "Series" %>
-			<%= f.collection_select :series_id, Series.all, :id, :name %><br>
-			<small>If you don't see the series or author in these two boxes, you'll need to add them separately. <%= link_to "Create an author", new_author_path %> or <%= link_to "add a series", new_series_path %>.</small>
-
-			<%= f.label :series_number, "Number in series" %>
-			<%= f.text_field :series_number %>
-			            
-			<%= f.label :isbn %>
-			<%= f.text_field :isbn %>
-
-			<%= f.label :cover_url %>
-			<%= f.text_field :cover_url %>
-
-			<%= f.label :description %>
-			<%= f.text_area :description %>
-
-			<%= f.label :medium, "Medium" %>
-	        <%= f.collection_select :medium, Item::MEDIA, :to_s, :humanize %>
-
-			<%= f.label :date %>
-			<%= f.select :date, 1850..Date.today.year, selected: Date.today.year  %>
-
-			<%= f.label :notes %>
-			<%= f.text_area :notes %>
-<br>
-			<%= f.submit "Add to Library", class: "btn btn-large btn-primary" %>
-		<% end %>
-	</div>
+<div class="content">
+	<h1>New entry</h1>
 </div>
 
+<div class="content">
+
+    <%= form_for(@item, html: {class: "form-horizontal"}) do |f| %>
+
+        <div class="form-group">
+            <%= f.label :title, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+                <%= f.text_field :title, class: "form-control" %>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :author, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+                <%= f.collection_select :author_id, Author.all, :id, :name %>
+                <!-- TODO replace with an autocompleting text box. Need to send changes to controller too, which can then tell whether said author exists already and create a record if they do. -->
+            </div>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :series_id, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+                <%= f.collection_select :series_id, Series.all, :id, :name %>
+                <small>If you don't see the series or author in these two boxes, you'll need to add them separately. <%= link_to "Create an author", new_author_path %> or <%= link_to "add a series", new_series_path %>.</small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :series_number, "Number in series", class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+                <%= f.text_field :series_number, class: "form-control" %>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :description, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+                <%= f.text_area :description, class: "form-control" %>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :isbn, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+                <%= f.text_field :isbn, class: "form-control" %>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :cover_url, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+                <%= f.text_field :cover_url, class: "form-control" %>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :date, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+                <%= f.select :date, 1850..Date.today.year %>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :medium, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+                <%= f.select :medium, Item::MEDIA.map { |m| [m.humanize, m] } %>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :editions, "Add copy (?)", class: "col-sm-2 control-label", id: "togglebtn" %>
+            <div class="col-sm-10">
+                <%= f.text_field :editions, class: "form-control" %>
+                <small class="togglediv">When the library holds multiple copies of the same book, these copies are distinguished with a one-letter code at the end of their tag. Usually new copies will be the next letter in the alphabet from the most recently added copy. So, for instance, we have 3 copies of The Name of the Wind, labelled "a", "b", and "c" respectively. To add a new copy of this book, enter this code here at the end of the string.</small>
+            </div>
+        </div>
+
+
+        <div class="actions form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+            </div>
+        </div>
+
+    <% end %>
+
+</div>
+
+<div class="content">
 <%= render 'shared/back_button', path: items_path %>
+</div>

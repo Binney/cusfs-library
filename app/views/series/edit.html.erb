@@ -1,18 +1,32 @@
 <% provide :title, "Edit series" %>
 <% provide :site_section, "0" %>
-<h1>Edit series</h1>
 
-<div class="row">
-	<div class="span6 offset3">
-		<%= form_for(@series) do |f| %>
-			<%= render 'shared/error_messages', object: f.object %>
-
-			<%= f.label :name %>
-			<%= f.text_field :name %>
-
-			<%= f.submit "Update", class: "btn btn-large btn-primary" %>
-		<% end %>
-	</div>
+<div class="content">
+	<h1>Edit series</h1>
 </div>
 
-<%= render 'shared/back_button', path: series_path(@series) %>
+<div class="content">
+
+      <%= form_for(@series, html: {class: "form-horizontal"}) do |f| %>
+  	  <%= render 'shared/error_messages', object: f.object %>
+
+          <div class="form-group">
+            <%= f.label :name, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :name, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="actions form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <%= f.submit "Update", class: "btn btn-large btn-primary" %>
+            </div>
+          </div>
+
+      <% end %>
+
+</div>
+
+<div class="content">
+	<%= render 'shared/back_button', path: series_path(@series) %>
+</div>

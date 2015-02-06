@@ -1,21 +1,24 @@
 <% provide :title, "Committee" %>
 <% provide :site_section, "3" %>
 
-<div class="panel panel-default">
-  <%= will_paginate @committees %>
+<div class="content content-mini">
+	<%= will_paginate @committees %>
 </div>
 
-<% if @committees.any? %>
-  <% @committees.each do |committee| %>
+<div class="content">
+	<% if @committees.any? %>
+	  <% @committees.each do |committee| %>
 
-    <%= render 'cusfs_committee', committee: committee %>
+	    <%= render 'cusfs_committee', committee: committee %>
 
-    <%= render 'jomscommittee', committee: committee %>
+	    <%= render 'jomscommittee', committee: committee %>
 
-    <%= render 'vice_presidents', committee: committee %>  
+	    <%= render 'vice_presidents', committee: committee %>  
 
-  <% end %>
+	  <% end %>
 
-<% else %>
-No committees found.
-<% end %>
+	<% else %>
+	No committees found.
+	<% end %>
+</div>
+

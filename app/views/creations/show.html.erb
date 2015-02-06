@@ -1,21 +1,29 @@
 <% provide(:title, @creation.name) %>
 <% provide :site_section, "1" %>
-<h1><%= @creation.name %></h1>
-<%= @creation.medium.to_s %>
-<%= @creation.created_at.to_s(:date) %>
-<div class="creation-description">
-	<%= simple_format @creation.description %>
+
+<div class="content">
+	<h1><%= @creation.name %></h1>
 </div>
 
-<%= link_to "View", @creation.url %> <%= separator_symbol %> <%= link_to "Download", @creation.url, download: @creation.name %>
+<div class="content">
+	<%= @creation.medium.to_s %>
+	<%= @creation.created_at.to_s(:date) %>
+	<div class="creation-description">
+		<%= simple_format @creation.description %>
+	</div>
 
-<% case @creation.medium %>
-	<% when Creation::MEDIA[0] %>
-		<%= render 'shared/back_button', path: ttba_path %>
-	<% when Creation::MEDIA[1] %>
-		<%= render 'shared/back_button', path: art_path %>
-	<% when Creation::MEDIA[2] %>
-		<%= render 'shared/back_button', path: chainwriting_path %>
-	<% else %>
-		<%= render 'shared/back_button', path: creative_path %>
-<% end %>
+	<%= link_to "View", @creation.url %> <%= separator_symbol %> <%= link_to "Download", @creation.url, download: @creation.name %>
+</div>
+
+<div class="content">
+	<% case @creation.medium %>
+		<% when Creation::MEDIA[0] %>
+			<%= render 'shared/back_button', path: ttba_path %>
+		<% when Creation::MEDIA[1] %>
+			<%= render 'shared/back_button', path: art_path %>
+		<% when Creation::MEDIA[2] %>
+			<%= render 'shared/back_button', path: chainwriting_path %>
+		<% else %>
+			<%= render 'shared/back_button', path: creative_path %>
+	<% end %>
+</div>

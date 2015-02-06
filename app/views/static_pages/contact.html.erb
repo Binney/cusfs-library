@@ -1,8 +1,12 @@
 <% provide :title, 'Contact' %>
 <% provide :site_section, "3" %>
 
-<h1>Contact</h1>
-<p>A! (No, I am not the reemergence of primitive traits in a derived form.)<br>
+<div class="content">
+	<h1>Contact</h1>
+</div>
+
+<div class="content">
+	<p>A! (No, I am not the reemergence of primitive traits in a derived form.)<br>
 
 You can contact the <%= link_to "committee", current_path %> by emailing them: soc-cusfs at lists [dot] cam [dot] ac [dot] uk. Or email specific committee members, whose CRSIDs are <%= link_to "here", current_path %>. To reserve books you can email the Librarian or fill in <%= link_to "this webform", new_reservation_path %>.<br>
 
@@ -10,3 +14,4 @@ Do also feel free to join the mailing list! Search mailman for soc-cusfs-interes
 
 We're also on <%= link_to "Facebook", "http://www.facebook.com/groups/cusfs" %>, though that's more of an informal discussion page - for society specific info your first port of call is probably here.
 </p>
+</div>

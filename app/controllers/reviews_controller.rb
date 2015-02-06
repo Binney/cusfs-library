@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-	before_action :sign_in_user, only: [:create]
+	before_action :sign_in_user, only: [:create, :edit, :destroy]
 
 	def create
 		@review = current_user.reviews.build(review_params)
@@ -21,7 +21,10 @@ class ReviewsController < ApplicationController
 	end
 
 	def destroy
-
+		@review = Review.find(params[:id])
+		@user = @review.user
+		@review.destroy
+		redirect_to reviews_user_path(@user)
 	end
 
 	def show
@@ -33,7 +36,7 @@ class ReviewsController < ApplicationController
 	end
 
 	def update
-		@review = review.find(params[:id])
+		@review = Review.find(params[:id])
 		if @review.update_attributes(review_params)
 			flash[:success] = "Updated review."
 			redirect_to @review

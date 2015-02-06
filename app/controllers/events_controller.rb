@@ -70,7 +70,7 @@ class EventsController < ApplicationController
     @past_events = @events.select{ |ev| ev.time<Time.now }.reverse[0..5]
     @past_link = '/events/screenings/past'
     @title = "Film and TV screenings"
-    @explanation = "CUSFS usually shows one film every week during term. We try to have a unified theme for each term, though the links may be somewhat tenuous depending what we want to watch. All film screenings are completely free for everyone, and at the right time of year screenings will usually be followed by an episode of University Challenge or Game of Thrones.<br>The theme for Michaelmas 2014 is Franchises: from adaptations of super-successful books to the films that began entire subcultures. The idea is that they are must-see classics which, in many cases, people haven't actually seen, but have always sort of wanted to."
+    @explanation = "CUSFS usually shows one film every week during term. We try to have a unified theme for each term, though the links may be somewhat tenuous depending what we want to watch. All film screenings are completely free for everyone, and at the right time of year screenings will usually be followed by an episode of University Challenge or Game of Thrones.<br>The theme for Lent 2015 is Contact: with aliens, with the dead, with the unknown..."
     render 'index'
   end
 

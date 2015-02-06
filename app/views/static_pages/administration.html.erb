@@ -1,11 +1,15 @@
 <% provide :title, "Administration" %>
 <% provide :site_section, "3" %>
 
-<h1>Administration</h1>
+<div class="content">
+	<h1>Administration</h1>
+</div>
 
-Time to exert your godlike powers and edit the site!
+<div class="content">
+	<p>Time to exert your godlike powers and edit the site!</p>
+</div>
 
-<div class="panel panel-default">
+<div class="content">
 	<h2>Library</h2>
 	<li><%= link_to "Check books out", checkout_path %></li>
 	<li><%= link_to "View withdrawals", withdrawals_path %></li>
@@ -13,25 +17,25 @@ Time to exert your godlike powers and edit the site!
 	<li><%= link_to "Create author", new_author_path %></li>
 	<li><%= link_to "Create series", new_series_path %></li>
 
-	<li><%= link_to "Download catalogue", download_catalogue_path, data: { confirm: "This file will be large (~) and will take the server some time to prepare (not more than a couple of minutes). Continue?" } %></li>
+	<li><%= link_to "Download catalogue", download_catalogue_path, data: { confirm: "This file will take the server some time to prepare (not more than a couple of minutes). Continue?" } %></li>
 	<li><%= link_to "Download author list", download_authors_path %></li>
 </div>
 
-<div class="panel panel-default">
+<div class="content">
 	<h2>Creative section</h2>
 	Add editions of TTBA here, as well as links to other stuff like artworks or chainstories.
 	<li><%= link_to "Add entry", new_creation_path %></li>
 	<li><%= link_to "Manage entries", creative_path %></li>
 </div>
 
-<div class="panel panel-default">
+<div class="content">
 	<h2>Schedule</h2>
 	Add listings for film screenings, discussions, etc here.
 	<li><%= link_to "New event", new_event_path %></li>
 	<li><%= link_to "Manage events", events_path %></li>
 </div>
 
-<div class="panel panel-default">
+<div class="content">
 	<h2>Users</h2>
 	<li><%= link_to "Create new user", new_user_path %></li>
 	<li><%= link_to "Manage users", users_path %></li>

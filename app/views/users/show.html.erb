@@ -1,29 +1,34 @@
 <% provide :title, @user.name %>
 <% provide :site_section, '3' %>
 
-<h1><%= @user.name %>'s profile</h1>
-
-<div class="row">
-
-	<aside class="span2 item-show-main">
-		<%= avatar_for @user %>
-
-	</aside>
-
-	<div class="span10 item-show-sidebar">
-		<%= @user.about_me %><br>
-		<%= link_to "Account settings", edit_user_path(@user) %><br>
-
-		<% if current_user.admin? %>
-			<%= link_to "Renew membership", renew_user_path(@user) %><br>
-			<%= link_to "Delete", @user, method: :delete, data: {confirm: "Are you absolutely sure? This can't be undone!"} %>
-		<% end %>
-
-	</div>
-
+<div class="content">
+	<h1><%= @user.name %>'s profile</h1>
 </div>
 
-		<% if current_user.id==@user.id || current_user.admin? %>
+<div class="content">
+	<div class="row">
+
+		<aside class="span2 item-show-main">
+			<%= avatar_for @user %>
+
+		</aside>
+
+		<div class="span10 item-show-sidebar">
+			<%= @user.about_me %><br>
+			<%= link_to "Account settings", edit_user_path(@user) %><br>
+
+			<% if current_user.admin? %>
+				<%= link_to "Renew membership", renew_user_path(@user) %><br>
+				<%= link_to "Delete", @user, method: :delete, data: {confirm: "Are you absolutely sure? This can't be undone!"} %>
+			<% end %>
+
+		</div>
+
+	</div>
+</div>
+
+<% if current_user.id==@user.id || current_user.admin? %>
+	<div class="content">
 			<h2><%= link_to "Current withdrawals", withdrawals_user_path(@user) %></h2>
 			<%= render 'withdrawals', withdrawals: @user.withdrawals %>
 
@@ -32,11 +37,15 @@
 
 			<h2><%= link_to "Requests", requests_user_path(@user) %></h2>
 			<%= render 'requests', requests: @user.requests %>
+	</div>
+<% end %>
 
-		<% end %>
+<div class="content">
+	<h2><%= link_to "Reviews", reviews_user_path(@user) %></h2>
+	<%= render 'reviews/reviews', reviews: @user.reviews %>
+</div>
 
-		<h2><%= link_to "Reviews", reviews_user_path(@user) %></h2>
-		<%= render 'reviews/reviews', reviews: @user.reviews %>
-
-		<h2><%= link_to "Collections and lists", collections_user_path(@user) %></h2>
-		<%= render 'collections', collections: @user.collections %>
+<div class="content">
+	<h2><%= link_to "Collections and lists", collections_user_path(@user) %></h2>
+	<%= render 'collections', collections: @user.collections %>
+</div>

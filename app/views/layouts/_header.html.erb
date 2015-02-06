@@ -1,17 +1,19 @@
 <%= render 'layouts/cusfs_logo' %>
 
-<header class="navbar navbar-inverse">
+<header class="navbar-inverse">
   <div class="navbar-inner cusfs-uppermost-navbar">
     <%= render 'layouts/upperright_menu' %>
   </div>
   <div class="cusfs-main-menu">
     <%= render 'layouts/main_menu' %>
   </div>
-  <nav class="navbar navbar-default cusfs-library-navbar" role="navigation">
-  	<% if yield(:site_section)=="0" %>
-	    <%= render 'layouts/library_navbar' %>
+
+  <div class="navbar-inner cusfs-library-navbar">
+    <% if yield(:site_section)=="0" %>
+      <%= render 'layouts/library_navbar' %>
     <% else %>
-	    <%= render 'layouts/general_navbar' %>
+      <%= render 'layouts/general_navbar' %>
     <% end %>
-  </nav>
+  </div>
+
 </header>

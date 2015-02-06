@@ -1,12 +1,20 @@
 <% provide :title, "Lists and collections" %>
 <% provide :site_section, "0" %>
 
+<div class="content">
 <h1><%= @title %></h1>
+</div>
 
-<%= will_paginate %>
+<div class="content content-mini">
+	<%= will_paginate %>
+</div>
 
-<ul class="collection">
-<%= render @collections %>
-</ul>
+<div class="content">
+	<ul class="collection">
+		<%= render @collections %>
+	</ul>
+</div>
 
-<%= will_paginate %>
+<div class="content content-mini">
+	<%= will_paginate %>
+</div>

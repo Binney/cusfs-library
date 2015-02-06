@@ -1,0 +1,176 @@
+/* universal */
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+html {
+  overflow-y: scroll;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-color: black;
+}
+
+.metacontainer {
+  background-image: image-url("starburst.jpg"); /* Default is same as library in case site-section is unset */
+  background-color: black;
+  background-size: 100%;
+  background-position: center bottom;  
+  background-repeat: no-repeat;
+  padding-bottom: 50px;
+  min-height: 100%;
+  min-width: 1200px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.metacontainer-0 { /* Library section */
+  background-image: image-url("starburst.jpg");
+  background-color: black;
+}
+
+.metacontainer-1 { /* Creative section */
+  background-image: image-url("starburst.jpg"); /* TODO actual creative background */
+  background-color: black;
+}
+
+.metacontainer-2 { /* Schedule section */
+  background-image: image-url("contraption.png");
+  background-color: black;
+}
+
+.cusfs-body {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  padding-top:50px;
+  background-color: $transparentBaseBlue;
+  font-family: $sansFont;
+}
+
+.cusfs-body-0 {
+  background-color: $transparentBaseBlue;
+}
+
+.cusfs-body-1 {
+  background-color: $transparentBaseBlue;
+}
+
+.cusfs-body-2 {
+  background-color: $transparentGrayLighter;
+}
+
+@media handheld {
+  .container {
+    width: auto;
+  }
+  .cusfs-body {
+    background-color: #f00;
+  }
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+  width: 100%;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+.content {
+  margin-bottom: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  width: 100%;
+  background-color: $translucentBaseBlue; /* TODO needs to be gray on schedule section */
+}
+
+.content-centred {
+  text-align: center;
+}
+
+.content-mini {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+.row {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.pagination {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  /* TODO centre this horizontally */
+}
+
+.field_with_errors {
+  @extend .control-group !optional;
+  @extend .error !optional;
+}
+
+#togglebtn {
+  cursor: pointer;
+  font-weight: 600;
+  &:hover {
+    color: $darkOrange;
+  }
+}
+
+.question {
+  font-weight: 600;
+  color: $darkBlue;
+}
+
+.committee-position {
+  text-align: right;
+  width: 50%;
+}
+
+.panel-default {
+  text-align: left;
+}
+
+.panel-centered {
+  text-align: center;
+}
+
+select {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.item-select {
+    width: 100% !important;
+}
+
+.field-link {
+  color: $darkBlue;
+  font-weight: 600;
+}

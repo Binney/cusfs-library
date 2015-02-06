@@ -1,26 +1,41 @@
 <% provide :title, "Edit #{@collection.name}" %>
 <% provide :site_section, "0" %>
 
-<h1>Edit list</h1>
+<div class="content">
+	<h1>Edit list</h1>
+</div>
 
-<div class="row">
-	<div class="span6 offset3">
-		<%= nested_form_for(@collection) do |f| %>
-			<%= render 'shared/error_messages', object: f.object %>
+<div class="content">
 
-			<%= f.label :name %>
-			<%= f.text_field :name %>
+      <%= nested_form_for(@collection, html: {class: "form-horizontal"}) do |f| %>
+  	  <%= render 'shared/error_messages', object: f.object %>
 
-			<%= f.label :description %>
-			<%= f.text_field :description %>
-			<br>
-			<%= f.fields_for :exhibits do |builder| %>
-				<%= render 'exhibit_fields', f: builder %>
-			<% end %>
-			<br>
-			<%= f.link_to_add "Add", :exhibits %>
-			<br>
-			<%= f.submit "Save", class: "btn btn-large btn-primary" %>
-		<% end %>
-	</div>
+          <div class="form-group">
+            <%= f.label :name, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :name, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :description, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_area :description, class: "form-control" %>
+            </div>
+          </div>
+
+		  <%= f.fields_for :exhibits do |builder| %>
+		  	<%= render 'exhibit_fields', f: builder %>
+		  <% end %>
+
+			<%= f.link_to_add "Add item", :exhibits, class: "field-link" %>
+
+          <div class="actions form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <%= f.submit "Save", class: "btn btn-large btn-primary" %>
+            </div>
+          </div>
+
+      <% end %>
+
 </div>

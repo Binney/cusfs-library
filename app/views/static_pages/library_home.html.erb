@@ -1,37 +1,52 @@
 <% provide :title, "Library" %>
 <% provide :site_section, "0" %>
 
+<div class="content">
 <h1>Library</h1>
 <div class="panel panel-default">
 <p>Welcome to the CUSFS Library! We have <%= @library_size %> distinct items to browse, including <%= link_to "#{@fiction_size} novels", fiction_path %>, <%= link_to "#{@graphic_novels_size} graphic novels", graphic_novels_path %>, and <%= link_to "#{@films_size} films", films_path %>. They're all free to borrow for <%= link_to "CUSFS members", membership_path %>.</p>
 </div>
+</div>
+
 <% if signed_in? %>
 
-	<h2>Your withdrawals</h2>
-	<%= render 'users/withdrawals', withdrawals: current_user.withdrawals %>
+	<div class="content">
+		<h2>Your withdrawals</h2>
+		<%= render 'users/withdrawals', withdrawals: current_user.withdrawals %>
+	</div>
 
-	<h2>Request a book</h2>
-	Can't find what you're looking for in the Library? <%= link_to "Request we obtain a copy!", new_request_path %>
+	<div class="content">
+		<h2>Request a book</h2>
+		Can't find what you're looking for in the Library? <%= link_to "Request we obtain a copy!", new_request_path %>
+	</div>
 
 <% end %>
 
+<div class="content">
 <%= render 'events/openings' %>
+</div>
 
-<h2>CUSFS recommends...</h2>
-<ul class="collection">
-	<%= render @collection %>
-</ul>
-<%= link_to "More recommendations >", collections_path %>
-
-<% if @reviews.any? %>
-	<h2>Recent reviews</h2>
-	<ul class="reviews item-reviews">
-		<%= render @reviews %>
+<div class="content">
+	<h2>CUSFS recommends...</h2>
+	<ul class="collection">
+		<%= render @collection %>
 	</ul>
-	<%= link_to "More >", reviews_path %>
-<% end %>
+	<%= link_to "More recommendations >", collections_path %>
+</div>
 
-<div class="panel panel-default">If you're reading this far down this page you must be bored. Why not read...</div>
-<ul class="items">
-<%= render @item %>
-</ul>
+<div class="content">
+	<% if @reviews.any? %>
+		<h2>Recent reviews</h2>
+		<ul class="reviews item-reviews">
+			<%= render @reviews %>
+		</ul>
+		<%= link_to "More >", reviews_path %>
+	<% end %>
+</div>
+
+<div class="content">
+	<div class="panel panel-default">If you're reading this far down this page you must be bored. Why not read...</div>
+	<ul class="items">
+	<%= render @item %>
+	</ul>
+</div>

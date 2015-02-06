@@ -1,21 +1,32 @@
 <% provide(:title, "Browse #{@title.downcase}") %>
 <% provide :site_section, "0" %>
-<h1>Browse <%= @title.downcase %></h1>
 
-<%= render 'search' %>
+<div class="content">
+	<h1>Browse <%= @title.downcase %></h1>
+</div>
 
 <% if @items.any? %>
-<div class="panel panel-default">
-	<%= will_paginate %>
-</div>
 
-	<ul class="items">
-		<%= render @items %>
-	</ul>
-<div class="panel panel-default">
-	<%= will_paginate %>
-</div>
+	<div class="content content-mini">
+		<%= will_paginate %>
+		<%= render 'search' %>
+	</div>
+
+	<div class="content">
+		<ul class="items">
+			<%= render @items %>
+		</ul>
+	</div>
+
+	<div class="content content-mini">
+		<%= will_paginate %>
+	</div>
 
 <% else %>
-No items found.
+
+	<div class="content">
+		No items found.
+	</div>
+
 <% end %>
+

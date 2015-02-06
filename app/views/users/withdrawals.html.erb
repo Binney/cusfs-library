@@ -1,7 +1,14 @@
 <% provide(:title, "#{@user.name}'s withdrawals") %>
 <% provide :site_section, '0' %>
-<h1><%= @user.name %>'s withdrawals </h1>
 
-<%= render 'withdrawals', withdrawals: @withdrawals %>
+<div class="content">
+	<h1><%= @user.name %>'s withdrawals </h1>
+</div>
 
-<%= link_to "< Back to profile", @user %>
+<div class="content">
+	<%= render 'withdrawals', withdrawals: @withdrawals %>
+</div>
+
+<div class="content">
+	<%= link_to "< Back to profile", @user %>
+</div>

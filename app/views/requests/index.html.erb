@@ -1,15 +1,30 @@
 <% provide(:title, "Requests") %>
 <% provide :site_section, "0" %>
-<h1>Pending requests</h1>
+
+<div class="content">
+	<h1>Pending requests</h1>
+</div>
 
 <% if @requests.any? %>
-	<%= will_paginate %>
 
-	<ul class="requests">
-		<%= render @requests %>
-	</ul>
+	<div class="content content-mini">
+		<%= will_paginate %>
+	</div>
 
-	<%= will_paginate %>
+	<div class="content">
+		<ul class="requests">
+			<%= render @requests %>
+		</ul>
+	</div>
+
+	<div class="content content-mini">
+		<%= will_paginate %>
+	</div>
+
 <% else %>
-Nothing found.
+
+	<div class="content">
+		<p>Nothing found.</p>
+	</div>
+
 <% end %>

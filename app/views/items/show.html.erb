@@ -1,83 +1,92 @@
 <% provide :title, @item.pretty_name %>
 <% provide :site_section, "0" %>
 
-<div class="row">
-	<aside class="span8 item-show-main">
-		<h1><%= @item.pretty_name %></h1>
-		<h2 class="item-title item-author-name"><%= link_to @item.author.pretty_name, @item.author %><%= ", #{@item.date}" unless @item.date==0 %>
-			<br>
-			<%= render 'series_info', item: @item %></h2>
+<div class="content">
+	<h1><%= @item.pretty_name %>
+	<% if signed_in? && current_user.admin? %>
+		<%= separator_symbol %>
+		<%= link_to "Edit", edit_item_path(@item) %> <%= separator_symbol %>
+		<%= link_to "Delete", @item, method: :delete,
+			data: { confirm: "You sure?" } %>
+	<% end %>
+	</h1>
+</div>
 
-		<p id="togglebtn">Details v</p>
-		<div class="togglediv">
-			<table class="panel panel-default">
-				<tr>
-					<td>Date:</td>
-					<td><%= @item.date %></td>
-				</tr>
-				<tr>
-					<td>ISBN:</td>
-					<td><%= @item.isbn %></td>
-				</tr>
-				<tr>
-					<td>Notes:</td>
-					<td><%= @item.notes %></td>
-				</tr>
-				<tr>
-					<td>Tag:</td>
-					<td><%= @item.tag %></td>
-				</tr>
-				<tr>
-					<td>Copies:</td>
-					<td><%= @item.editions.length %> (<%= @item.editions %>)</td>
-				</tr>
-			</table>
-		</div>
-		<div class="blurb">
-			<%= simple_format (blurb_for @item) %>
-		</div>
-		<%= render 'availability', item: @item %> <%= separator_symbol %>
-		<%= render 'review_preview', reviews: @item.reviews, item: @item %><br>
-		<%= render 'genre_info', item: @item %>
-		<div class="item-collections">
-			<%= render 'collections' %>
-		</div>
-		<%= render 'reviews/reviews', reviews: @reviews %>
-	</aside>
+<div class="content">
+	<div class="row">
+		<div class="col-md-8">
+			<h2 class="item-title item-author-name"><%= link_to @item.author.pretty_name, @item.author %><%= ", #{@item.date}" unless @item.date==0 %>
+				<br>
+				<%= render 'series_info', item: @item %></h2>
 
-	<div class="span4 item-show-sidebar">
-		<div class="cover">
-			<%= cover_for @item %>
+			<p id="togglebtn">Details v</p>
+			<div class="togglediv">
+				<table class="panel panel-default">
+					<tr>
+						<td>Date:</td>
+						<td><%= @item.date %></td>
+					</tr>
+					<tr>
+						<td>ISBN:</td>
+						<td><%= @item.isbn %></td>
+					</tr>
+					<tr>
+						<td>Notes:</td>
+						<td><%= @item.notes %></td>
+					</tr>
+					<tr>
+						<td>Tag:</td>
+						<td><%= @item.tag %></td>
+					</tr>
+					<tr>
+						<td>Copies:</td>
+						<td><%= @item.editions.length %> (<%= @item.editions %>)</td>
+					</tr>
+				</table>
+			</div>
+			<div class="blurb">
+				<%= simple_format (blurb_for @item) %>
+			</div>
+			<%= render 'availability', item: @item %> <%= separator_symbol %>
+			<%= render 'review_preview', reviews: @item.reviews, item: @item %><br>
+			<%= render 'genre_info', item: @item %>
+			<div class="item-collections">
+				<%= render 'collections' %>
+			</div>
+			<%= render 'reviews/reviews', reviews: @reviews %>
 		</div>
-		<% if signed_in? && current_user.admin? %>
-			<%= link_to "Edit", edit_item_path(@item) %>
-			<%= link_to "Delete", @item, method: :delete,
-				data: { confirm: "You sure?" } %>
-		<% end %>
 
-		<div class="item-reviews">
-			<% if signed_in? %>
-				<%= render partial: 'reviews/new', locals: {item_id: @item.id} %>
-			<% end %>
+		<div class="col-md-4">
+			<div class="cover">
+				<%= cover_for @item %>
+			</div>
+
+			<div class="item-reviews">
+				<% if signed_in? %>
+					<%= render partial: 'reviews/new', locals: {item_id: @item.id} %>
+				<% end %>
+			</div>
 		</div>
 	</div>
 </div>
 
-<% case @item.medium %>
-	<% when Item::MEDIA[0] %>
-		<%= render 'shared/back_button', path: fiction_path %>
-	<% when Item::MEDIA[1] %>
-		<%= render 'shared/back_button', path: graphic_novels_path %>
-	<% when Item::MEDIA[2] %>
-		<%= render 'shared/back_button', path: tieins_path %>
-	<% when Item::MEDIA[3] %>
-		<%= render 'shared/back_button', path: anthologies_path %>
-	<% when Item::MEDIA[4] %>
-		<%= render 'shared/back_button', path: nonfiction_path %>
-	<% when Item::MEDIA[5] %>
-		<%= render 'shared/back_button', path: films_path %>
-	<% when Item::MEDIA[6] %>
-		<%= render 'shared/back_button', path: games_path %>
-	<% else %>
-		<%= render 'shared/back_button', path: items_path %>
-<% end %>
+<div class="content">
+	<% case @item.medium %>
+		<% when Item::MEDIA[0] %>
+			<%= render 'shared/back_button', path: fiction_path %>
+		<% when Item::MEDIA[1] %>
+			<%= render 'shared/back_button', path: graphic_novels_path %>
+		<% when Item::MEDIA[2] %>
+			<%= render 'shared/back_button', path: tieins_path %>
+		<% when Item::MEDIA[3] %>
+			<%= render 'shared/back_button', path: anthologies_path %>
+		<% when Item::MEDIA[4] %>
+			<%= render 'shared/back_button', path: nonfiction_path %>
+		<% when Item::MEDIA[5] %>
+			<%= render 'shared/back_button', path: films_path %>
+		<% when Item::MEDIA[6] %>
+			<%= render 'shared/back_button', path: boardgames_path %>
+		<% else %>
+			<%= render 'shared/back_button', path: items_path %>
+	<% end %>
+</div>
